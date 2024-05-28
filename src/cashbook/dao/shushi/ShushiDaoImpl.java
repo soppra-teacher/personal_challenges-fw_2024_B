@@ -9,7 +9,6 @@ import org.springframework.dao.CannotAcquireLockException;
 import cashbook.dao.common.BaseDaoImpl;
 import cashbook.dto.common.LoginDto;
 import cashbook.util.CommonUtil;
-import cashbook.util.Const;
 
 /**
  * 収支DAOクラス
@@ -48,12 +47,12 @@ public class ShushiDaoImpl extends BaseDaoImpl implements ShushiDao {
 			sql.append("  AND T2.KOJIN_ID = '").append(formMap.get("kojinNmKey")).append("' ");
 		}
 		// 世帯主の場合
-		if (loginDto.getSetainushiFlg().equals(Const.SETAINUSHI_ON)) {
+		if (true) {
 			// 世帯ID
-			sql.append("  AND M2.SETAI_ID = '").append(loginDto.getSetaiId()).append("' ");
+			//sql.append("  AND M2.SETAI_ID = '").append(loginDto.getSetaiId()).append("' ");
 		} else {
 			// 個人ID
-			sql.append("  AND T2.KOJIN_ID = '").append(loginDto.getKojinId()).append("' ");
+			//sql.append("  AND T2.KOJIN_ID = '").append(loginDto.getKojinId()).append("' ");
 		}
 		sql.append(" ORDER BY T1.YMD ");
 
@@ -269,7 +268,7 @@ public class ShushiDaoImpl extends BaseDaoImpl implements ShushiDao {
 		sql.append("      , M.KOJIN_NM AS KOJIN_NM ");
 		sql.append("   FROM MST_KOJIN M ");
 		sql.append("  WHERE M.DEL_FLG = '0' ");
-		sql.append("    AND M.SETAI_ID = '").append(loginDto.getSetaiId()).append("' ");
+		//sql.append("    AND M.SETAI_ID = '").append(loginDto.getSetaiId()).append("' ");
 		sql.append("  ORDER BY M.KOJIN_ID ");
 
 		result = super.search(sql.toString());

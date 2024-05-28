@@ -6,76 +6,95 @@ package cashbook.dto.common;
  */
 public class LoginDto {
 
-	/** 個人ＩＤ */
-	private String kojinId;
-	/** 世帯ＩＤ */
-	private String setaiId;
-	/** 個人名 */
-	private String kojinNm;
-	/** 世帯主フラグ */
-	private String setainushiFlg;
+	/** ユーザＩＤ */
+	private String userId;
+	/** ユーザ名 */
+	private String userNm;
+	/** パスワード */
+	private String password;
+	/** ログイン日 */
+	private String loginDate;
+	/** 講師フラグ */
+	private String teacherFlg;
 
 	/**
-	 * 個人ＩＤを取得します。
-	 * @return 個人ＩＤ
+	 * ユーザＩＤを取得します。
+	 * @return ユーザＩＤ
 	 */
-	public String getKojinId() {
-	    return kojinId;
+	public String getUserId() {
+	    return userId;
 	}
 
 	/**
-	 * 個人ＩＤを設定します。
-	 * @param kojinId 個人ＩＤ
+	 * ユーザＩＤを設定します。
+	 * @param userId ユーザＩＤ
 	 */
-	public void setKojinId(String kojinId) {
-	    this.kojinId = kojinId;
+	public void setUserId(String userId) {
+	    this.userId = userId;
 	}
 
 	/**
-	 * 世帯ＩＤを取得します。
-	 * @return 世帯ＩＤ
+	 * ユーザ名を取得します。
+	 * @return ユーザ名
 	 */
-	public String getSetaiId() {
-	    return setaiId;
+	public String getUserNm() {
+	    return userNm;
 	}
 
 	/**
-	 * 世帯ＩＤを設定します。
-	 * @param setaiId 世帯ＩＤ
+	 * ユーザ名を設定します。
+	 * @param userNm ユーザ名
 	 */
-	public void setSetaiId(String setaiId) {
-	    this.setaiId = setaiId;
+	public void setUserNm(String userNm) {
+	    this.userNm = userNm;
+	}
+	
+	/**
+	 * パスワードを取得します。
+	 * @return ユーザ名
+	 */
+	public String getPassword() {
+	    return password;
 	}
 
 	/**
-	 * 個人名を取得します。
-	 * @return 個人名
+	 * パスワードを設定します。
+	 * @param userNm ユーザ名
 	 */
-	public String getKojinNm() {
-	    return kojinNm;
+	public void setPassword(String password) {
+	    this.password = password;
+	}
+	
+	
+	/**
+	 * ログイン日を取得します。
+	 * @return ユーザ名
+	 */
+	public String getLoginDate() {
+	    return loginDate;
 	}
 
 	/**
-	 * 個人名を設定します。
-	 * @param kojinNm 個人名
+	 * パスワードを設定します。
+	 * @param userNm ユーザ名
 	 */
-	public void setKojinNm(String kojinNm) {
-	    this.kojinNm = kojinNm;
+	public void setLoginDate(String logindate) {
+	    this.loginDate = logindate;
+	}
+	
+	/**
+	 * 講師フラグを取得します。
+	 * @return ユーザ名
+	 */
+	public String getTeacherFlg() {
+	    return teacherFlg;
 	}
 
 	/**
-	 * 世帯主フラグを取得します。
-	 * @return 世帯主フラグ
+	 * 講師フラグを設定します。
+	 * @param userNm ユーザ名
 	 */
-	public String getSetainushiFlg() {
-	    return setainushiFlg;
-	}
-
-	/**
-	 * 世帯主フラグを設定します。
-	 * @param setainushiFlg 世帯主フラグ
-	 */
-	public void setSetainushiFlg(String setainushiFlg) {
-	    this.setainushiFlg = setainushiFlg;
+	public void setTeacherFlg(String teacherFlg) {
+	    this.teacherFlg = teacherFlg;
 	}
 }

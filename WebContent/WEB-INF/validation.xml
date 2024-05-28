@@ -6,17 +6,35 @@
 	<formset>
 		<!-- ログイン画面 -->
 		<form name="loginForm">
-			<field property="kojinId" depends="required">
-				<arg0 key="loginForm.param.kojinId" resource="true" />
+			<field property="userId" depends="required,maxlength,mask">
+				<arg0 key="loginForm.param.userId" resource="true" />
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9a-zA-Z ]+$</var-value>
+				</var>
 			</field>
-			<field property="pass" depends="required">
-				<arg0 key="loginForm.param.pass" resource="true" />
+			<field property="password" depends="required,maxlengt,mask">
+				<arg0 key="loginForm.param.password" resource="true" />
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9a-zA-Z ]+$</var-value>
+				</var>
 			</field>
 		</form>
 
 		<!-- 個人マスタ登録画面 -->
 		<form name="kojinRegistForm">
-			<field property="kojinId" depends="required,mask,maxlength">
+			<field property="kojinId" depends="required,mask,maxlength,mask">
 				<msg name="mask" key="errors.strHalfChar" />
 				<arg0 key="kojinRegistForm.param.kojinId" resource="true" />
 				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
