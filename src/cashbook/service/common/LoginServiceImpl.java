@@ -25,6 +25,14 @@ public class LoginServiceImpl implements LoginService{
 		
 		return result;
 	}
+	
+	/**
+	 * ログイン日更新メソッド
+	 * @param loginService
+	 */
+	public void updateLoginDate(Map<String, Object> formMap) {
+		loginDao.updateLoginDate(formMap);
+	}
 
 	/**
 	 * DAOのsetter

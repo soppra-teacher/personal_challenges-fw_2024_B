@@ -63,9 +63,12 @@ public class LoginAction extends Action {
 		// ログイン情報DTO.個人IDが設定されている場合
 		if (loginDto.getUserId() != null) {
 
+			// ログイン日を更新
+			loginService.updateLoginDate(formMap);
+
 			// ログイン成功
 			request.getSession().setAttribute(Const.SESSION_LOGIN_DTO, loginDto);
-
+			
 			// 処理成功時の遷移先を指定する。
 			return map.findForward(Const.ACTION_FOWARD_SUCCESS);
 

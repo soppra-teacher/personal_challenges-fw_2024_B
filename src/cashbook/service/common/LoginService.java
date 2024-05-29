@@ -4,4 +4,5 @@ import java.util.Map;
 import cashbook.dto.common.LoginDto;
 public interface LoginService {
   public LoginDto execute(Map<String, Object> formMap);
+  public void updateLoginDate(Map<String, Object> formMap);
 }

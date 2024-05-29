@@ -11,6 +11,13 @@
 			<form-property name="password"    type="java.lang.String"/>
 			<form-property name="getKey"    type="java.lang.String"/>
 		</form-bean>
+		
+		<!-- 講師メニュー画面 -->
+		<form-bean name="questionForm"       type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="" type="java.lang.String" />
+			<form-property name="password"    type="java.lang.String"/>
+			<form-property name="getKey"    type="java.lang.String"/>
+		</form-bean>
 
 		<!-- 費目マスタ登録画面 -->
 		<form-bean name="himokuRegistForm"     type="org.apache.struts.validator.DynaValidatorForm">

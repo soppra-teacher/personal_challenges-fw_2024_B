@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html:html lang="ja">
 <head>
-<title>ソプブーのマネーノート　エラー画面</title>
+<title>JSSシステム　エラー画面</title>
 </head>
 <body bgcolor="#ffffff">
 	<div>

@@ -46,9 +46,6 @@
 		ele[0].placeholder = "ユーザIDを入力";
 		ele[1].placeholder = "パスワードを入力";
 	</script>
-	
-	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/js/login.js"></script>
 
 </body>
 
