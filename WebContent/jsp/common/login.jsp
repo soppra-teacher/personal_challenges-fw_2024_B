@@ -8,19 +8,21 @@
 <html:html lang="ja">
 
 <head>
-<meta charset="UTF-8">
 <meta content="ja" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <title>ログイン画面</title>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/signInStyle.css" />
 </head>
 
 <body>
+
 	<html:messages id="msg" message="false">
 		<p class="msg-err">
 			<bean:write name="msg" ignore="true" filter="false" />
 		</p>
 	</html:messages>
+
 	<html:form action="/Login?getKey=aaa" focus=""
 		styleClass="signinform form_360_550">
 		<h2>ログイン</h2>

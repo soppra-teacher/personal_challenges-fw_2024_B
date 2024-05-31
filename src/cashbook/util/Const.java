@@ -31,6 +31,11 @@ public class Const {
 	public static final String ACTION_FOWARD_BACK_LIST_SETAI = "backListSetai";
 	/** 遷移先 戻る(個別一覧) */
 	public static final String ACTION_FOWARD_BACK_LIST_KOBETSU = "backListKobetsu";
+	
+	/** 遷移先 講師のメニュー画面 */
+	public static final String ACTION_FOWARD_TEACHER_MENU = "teacherMenu";
+	/** 遷移先 受験者のメニュー画面 */
+	public static final String ACTION_FOWARD_JUKENSHA_MENU = "jukenshaMenu";
 
 	/** ログイン失敗メッセージ */
 	public static final String MSG_ERRORS_LOGIN_ERROR = "loginForm.error.login";
@@ -69,6 +74,9 @@ public class Const {
 	/************* セッション情報 *************/
 	/** ログイン画面 DTO */
 	public static final String SESSION_LOGIN_DTO = "LOGIN_DTO";
+	
+	/** 講師メニュー画面 DTO */
+	public static final String SESSION_LIST_DTO_TEACHER = "TEACHER_LIST_DTO";
 
 	/** 費目マスタ登録画面 DTO */
 	public static final String SESSION_REGIST_DTO_HIMOKU = "HIMOKU_REGIST_DTO";
@@ -194,4 +202,15 @@ public class Const {
 	public static final String CD_BUNRUI_004 = "004";
 	/** 世帯主：コード値 1 */
 	public static final String CD_004_1 = "1";
+	
+	
+	
+	
+	
+	
+	/************* ユーザマスタ *************/
+	/** 講師フラグ：コード値 1 */
+	public static final String TEACHER_FLG_ON = "1";
+	/** 講師フラグ：コード値 0 */
+	public static final String TEACHER_FLG_OFF = "0";
 }
