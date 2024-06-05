@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@charset "UTF-8";
 
 * {
 	box-sizing: border-box;
@@ -99,17 +98,14 @@
 }
 
 table {
-	margin: 20px;
+	margin-top: 10px;
 	width: 100%;
 	border-collapse: collapse;
-	border-top: 1px solid #555;
-	border: solid 1px;
 }
 
 table tr td,
 table tr th {
 	padding: 10px;
-	vertical-align: top;
 	text-align: left;
 }
 
@@ -121,7 +117,7 @@ table tr th {
 table tr td {
 	cursor: pointer;
 	border-bottom: 1px solid #ddd;
-
+	text-align: center;
 }
 
 tr.top-table {

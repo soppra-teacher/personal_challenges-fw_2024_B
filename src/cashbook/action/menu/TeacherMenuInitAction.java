@@ -17,6 +17,7 @@ import cashbook.dto.common.LoginDto;
 import cashbook.dto.menu.TeacherMenuDto;
 import cashbook.service.menu.TeacherMenuService;
 import cashbook.util.CommonUtil;
+import cashbook.util.TeacherMenuConst;
 
 public class TeacherMenuInitAction extends BaseAction {
 
@@ -47,17 +48,17 @@ public class TeacherMenuInitAction extends BaseAction {
 	 */
 	protected ActionForward doProcess(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response, LoginDto loginDto) throws Exception {
-
+		
 		// フォームの値を取得する。
 		Map<String, Object> formMap = CommonUtil.getFormMap((DynaActionForm) form);
 
-		// 講師メニュー画面の戻り先をセッションから削除する。
-		//request.getSession().removeAttribute(SESSION_REGIST_BACK_KOJIN);
-
-		// 問題一覧を表示するテーブル用にDBからデータを取得
+		// 初期表示情報を取得
 		TeacherMenuDto dto = new TeacherMenuDto();
 		dto.setList(teacherMenuService.listSearch(formMap));
-		
+
+		// 取得した情報をリクエストに設定
+		request.setAttribute(TeacherMenuConst.FORM_TEACHER_MENU, dto);
+
 		// 取得した情報をセッションに設定
 		request.getSession().setAttribute(SESSION_LIST_DTO_TEACHER, dto);
 

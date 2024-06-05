@@ -134,15 +134,21 @@
 			<ref local="TeacherMenuServiceId" />
 		</property>
 	</bean>
-	<bean name="/TeacherMenuSearch" class="cashbook.action.menu.TeacherMenuSearchAction">
-		<property name="teacherMenuService">
-			<ref local="TeacherMenuServiceId" />
-		</property>
-	</bean>
 	<bean name="/TeacherMenuDelete" class="cashbook.action.menu.TeacherMenuDeleteAction">
 		<property name="teacherMenuService">
 			<ref local="TeacherMenuServiceId" />
 		</property>
+	</bean>
+	<!-- 受験者メニュー画面 -->
+	<bean name="/JukenshaMenuInit" class="cashbook.action.menu.JukenshaMenuInitAction">
+	</bean>
+	<!-- 登録・更新画面（登録モード） -->
+	<bean name="/RegistInit" class="cashbook.action.edit.RegistInitAction">
+		
+	</bean>
+	<!-- 登録・更新画面（更新モード） -->
+	<bean name="/UpdateInit" class="cashbook.action.edit.UpdateInitAction">
+		
 	</bean>
 	
 	<!-- 個人マスタメンテ -->

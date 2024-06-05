@@ -1,9 +1,7 @@
-package cashbook.dto.menu;
+package cashbook.dto.edit;
 
-import java.util.List;
-
-public class TeacherMenuDto {
-
+public class EditDto {
+	
 	/** 問題ID */
 	private String questionId;
 	
@@ -19,15 +17,23 @@ public class TeacherMenuDto {
 	/** 問題 */
 	private String question;
 	
+	/** 選択肢A */
+	private String sentakuA;
+	
+	/** 選択肢B */
+	private String sentakuB;
+	
+	/** 選択肢C */
+	private String sentakuC;
+	
+	/** 選択肢D */
+	private String sentakuD;
+	
 	/** 解答 */
 	private String answer;
 	
 	/** 解説 */
 	private String kaisetsu;
-	
-	/** 一覧表示用 */
-	private List<TeacherMenuDto> list;
-	
 	
 	public String getQuestionId() {
 		return questionId;
@@ -69,6 +75,38 @@ public class TeacherMenuDto {
 		this.question = question;
 	}
 	
+	public String getSentakuA() {
+		return sentakuA;
+	}
+
+	public void setSentakuA(String sentakuA) {
+		this.sentakuA = sentakuA;
+	}
+	
+	public String getSentakuB() {
+		return sentakuB;
+	}
+
+	public void setSentakuB(String sentakuB) {
+		this.sentakuB = sentakuB;
+	}
+	
+	public String getSentakuC() {
+		return sentakuC;
+	}
+
+	public void setSentakuC(String sentakuC) {
+		this.sentakuC = sentakuC;
+	}
+	
+	public String getSentakuD() {
+		return sentakuD;
+	}
+
+	public void setSentakuD(String sentakuD) {
+		this.sentakuD = sentakuD;
+	}
+	
 	public String getAnswer() {
 		return answer;
 	}
@@ -83,13 +121,5 @@ public class TeacherMenuDto {
 
 	public void setKaisetsu(String kaisetsu) {
 		this.kaisetsu = kaisetsu;
-	}
-	
-	public List<TeacherMenuDto> getList() {
-		return list;
-	}
-
-	public void setList(List<TeacherMenuDto> list) {
-		this.list = list;
 	}
 }

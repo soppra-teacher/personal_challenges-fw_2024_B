@@ -123,7 +123,7 @@
 			input="/jsp/common/login.jsp"
 			scope="request">
 			<forward name="teacherMenu" path="/TeacherMenuInit.do" />
-			<forward name="jukenshaMenu" path="/jsp/menu/jukenshaMenu.jsp" />
+			<forward name="jukenshaMenu" path="/JukenshaMenuInit.do" />
 		</action>
 		<action
 			path="/Logout"
@@ -153,18 +153,7 @@
 			validate="false"
 			parameter="operation"
 			scope="request">
-			<forward name="search" path="/TeacherMenuSearch.do" />
 			<forward name="delete" path="/TeacherMenuDelete.do" />
-		</action>
-		<!-- 検索 -->
-		<action
-			path="/TeacherMenuSearch"
-			type="org.springframework.web.struts.DelegatingActionProxy"
-			name="teacherListForm"
-			validate="true"
-			input="/jsp/menu/teacherMenu.jsp"
-			scope="request">
-			<forward name="success" path="/jsp/menu/teacherMenu.jsp" />
 		</action>
 		<!-- 削除 -->
 		<action
@@ -176,6 +165,44 @@
 			scope="request">
 			<forward name="success" path="/TeacherMenuSearch.do" redirect="true" />
 		</action>
+		<!--
+		****************************
+		* 受験者メニュー画面            *
+		****************************
+		-->
+		<!-- 初期表示 -->
+		<action
+			path="/JukenshaMenuInit"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name=""
+			validate="false"
+			scope="request">
+			<forward name="success" path="/jsp/menu/jukenshaMenu.jsp" />
+		</action>
+		<!--
+		****************************
+		* 登録・更新画面              *
+		****************************
+		-->
+		<!-- 初期表示（登録モード） -->
+		<action
+			path="/RegistInit"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="editForm"
+			validate="false"
+			scope="request">
+			<forward name="success" path="/jsp/controller/edit.jsp" />
+		</action>
+		<!-- 初期表示（更新モード） -->
+		<action
+			path="/UpdateInit"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="editForm"
+			validate="false"
+			scope="request">
+			<forward name="success" path="/jsp/controller/edit.jsp" />
+		</action>
+		
 		<!--
 		****************************
 		* 費目マスタ登録画面       *
