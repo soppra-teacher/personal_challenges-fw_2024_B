@@ -79,6 +79,9 @@ public class Const {
 	public static final String SESSION_LIST_DTO_TEACHER = "TEACHER_LIST_DTO";
 	/** 講師メニュー画面 戻り先 */
 	public static final String SESSION_LIST_BACK_TEACHER = "TEACHER_LIST_BACK";
+	
+	/** 受験者メニュー画面 DTO */
+	public static final String SESSION_DTO_JUKENSHA = "JUKENSHA_DTO";
 
 	/** 費目マスタ登録画面 DTO */
 	public static final String SESSION_REGIST_DTO_HIMOKU = "HIMOKU_REGIST_DTO";
@@ -192,6 +195,9 @@ public class Const {
 	public static final String ZOKUGARA_THIRD_SON = "7";
 	/** 続柄区分:三女 */
 	public static final String ZOKUGARA_THIRD_DAUGHTER = "8";
+	
+	
+	
 
 	/************* コードマスタ *************/
 	/** 費目 */
@@ -207,7 +213,15 @@ public class Const {
 	
 	
 	
-	
+	/************* 区分値 *************/
+	/** 教科:Java　ON */
+	public static final String JUKENSHA_MENU_SELECT_JAVA_ON = "1";
+	/** 教科:Java　OFF */
+	public static final String JUKENSHA_MENU_SELECT_JAVA_OFF = "0";
+	/** 教科:SQL　ON */
+	public static final String JUKENSHA_MENU_SELECT_SQL_ON = "1";
+	/** 教科:SQL　OFF */
+	public static final String JUKENSHA_MENU_SELECT_SQL_OFF = "0";
 	
 	
 	/************* ユーザマスタ *************/
@@ -215,4 +229,7 @@ public class Const {
 	public static final String TEACHER_FLG_ON = "1";
 	/** 講師フラグ：コード値 0 */
 	public static final String TEACHER_FLG_OFF = "0";
+	
+	
+	
 }

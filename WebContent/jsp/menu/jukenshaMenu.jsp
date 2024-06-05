@@ -13,28 +13,41 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/common.css" />
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/teacherMenu.css" />
+	href="<%=request.getContextPath()%>/css/jukenshaMenu.css" />
 <title>受験者メニュー</title>
 </head>
 
 <body>
 
+	<bean:define id="inputBean" name="jukenshaForm" />
+
 	<jsp:include page="/jsp/common/header.jsp">
 		<jsp:param name="screenTitle" value="受験者メニュー" />
 	</jsp:include>
 
-	
+	<div class="contents">
+		<ul>
+			<li class="title">問題種類：</li>
+			<li><html:radio name="inputBean" property="subjectRadio"
+					value="1" /> Java</li>
+			<li><html:radio name="inputBean" property="subjectRadio"
+					value="0" />SQL</li>
+		</ul>
 
-	<ul>
-		<li class="title">問題種類：</li>
-		<li><input type="radio" value="1" id="" />Java</li>
-		<li><input type="radio" value="1" id="" />SQL</li>
-	</ul>
+		<ul>
+			<li class="title">問題数：</li>
+			<li><html:select name="inputBean" property="questionNumberKey">
+					<html:optionsCollection name="inputBean" property="questionNumber"
+						value="key" label="value" />
+				</html:select></li>
+		</ul>
+		
+		<input type="submit" value="松中">
 
-	<ul>
-		<li class="title">問題数：</li>
-		<li><input type="list" id=""></li>
-	</ul>
+		<div class="submit">
+			<a class="link">スタート</a>
+		</div>
+	</div>
 
 </body>
 </html:html>

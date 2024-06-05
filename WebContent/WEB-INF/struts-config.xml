@@ -16,7 +16,12 @@
 			<form-property name="questionTitle" type="java.lang.String" />
 			<form-property name="question" type="java.lang.String" />
 			<form-property name="answer" type="java.lang.String" />
-			<form-property name="answerRate" type="java.lang.String" />
+		</form-bean>
+		<!-- 受験者メニュー画面 -->
+		<form-bean name="jukenshaForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="subjectRadio" type="java.lang.String" />
+			<form-property name="questionNumberKey" type="java.lang.String" />
+			<form-property name="questionNumber" type="java.lang.String[]" />
 		</form-bean>
 		<!-- 費目マスタ登録画面 -->
 		<form-bean name="himokuRegistForm" type="org.apache.struts.validator.DynaValidatorForm">
@@ -174,7 +179,7 @@
 		<action
 			path="/JukenshaMenuInit"
 			type="org.springframework.web.struts.DelegatingActionProxy"
-			name=""
+			name="jukenshaForm"
 			validate="false"
 			scope="request">
 			<forward name="success" path="/jsp/menu/jukenshaMenu.jsp" />
@@ -202,7 +207,6 @@
 			scope="request">
 			<forward name="success" path="/jsp/controller/edit.jsp" />
 		</action>
-		
 		<!--
 		****************************
 		* 費目マスタ登録画面       *

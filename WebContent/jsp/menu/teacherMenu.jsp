@@ -11,9 +11,10 @@
 <meta content="ja" http-equiv="Content-Language" />
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/common.css" />
+<link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/teacherMenu.css" />
-<script type="text/javascript" charset="shift_jis"
-	src="js/teacherMenu.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/teacherMenu.js"></script>
 <title>講師メニュー</title>
 </head>
 
@@ -30,7 +31,7 @@
 			<div class="site-header__middle">
 				<nav class="nav">
 					<ul class="nav__wrapper">
-						<li class="nav__item"><html:link action="/RegistInit">問題の登録</html:link></li>
+						<li class="nav__item"><html:link action="/RegistInit">新しい問題を登録</html:link></li>
 					</ul>
 				</nav>
 			</div>
@@ -55,7 +56,9 @@
 					<td>Q001</td>
 					<td>JAVA</td>
 					<td>配列</td>
-					<td>配列の正しい宣言方法は次のa~dのうちどれか。</td>
+					<td>配列で格納データ取得した際に想定されている要素数の範囲外を指定した場合に発生する実行時例外を答えよ
+						a：ArrayIndexOutOfBoundsException b：Unresolved compilation problem
+						c：ArrayIndexOfBoundsException d：Unresolved problem</td>
 					<td>a</td>
 					<td>正しい配列の宣...</td>
 				</tr>
@@ -82,23 +85,18 @@
 			</table>
 		</div>
 		<div class="questionID">
-			<spna id=questionId></spna>
+			<div class="update">
+				<html:link action="/UpdateInit">この問題を更新</html:link>
+			</div>
 			<ul class="li__wrapper">
+				<li class="item"><spna id=questionId></spna></li>
+
 				<li class="item"><spna id=subject></spna></li>
 				<li class="item"><spna id=category></spna></li>
+				<li class="item"><spna id=questionText></spna></li>
+				<li class="item"><spna id=answer></spna></li>
+				<li class="item"><spna id=kaisetsuText></spna> </spna></li>
 			</ul>
-
-			<div class="question">
-				<spna id=questionText></spna>
-			</div>
-
-			<div class="answer">
-				<spna id=answer></spna>
-			</div>
-
-			<div class="kaisetu">
-				<spna id=kaisetsuText></spna>
-			</div>
 
 			<html:hidden name="inputBean" property="questionId" />
 			<html:hidden name="inputBean" property="subject" />
@@ -106,8 +104,6 @@
 			<html:hidden name="inputBean" property="question" />
 			<html:hidden name="inputBean" property="answer" />
 			<html:hidden name="inputBean" property="kaisetsu" />
-
-			<html:link action="/UpdateInit">問題の更新</html:link>
 
 		</div>
 

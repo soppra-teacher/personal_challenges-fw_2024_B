@@ -131,6 +131,7 @@ div.example {
 	height: 680px;
 }
 
+
 div.questionID {
 	background-color: #F5F5F5;
 	width: 40%;
@@ -138,8 +139,13 @@ div.questionID {
 }
 
 div.questionID a {
-	font-size: 25px;
-
+	padding: 5px 30px 5px 30px;
+	border-radius: 3px;
+	color: blue;
+	border: solid 1px lightgray;
+	background: white;
+	box-shadow: 0 0 5px lightgrey;
+	font-size: 1.2rem;
 }
 
 .index {
@@ -147,15 +153,21 @@ div.questionID a {
 }
 
 .li__wrapper {
-	border-bottom: solid 1px;
-	border-top: solid 1px;
+	padding: 0 0.5em;
+	position: relative;
 }
 
 .item {
-	list-style: none;
+	line-height: 1.5;
+	padding: 0.5em 0 0.5em 1.4em;
+	border-bottom: dashed 1px silver;
+	list-style-type: none !important;
 }
 
 .update {
-	float: right;
-	margin-top: 340px;
+	text-align: left;
+	margin-left: 5%;
+	padding-top: 5%;
+	padding-bottom: 10%;
+	border-bottom: solid 1px dimgray;
 }
