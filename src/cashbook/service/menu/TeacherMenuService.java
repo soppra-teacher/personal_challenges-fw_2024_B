@@ -13,9 +13,9 @@ import cashbook.dto.menu.TeacherMenuDto;
 public interface TeacherMenuService {
 
 	/**
-	 *
+	 * 問題解答一覧テーブル用にDBからデータを取得
 	 * @param formMap
-	 * @return
+	 * @return 
 	 */
 	public List<TeacherMenuDto> listSearch(Map<String, Object> formMap);
 }
