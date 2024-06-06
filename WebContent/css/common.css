@@ -58,12 +58,6 @@
 	display: block;
 	padding: 1.5rem 1rem;
 	font-size: 22px;
-
-}
-
-.nav__item {
-	list-style: none;
-	margin-left: 50px;
 }
 
 .nav__toggle {
