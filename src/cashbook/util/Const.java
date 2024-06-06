@@ -222,7 +222,10 @@ public class Const {
 	public static final String JUKENSHA_MENU_SELECT_SQL_ON = "1";
 	/** 教科:SQL　OFF */
 	public static final String JUKENSHA_MENU_SELECT_SQL_OFF = "0";
-	
+	/** 教科:Java */
+	public static final String JUKENSHA_MENU_SUBJECT_JAVA = "JAVA";
+	/** 教科:SQL */
+	public static final String JUKENSHA_MENU_SUBJECT_SQL = "SQL";
 	
 	/************* ユーザマスタ *************/
 	/** 講師フラグ：コード値 1 */
