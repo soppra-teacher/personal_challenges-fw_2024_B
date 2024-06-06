@@ -11,8 +11,6 @@
 <meta content="ja" http-equiv="Content-Language" />
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/common.css" />
-<link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/teacherMenu.css" />
 <script type="text/javascript" charset="utf-8" src="js/teacherMenu.js"></script>
 <title>講師メニュー</title>
@@ -85,10 +83,10 @@
 			</table>
 		</div>
 		<div class="questionID">
-			<div class="update">
+			<div id="updlink" class="hide">
 				<html:link action="/UpdateInit">この問題を更新</html:link>
 			</div>
-			<ul class="li__wrapper">
+			<ul id="liwapper" class="hide">
 				<li class="item"><spna id=questionId></spna></li>
 
 				<li class="item"><spna id=subject></spna></li>

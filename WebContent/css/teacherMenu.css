@@ -19,7 +19,6 @@
 
 .site-header__wrapper {
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 }
 
@@ -32,7 +31,8 @@
 
 @media (max-width: 659px) {
 	.site-header__end {
-		padding-right: 4rem;
+		margin-left: auto;
+		margin-right: 1%;
 	}
 }
 
@@ -64,15 +64,19 @@
 }
 
 .nav__item a {
-	display: block;
-	padding: 1.5rem 1rem;
-	font-size: 22px;
-
+	margin-top: 1.5rem;
+	margin-bottom: 1.5rem;
+	padding: 5px 30px 5px 30px;
+	border-radius: 3px;
+	color: blue;
+	border: solid 1px lightgray;
+	background: white;
+	box-shadow: 0 0 5px lightgrey;
+	font-size: 1.2rem;
 }
 
 .nav__item {
 	list-style: none;
-	margin-left: 50px;
 }
 
 .nav__toggle {
@@ -91,10 +95,12 @@
 
 .wrapper {
 	max-width: 1300px;
-	padding-left: 1rem;
-	padding-right: 1rem;
 	margin-left: auto;
 	margin-right: auto;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
 }
 
 table {
@@ -170,4 +176,17 @@ div.questionID a {
 	padding-top: 5%;
 	padding-bottom: 10%;
 	border-bottom: solid 1px dimgray;
+}
+
+.hide {
+	display: none;
+}
+
+.site-header__middle {
+	margin-left: 10%;
+}
+
+.site-header__end {
+	margin-left: auto;
+	margin-right: 1%;
 }
