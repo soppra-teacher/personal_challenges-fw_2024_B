@@ -1,6 +1,6 @@
 package cashbook.dto.menu;
 
-import java.util.List;
+import java.util.Map;
 
 public class JukenshaMenuDto {
 
@@ -10,8 +10,11 @@ public class JukenshaMenuDto {
 	/** 問題数Key */
 	private String questionNumberKey;
 
-	/** 問題数 */
-	private List<String> questionNumber;
+	/** Java問題数 */
+	private Map<String, String> javaQuestionNumber;
+	
+	/** SQL問題数 */
+	private Map<String, String> sqlQuestionNumber;
 
 	public String getSubjectRadio() {
 		return subjectRadio;
@@ -29,12 +32,20 @@ public class JukenshaMenuDto {
 		this.questionNumberKey = questionNumberKey;
 	}
 
-	public List<String> getQuestionNumber() {
-		return questionNumber;
+	public Map<String, String> getJavaQuestionNumber() {
+		return javaQuestionNumber;
 	}
 
-	public void setQuestionNumber(List<String> questionNumber) {
-		this.questionNumber = questionNumber;
+	public void setJavaQuestionNumber(Map<String, String> javaQuestionNumber) {
+		this.javaQuestionNumber = javaQuestionNumber;
+	}
+	
+	public Map<String, String> getSqlQuestionNumber() {
+		return sqlQuestionNumber;
+	}
+
+	public void setSqlQuestionNumber(Map<String, String> sqlQuestionNumber) {
+		this.sqlQuestionNumber = sqlQuestionNumber;
 	}
 
 }

@@ -14,6 +14,7 @@
 	href="<%=request.getContextPath()%>/css/common.css" />
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/jukenshaMenu.css" />
+<script type="text/javascript" charset="utf-8" src="js/jukenshaMenu.js"></script>
 <title>受験者メニュー</title>
 </head>
 
@@ -36,13 +37,16 @@
 
 		<ul>
 			<li class="title">問題数：</li>
-			<li><html:select name="inputBean" property="questionNumberKey">
-					<html:optionsCollection name="inputBean" property="questionNumber"
-						value="key" label="value" />
+			<li><html:select name="inputBean"
+					property="questionNumberKey" styleClass="select">
+					<html:optionsCollection name="inputBean"
+						property="javaQuestionNumber" value="key" label="value" />
+				</html:select> <html:select name="inputBean" property="questionNumberKey"
+					styleClass="hide">
+					<html:optionsCollection name="inputBean"
+						property="sqlQuestionNumber" value="key" label="value" />
 				</html:select></li>
 		</ul>
-		
-		<input type="submit" value="松中">
 
 		<div class="submit">
 			<a class="link">スタート</a>

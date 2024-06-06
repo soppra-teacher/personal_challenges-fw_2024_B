@@ -12,6 +12,8 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/teacherMenu.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/common.css" />
 <script type="text/javascript" charset="utf-8" src="js/teacherMenu.js"></script>
 <title>uŽtƒƒjƒ…[</title>
 </head>

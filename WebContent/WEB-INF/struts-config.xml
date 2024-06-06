@@ -21,7 +21,8 @@
 		<form-bean name="jukenshaForm" type="org.apache.struts.validator.DynaValidatorForm">
 			<form-property name="subjectRadio" type="java.lang.String" />
 			<form-property name="questionNumberKey" type="java.lang.String" />
-			<form-property name="questionNumber" type="java.lang.String[]" />
+			<form-property name="javaQuestionNumber" type="java.lang.String" />
+			<form-property name="sqlQuestionNumber" type="java.lang.String" />
 		</form-bean>
 		<!-- 費目マスタ登録画面 -->
 		<form-bean name="himokuRegistForm" type="org.apache.struts.validator.DynaValidatorForm">
