@@ -54,6 +54,12 @@
 			<ref local="dataSource" />
 		</property>
 	</bean>
+	<!-- 登録・更新画面 -->
+	<bean id="EditDaoId" class="cashbook.dao.edit.EditDaoImpl">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+	</bean>
 	<!-- 個人マスタ -->
 	<bean id="KojinDaoId" class="cashbook.dao.kojin.KojinDaoImpl">
 		<property name="dataSource">
@@ -95,6 +101,12 @@
 	<bean id="JukenshaMenuServiceId" class="cashbook.service.menu.JukenshaMenuServiceImpl">
 		<property name="jukenshaMenuDao">
 			<ref local="JukenshaMenuDaoId" />
+		</property>
+	</bean>
+	<!-- 登録・更新画面 -->
+	<bean id="EditServiceId" class="cashbook.service.edit.EditServiceImpl">
+		<property name="editDao">
+			<ref local="EditDaoId" />
 		</property>
 	</bean>
 	<!-- 個人マスタ -->
@@ -158,9 +170,19 @@
 		</property>
 	</bean>
 	<!-- 登録・更新画面（登録モード） -->
-	<bean name="/RegistInit" class="cashbook.action.edit.RegistInitAction"></bean>
-	<!-- 登録・更新画面（更新モード） -->
-	<bean name="/UpdateInit" class="cashbook.action.edit.UpdateInitAction"></bean>
+	<bean name="/RegistInit" class="cashbook.action.edit.RegistInitAction">
+		<property name="editService">
+			<ref local="EditServiceId" />
+		</property>
+	</bean>
+    <!-- 登録・更新画面（更新モード） -->
+	<bean name="/UpdateInit" class="cashbook.action.edit.UpdateInitAction">
+		<property name="editService">
+			<ref local="EditServiceId" />
+		</property>
+	</bean>
+	
+	
 	<!-- 個人マスタメンテ -->
 	<bean name="/KojinListInit" class="cashbook.action.kojin.KojinListInitAction">
 		<property name="kojinService">

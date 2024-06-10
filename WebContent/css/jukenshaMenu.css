@@ -3,7 +3,7 @@
 	padding: 0;
 }
 
-.contents{
+.contents {
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -48,13 +48,13 @@ li {
 	align-items: center;
 }
 
-input[type="radio"]{
+input[type="radio"] {
 	width: 20px;
 	height: 20px;
 }
 
-.select{
+.select {
 	width: 100px;
-    height: 40px;
-    font-size: 1.2rem;
+	height: 40px;
+	font-size: 1.2rem;
 }

@@ -31,6 +31,7 @@ public class JukenshaMenuServiceImpl implements JukenshaMenuService {
 		// 取得した問題数を返却用変数に格納
 		Map<String, String> result = new LinkedHashMap<String, String>();
 
+		// 問題を5問ずつに区切る
 		int count = 1;
 		int ans = 0;
 		while (true) {

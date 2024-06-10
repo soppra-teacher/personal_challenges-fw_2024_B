@@ -53,16 +53,6 @@
 					<td>解説</td>
 				</tr>
 				<tr>
-					<td>Q001</td>
-					<td>JAVA</td>
-					<td>配列</td>
-					<td>配列で格納データ取得した際に想定されている要素数の範囲外を指定した場合に発生する実行時例外を答えよ
-						a：ArrayIndexOutOfBoundsException b：Unresolved compilation problem
-						c：ArrayIndexOfBoundsException d：Unresolved problem</td>
-					<td>a</td>
-					<td>正しい配列の宣...</td>
-				</tr>
-				<tr>
 					<td>Q002</td>
 					<td>SQL</td>
 					<td>副問い合わせ</td>
@@ -85,28 +75,21 @@
 			</table>
 		</div>
 		<div class="questionID">
-			<div id="updlink" class="hide">
-				<html:link action="/UpdateInit">この問題を更新</html:link>
-			</div>
+			<html:form action="/UpdateInit">
+				<html:hidden name="inputBean" property="questionId" />
+				<div id="updlink" class="hide">
+					<html:submit>この問題を更新</html:submit>
+				</div>
+			</html:form>
 			<ul id="liwapper" class="hide">
 				<li class="item"><spna id=questionId></spna></li>
-
 				<li class="item"><spna id=subject></spna></li>
 				<li class="item"><spna id=category></spna></li>
 				<li class="item"><spna id=questionText></spna></li>
 				<li class="item"><spna id=answer></spna></li>
 				<li class="item"><spna id=kaisetsuText></spna> </spna></li>
 			</ul>
-
-			<html:hidden name="inputBean" property="questionId" />
-			<html:hidden name="inputBean" property="subject" />
-			<html:hidden name="inputBean" property="category" />
-			<html:hidden name="inputBean" property="question" />
-			<html:hidden name="inputBean" property="answer" />
-			<html:hidden name="inputBean" property="kaisetsu" />
-
 		</div>
-
 	</div>
 </body>
 </html:html>

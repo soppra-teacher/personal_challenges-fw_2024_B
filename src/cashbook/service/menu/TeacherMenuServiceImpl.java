@@ -5,14 +5,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import cashbook.dao.common.CommonDao;
 import cashbook.dao.menu.TeacherMenuDao;
 import cashbook.dto.menu.TeacherMenuDto;
 
 public class TeacherMenuServiceImpl implements TeacherMenuService {
-
-	/** 共通Dao */
-	private CommonDao commonDao;
 	
 	/** 講師メニューDao */
 	private TeacherMenuDao teacherMenuDao;

@@ -58,7 +58,7 @@ public class JukenshaMenuInitAction extends BaseAction {
 
 		JukenshaMenuDto dto = new JukenshaMenuDto();
 		// 教科のラジオボタンで、Javaが選択されているように設定
-		dto.setSubjectRadio(JUKENSHA_MENU_SELECT_JAVA_ON);
+		dto.setSubjectRadio(SELECT_JAVA_ON);
 		// Javaの問題数を問題数ドロップダウンに設定
 		dto.setJavaQuestionNumber(jukenshaMenuService.getJavaQuestionCount(formMap));
 		// SQLの問題数を問題数ドロップダウンに設定

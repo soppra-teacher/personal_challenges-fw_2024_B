@@ -1,5 +1,7 @@
 package cashbook.dto.edit;
 
+import java.util.Map;
+
 public class EditDto {
 	
 	/** 問題ID */
@@ -8,8 +10,11 @@ public class EditDto {
 	/** 教科 */
 	private String subject;
 	
+	/** 分類KEY */
+	private String categoryKey;
+	
 	/** 分類 */
-	private String category;
+	private Map<String, String> category;
 	
 	/** 問題タイトル */
 	private String questionTitle;
@@ -29,8 +34,11 @@ public class EditDto {
 	/** 選択肢D */
 	private String sentakuD;
 	
+	/** 解答KEY */
+	private String answerKey;
+	
 	/** 解答 */
-	private String answer;
+	private Map<String, String> answer;
 	
 	/** 解説 */
 	private String kaisetsu;
@@ -51,15 +59,23 @@ public class EditDto {
 		this.subject = subject;
 	}
 	
-	public String getCategory() {
+	public String getCategoryKey() {
+		return categoryKey;
+	}
+
+	public void setCategoryKey(String categoryKey) {
+		this.categoryKey = categoryKey;
+	}
+	
+	public Map<String, String> getCategory() {
 		return category;
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(Map<String, String> category) {
 		this.category = category;
 	}
 	
-	public String getQustionTitle() {
+	public String getQuestionTitle() {
 		return questionTitle;
 	}
 
@@ -107,11 +123,19 @@ public class EditDto {
 		this.sentakuD = sentakuD;
 	}
 	
-	public String getAnswer() {
+	public String getAnswerKey() {
+		return answerKey;
+	}
+
+	public void setAnswerKey(String answerKey) {
+		this.answerKey = answerKey;
+	}
+	
+	public Map<String, String> getAnswer() {
 		return answer;
 	}
 
-	public void setAnswer(String answer) {
+	public void setAnswer(Map<String, String> answer) {
 		this.answer = answer;
 	}
 	

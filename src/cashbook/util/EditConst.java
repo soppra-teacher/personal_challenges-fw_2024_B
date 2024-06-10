@@ -8,4 +8,5 @@ public class EditConst {
 
 	/** フォーム名 */
 	public static final String FORM_TEACHER_EDIT = "editForm";
+	
 }

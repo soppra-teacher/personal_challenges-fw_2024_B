@@ -13,12 +13,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	let kaisetsuText = document.getElementById("kaisetsuText");
 
 	//hiddenフィールドの各エレメントを取得
-	let questionId_hidden = document.getElementsByName("questionId");
-	let subject_hidden = document.getElementsByName("subject");
-	let category_hidden = document.getElementsByName("category");
-	let questionText_hidden = document.getElementsByName("question");
-	let answer_hidden = document.getElementsByName("answer");
-	let kaisetsuText_hidden = document.getElementsByName("kaisetsu");
+	let questionId_hidden = document.getElementsByName("questionId")[0];
 
 	let updlink = document.getElementById("updlink");
 	let liwapper = document.getElementById("liwapper");
@@ -59,13 +54,9 @@ window.addEventListener("DOMContentLoaded", () => {
 			answer.innerText += answer_table;
 			kaisetsuText.innerText += kaisetsu_table;
 
-			//hiddenフィールドの各エレメントに値を代入
-			questionId_hidden.values = questionId_table;
-			subject_hidden.values = subject_table;
-			category_hidden.values = category_table;
-			questionText_hidden.values = question_table;
-			answer_hidden.values = answer_table;
-			kaisetsuText_hidden.values = kaisetsu_table;
+			//hiddenフィールドに値を代入
+			questionId_hidden.value = questionId_table;
+			
 		});
 	}
 });

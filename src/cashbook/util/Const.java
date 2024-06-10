@@ -82,6 +82,11 @@ public class Const {
 	
 	/** 受験者メニュー画面 DTO */
 	public static final String SESSION_DTO_JUKENSHA = "JUKENSHA_DTO";
+	
+	/** 登録・更新画面（登録モード） DTO */
+	public static final String SESSION_DTO_QUESTION_REGIST = "REGIST_DTO";
+	/** 登録・更新画面（更新モード） DTO */
+	public static final String SESSION_DTO_QUESTION_UPDATE = "UPDATE_DTO";
 
 	/** 費目マスタ登録画面 DTO */
 	public static final String SESSION_REGIST_DTO_HIMOKU = "HIMOKU_REGIST_DTO";
@@ -215,17 +220,17 @@ public class Const {
 	
 	/************* 区分値 *************/
 	/** 教科:Java　ON */
-	public static final String JUKENSHA_MENU_SELECT_JAVA_ON = "1";
+	public static final String SELECT_JAVA_ON = "1";
 	/** 教科:Java　OFF */
-	public static final String JUKENSHA_MENU_SELECT_JAVA_OFF = "0";
+	public static final String SELECT_JAVA_OFF = "0";
 	/** 教科:SQL　ON */
-	public static final String JUKENSHA_MENU_SELECT_SQL_ON = "1";
+	public static final String SELECT_SQL_ON = "1";
 	/** 教科:SQL　OFF */
-	public static final String JUKENSHA_MENU_SELECT_SQL_OFF = "0";
+	public static final String SELECT_SQL_OFF = "0";
 	/** 教科:Java */
-	public static final String JUKENSHA_MENU_SUBJECT_JAVA = "JAVA";
+	public static final String SUBJECT_JAVA = "JAVA";
 	/** 教科:SQL */
-	public static final String JUKENSHA_MENU_SUBJECT_SQL = "SQL";
+	public static final String SUBJECT_SQL = "SQL";
 	
 	/************* ユーザマスタ *************/
 	/** 講師フラグ：コード値 1 */

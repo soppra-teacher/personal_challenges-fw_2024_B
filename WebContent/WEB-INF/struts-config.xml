@@ -24,6 +24,21 @@
 			<form-property name="javaQuestionNumber" type="java.lang.String" />
 			<form-property name="sqlQuestionNumber" type="java.lang.String" />
 		</form-bean>
+		<!-- 登録・更新画面 -->
+		<form-bean name="editForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="subject" type="java.lang.String" />
+			<form-property name="categoryKey" type="java.lang.String" />
+			<form-property name="category" type="java.lang.String" />
+			<form-property name="questionTitle" type="java.lang.String" />
+			<form-property name="question" type="java.lang.String" />
+			<form-property name="sentakuA" type="java.lang.String" />
+			<form-property name="sentakuB" type="java.lang.String" />
+			<form-property name="sentakuC" type="java.lang.String" />
+			<form-property name="sentakuD" type="java.lang.String" />
+			<form-property name="answerKey" type="java.lang.String" />
+			<form-property name="answer" type="java.lang.String" />
+			<form-property name="kaisetsu" type="java.lang.String" />
+		</form-bean>
 		<!-- 費目マスタ登録画面 -->
 		<form-bean name="himokuRegistForm" type="org.apache.struts.validator.DynaValidatorForm">
 			<form-property name="himokuCd" type="java.lang.String" />
@@ -203,10 +218,21 @@
 		<action
 			path="/UpdateInit"
 			type="org.springframework.web.struts.DelegatingActionProxy"
-			name="editForm"
+			name="teacherListForm"
 			validate="false"
 			scope="request">
 			<forward name="success" path="/jsp/controller/edit.jsp" />
+		</action>
+		<!-- ディスパッチ -->
+		<action
+			path="/InsUpdDisp"
+			type="cashbook.action.edit.InsUpdDispAction"
+			name="editForm"
+			validate="false"
+			parameter="operation"
+			scope="request">
+			<forward name="insert" path="/InsUpd.do" />
+			<forward name="update" path="/InsUpd.do" />
 		</action>
 		<!--
 		****************************

@@ -37,8 +37,8 @@
 
 		<ul>
 			<li class="title">問題数：</li>
-			<li><html:select name="inputBean"
-					property="questionNumberKey" styleClass="select">
+			<li><html:select name="inputBean" property="questionNumberKey"
+					styleClass="select">
 					<html:optionsCollection name="inputBean"
 						property="javaQuestionNumber" value="key" label="value" />
 				</html:select> <html:select name="inputBean" property="questionNumberKey"
@@ -49,7 +49,7 @@
 		</ul>
 
 		<div class="submit">
-			<a class="link">スタート</a>
+			<html:link action="" styleClass="link">スタート</html:link>
 		</div>
 	</div>
 

@@ -5,6 +5,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	let javaSelect = selectEle[0];
 	let sqlSelect = selectEle[1];
 
+	//教科を選択するラジオボタンのエレメントを取得
 	let radioBtns = document.getElementsByName("subjectRadio");
 
 	radioBtns[0].addEventListener("change", () => {

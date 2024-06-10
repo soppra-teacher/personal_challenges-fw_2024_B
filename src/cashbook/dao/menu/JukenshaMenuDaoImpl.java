@@ -12,8 +12,19 @@ public class JukenshaMenuDaoImpl extends BaseDaoImpl implements JukenshaMenuDao 
 	 * @return 問題数
 	 */
 	public int getJavaQuestionCount(Map<String, Object> formMap) {
+		StringBuffer sql = new StringBuffer();
+		sql.append("SELECT COUNT(QUESTION_ID) ");
+		sql.append("  FROM MST_QUESTION ");
+		sql.append(" WHERE CATEGORY_ID = ( ");
+		sql.append("       SELECT CATEGORY_ID  ");
+		sql.append("        FROM MST_CATEGORY  ");
+		sql.append("       WHERE SUBJECT = 'Java' ");
+		sql.append("      ) ");
+		sql.append(" AND DEL_FLG = '0' ");
 
-		return 0;
+		Map<String, String> result = super.find(sql.toString());
+
+		return Integer.parseInt(result.get("COUNT(QUESTION_ID)"));
 	}
 
 	/**
@@ -22,7 +33,19 @@ public class JukenshaMenuDaoImpl extends BaseDaoImpl implements JukenshaMenuDao 
 	 * @return 問題数
 	 */
 	public int getSQLQuestionCount(Map<String, Object> formMap) {
+		StringBuffer sql = new StringBuffer();
+		sql.append("SELECT COUNT(QUESTION_ID) ");
+		sql.append("  FROM MST_QUESTION ");
+		sql.append(" WHERE CATEGORY_ID = ");
+		sql.append("       ( ");
+		sql.append("       SELECT CATEGORY_ID  ");
+		sql.append("        FROM MST_CATEGORY  ");
+		sql.append("       WHERE SUBJECT = 'SQL' ");
+		sql.append("       ) ");
+		sql.append(" AND DEL_FLG = '0' ");
 
-		return 0;
+		Map<String, String> result = super.find(sql.toString());
+
+		return Integer.parseInt(result.get("COUNT(QUESTION_ID)"));
 	}
 }

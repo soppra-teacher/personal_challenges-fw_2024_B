@@ -84,7 +84,7 @@ public class TeacherMenuDto {
 	public void setKaisetsu(String kaisetsu) {
 		this.kaisetsu = kaisetsu;
 	}
-	
+//	
 	public List<TeacherMenuDto> getList() {
 		return list;
 	}
