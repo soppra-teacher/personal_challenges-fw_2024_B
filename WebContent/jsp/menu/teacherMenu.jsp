@@ -52,14 +52,6 @@
 					<td>‰ð“š</td>
 					<td>‰ðà</td>
 				</tr>
-				<tr>
-					<td>Q002</td>
-					<td>SQL</td>
-					<td>•›–â‚¢‡‚í‚¹</td>
-					<td>•›–â‚¢‡‚í‚¹‚ÍŽŸ‚Ìa~d‚Ì‚¤‚¿‚Ç‚ê‚©B</td>
-					<td>c</td>
-					<td>³‚µ‚¢”z—ñ‚Ìé...</td>
-				</tr>
 				<logic:notEmpty name="viewBean" property="list">
 					<logic:iterate id="list" name="viewBean" property="list">
 						<tr>

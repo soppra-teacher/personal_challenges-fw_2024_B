@@ -5,23 +5,26 @@ package cashbook.dto.common;
  * @author soppra
  */
 public class BaseDto {
+	
+	/** 登録者 */
+	private String insUser;
+	
+	/** 更新者 */
+	private String updUser;
 
-	/** リビジョン */
-	private String revision;
-
-	/**
-	 * リビジョンを取得します。
-	 * @return リビジョン
-	 */
-	public String getRevision() {
-	    return revision;
+	public String getInsUser() {
+		return insUser;
 	}
 
-	/**
-	 * リビジョンを設定します。
-	 * @param revision リビジョン
-	 */
-	public void setRevision(String revision) {
-	    this.revision = revision;
+	public void setInsUser(String insUser) {
+		this.insUser = insUser;
+	}
+
+	public String getUpdUser() {
+		return updUser;
+	}
+
+	public void setUpdUser(String updUser) {
+		this.updUser = updUser;
 	}
 }

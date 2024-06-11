@@ -138,7 +138,7 @@ public class HimokuServiceImpl implements HimokuService {
 				result.setHimokuCd(map.get("HIMOKU_CD"));
 				result.setHimokuNm(map.get("HIMOKU_NM"));
 				result.setHimokuKbnKey(map.get("HIMOKU_KBN"));
-				result.setRevision(map.get("REVISION"));
+				//result.setRevision(map.get("REVISION"));
 			}
 		}
 

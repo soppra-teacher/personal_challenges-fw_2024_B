@@ -11,9 +11,11 @@
 <meta content="ja" http-equiv="Content-Language" />
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/teacherMenu.css" />
+	href="<%=request.getContextPath()%>/css/common.css" />
 <script language="JavaScript" type="text/javascript" charset="shift_jis"
 	src="js/common.js"></script>
+<script language="JavaScript" type="text/javascript" charset="shift_jis"
+	src="js/edit.js"></script>
 <title>問題・解答を編集</title>
 </head>
 
@@ -25,19 +27,26 @@
 
 	<html:form action="/InsUpdDisp">
 
+		<html:hidden property="operation" value="" />
+
 		<div class="radio-list">
 			<p class="sub">教科：</p>
-			<html:radio name="inputBean" property="subject" value="1" />
+			<html:radio name="inputBean" property="subject" value="java" />
 			<label for="radio1">Java</label>
-			<html:radio name="inputBean" property="subject" value="0" />
+			<html:radio name="inputBean" property="subject" value="sql" />
 			<label for="radio1">SQL</label>
 		</div>
 
 		<div class="form-select">
 			<p class="category">分類：</p>
-			<html:select name="inputBean" property="categoryKey"
+			<html:select name="inputBean" property="categoryKeyJava"
 				styleClass="select">
-				<html:optionsCollection name="inputBean" property="category"
+				<html:optionsCollection name="inputBean" property="categoryJava"
+					value="key" label="value" />
+			</html:select>
+			<html:select name="inputBean" property="categoryKeySql"
+				styleClass="hide">
+				<html:optionsCollection name="inputBean" property="categorySql"
 					value="key" label="value" />
 			</html:select>
 		</div>

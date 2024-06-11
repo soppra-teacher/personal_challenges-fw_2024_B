@@ -126,7 +126,7 @@ public class KojinServiceImpl implements KojinService {
 				if (SETAINUSHI_ON.equals(map.get("SETAINUSHI_FLG"))) {
 					result.setSetaiNusiFlg(SETAINUSHI_FLG_ON);
 				}
-				result.setRevision(map.get("REVISION"));
+				//result.setRevision(map.get("REVISION"));
 			}
 		} else {
 			result.setSeibetsuKbn(SEIBETSU_KBN_MAN); // 初期値："1"(男)

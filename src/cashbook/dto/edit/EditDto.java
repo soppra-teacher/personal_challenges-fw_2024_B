@@ -10,11 +10,17 @@ public class EditDto {
 	/** 教科 */
 	private String subject;
 	
-	/** 分類KEY */
-	private String categoryKey;
+	/** 分類JavaKEY */
+	private String categoryKeyJava;
 	
-	/** 分類 */
-	private Map<String, String> category;
+	/** 分類SQLKEY */
+	private String categoryKeySql;
+	
+	/** 分類Java */
+	private Map<String, String> categoryJava;
+	
+	/** 分類SQL */
+	private Map<String, String> categorySQL;
 	
 	/** 問題タイトル */
 	private String questionTitle;
@@ -59,20 +65,44 @@ public class EditDto {
 		this.subject = subject;
 	}
 	
-	public String getCategoryKey() {
-		return categoryKey;
+	public String getCategoryKeyJava() {
+		return categoryKeyJava;
 	}
 
-	public void setCategoryKey(String categoryKey) {
-		this.categoryKey = categoryKey;
+	public void setCategoryKeyJava(String categoryKeyJava) {
+		this.categoryKeyJava = categoryKeyJava;
+	}
+
+	public String getCategoryKeySql() {
+		return categoryKeySql;
+	}
+
+	public void setCategoryKeySql(String categoryKeySql) {
+		this.categoryKeySql = categoryKeySql;
+	}
+
+	public Map<String, String> getCategorySQL() {
+		return categorySQL;
+	}
+
+	public void setCategorySQL(Map<String, String> categorySQL) {
+		this.categorySQL = categorySQL;
+	}
+
+	public Map<String, String> getCategoryJava() {
+		return categoryJava;
+	}
+
+	public void setCategoryJava(Map<String, String> categoryJava) {
+		this.categoryJava = categoryJava;
 	}
 	
-	public Map<String, String> getCategory() {
-		return category;
+	public Map<String, String> getCategorySql() {
+		return categorySQL;
 	}
 
-	public void setCategory(Map<String, String> category) {
-		this.category = category;
+	public void setCategorySql(Map<String, String> categorySQL) {
+		this.categorySQL = categorySQL;
 	}
 	
 	public String getQuestionTitle() {

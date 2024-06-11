@@ -41,6 +41,8 @@ public class TeacherMenuServiceImpl implements TeacherMenuService {
 			dto.setCategory(map.get("CATEGORY"));
 			dto.setQuestion(map.get("QUESTION"));
 			dto.setAnswer(map.get("ANSWER"));
+			
+			resultlist.add(dto);
 		}
 		return resultlist;
 	}

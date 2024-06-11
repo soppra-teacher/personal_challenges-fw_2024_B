@@ -228,9 +228,9 @@ public class Const {
 	/** 教科:SQL　OFF */
 	public static final String SELECT_SQL_OFF = "0";
 	/** 教科:Java */
-	public static final String SUBJECT_JAVA = "JAVA";
+	public static final String SUBJECT_JAVA = "java";
 	/** 教科:SQL */
-	public static final String SUBJECT_SQL = "SQL";
+	public static final String SUBJECT_SQL = "sql";
 	
 	/************* ユーザマスタ *************/
 	/** 講師フラグ：コード値 1 */

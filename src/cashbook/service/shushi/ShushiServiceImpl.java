@@ -1,6 +1,6 @@
 package cashbook.service.shushi;
 
-import static cashbook.util.Const.CD_BUNRUI_001;
+import static cashbook.util.Const.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -336,7 +336,7 @@ public class ShushiServiceImpl implements ShushiService{
 				result.setHimokuKbnKey(map.get("HIMOKU_KBN"));
 				result.setKingaku(map.get("KINGAKU"));
 				result.setYmd(map.get("YMD"));
-				result.setRevision(map.get("REVISION"));
+				//result.setRevision(map.get("REVISION"));
 			}
 		}
 		return result;

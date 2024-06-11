@@ -181,6 +181,12 @@
 			<ref local="EditServiceId" />
 		</property>
 	</bean>
+	<!-- 登録・更新画面（更新モード） -->
+	<bean name="/InsUpd" class="cashbook.action.edit.InsUpdAction">
+		<property name="editService">
+			<ref local="EditServiceId" />
+		</property>
+	</bean>
 	
 	
 	<!-- 個人マスタメンテ -->

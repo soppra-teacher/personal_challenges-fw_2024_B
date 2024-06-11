@@ -130,7 +130,7 @@ public class SetaiServiceImpl implements SetaiService{
 				result.setPostNo(map.get("POST_NO"));
 				result.setAddress(map.get("ADDRESS"));
 				result.setTelNo(map.get("TEL_NO"));
-				result.setRevision(map.get("REVISION"));
+				//result.setRevision(map.get("REVISION"));
 			}
 		}
 		return result;
