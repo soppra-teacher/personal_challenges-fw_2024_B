@@ -30,9 +30,9 @@
 		<ul>
 			<li class="title">–â‘èí—ŞF</li>
 			<li><html:radio name="inputBean" property="subjectRadio"
-					value="1" /> Java</li>
+					value="java" /> Java</li>
 			<li><html:radio name="inputBean" property="subjectRadio"
-					value="0" />SQL</li>
+					value="sql" />SQL</li>
 		</ul>
 
 		<ul>

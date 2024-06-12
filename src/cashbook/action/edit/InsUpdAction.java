@@ -53,23 +53,22 @@ public class InsUpdAction extends BaseAction {
 
 		// フォームの値を取得する。
 		Map<String, Object> formMap = CommonUtil.getFormMap((DynaActionForm) form);
+		
+		if (CommonUtil.isNull(CommonUtil.getStr(request.getSession().getAttribute(SESSION_DTO_QUESTION_UPDATE)))) {
 
-		//				System.out.println("SUBJECT: " + formMap.get(EditConst.KEY_SUBJECT_EDIT));
-		//				System.out.println("JAVA CATEGORY KEY: " + formMap.get(EditConst.KEY_CATEGORY_KEY_JAVA_EDIT));
-		//				System.out.println("SQL CATEGORY KEY: " + formMap.get(EditConst.KEY_CATEGORY_KEY_SQL_EDIT));
-		//				System.out.println("CATEGORY: " + formMap.get(EditConst.KEY_CATEGORY_EDIT));
-		//				System.out.println("QUESTION TITLE: " + formMap.get(EditConst.KEY_QUESTIONTITLE_EDIT));
-		//				System.out.println("QUESTION: " + formMap.get(EditConst.KEY_QUESTIO_EDIT));
-		//				System.out.println("SENTAKUSHI A: " + formMap.get(EditConst.KEY_SENTAKU_A_EDIT));
-		//				System.out.println("SENTAKUSHI B: " + formMap.get(EditConst.KEY_SENTAKU_B_EDIT));
-		//				System.out.println("SENTAKUSHI C: " + formMap.get(EditConst.KEY_SENTAKU_C_EDIT));
-		//				System.out.println("SENTAKUSHI D: " + formMap.get(EditConst.KEY_SENTAKU_D_EDIT));
-		//				System.out.println("ANSWER KEY: " + formMap.get(EditConst.KEY_ANSWER_KEY_EDIT));
-		//				System.out.println("ANSWER: " + formMap.get(EditConst.KEY_ANSWER_EDIT));
-		//				System.out.println("KAISETSU: " + formMap.get(EditConst.KEY_KAISETSU_EDIT));
+			//
+			//	登録処理
+			//
+			editService.registQuestionAnswer(formMap, loginDto);
+			
+		} else {
 
-		// 登録処理を実行
-		editService.registQuestionAnswer(formMap, loginDto);
+			//
+			//	更新処理
+			//
+			editService.updateQuestionAnswer(formMap, loginDto);
+
+		}
 
 		// 処理成功時の遷移先を指定する。
 		return map.findForward(ACTION_FOWARD_SUCCESS);

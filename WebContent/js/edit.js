@@ -7,6 +7,15 @@ window.addEventListener("DOMContentLoaded", () => {
 	//教科を選択するラジオボタンのエレメントを取得
 	let radioBtns = document.getElementsByName("subject");
 
+	//分類ドロップダウンリストの初期表示
+	if (radioBtns[0].checked) {
+		javaSelect.className = "select";
+		sqlSelect.className = "hide";
+	} else {
+		javaSelect.className = "hide";
+		sqlSelect.className = "select";
+	}
+
 	radioBtns[0].addEventListener("change", () => {
 
 		javaSelect.className = "select";

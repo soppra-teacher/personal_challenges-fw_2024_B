@@ -26,8 +26,10 @@
 	<bean:define id="viewUpdateBean" name="UPDATE_DTO" />
 
 	<html:form action="/InsUpdDisp">
-
+	
 		<html:hidden property="operation" value="" />
+		<html:hidden name="inputBean" property="questionId" />
+		<html:hidden name="inputBean" property="answerId" />
 
 		<div class="radio-list">
 			<p class="sub">ã≥â»ÅF</p>
@@ -87,10 +89,18 @@
 				<html:text name="inputBean" property="kaisetsu" />
 			</div>
 
-			<html:button property="insert"
-				onclick="callAction(this.form, 'insert');">
+			<logic:notEmpty name="viewRegistBean">
+				<html:button property="insert"
+					onclick="callAction(this.form, 'insert');">
               ìoò^
             </html:button>
+			</logic:notEmpty>
+			<logic:notEmpty name="viewUpdateBean">
+				<html:button property="update"
+					onclick="callAction(this.form, 'update');">
+              çXêV
+            </html:button>
+			</logic:notEmpty>
 		</div>
 
 	</html:form>

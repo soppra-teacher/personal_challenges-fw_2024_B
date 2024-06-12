@@ -15,11 +15,11 @@ public class JukenshaMenuDaoImpl extends BaseDaoImpl implements JukenshaMenuDao 
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT COUNT(QUESTION_ID) ");
 		sql.append("  FROM MST_QUESTION ");
-		sql.append(" WHERE CATEGORY_ID = ( ");
+		sql.append(" WHERE CATEGORY_ID IN (( ");
 		sql.append("       SELECT CATEGORY_ID  ");
 		sql.append("        FROM MST_CATEGORY  ");
 		sql.append("       WHERE SUBJECT = 'Java' ");
-		sql.append("      ) ");
+		sql.append("      )) ");
 		sql.append(" AND DEL_FLG = '0' ");
 
 		Map<String, String> result = super.find(sql.toString());
@@ -36,12 +36,11 @@ public class JukenshaMenuDaoImpl extends BaseDaoImpl implements JukenshaMenuDao 
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT COUNT(QUESTION_ID) ");
 		sql.append("  FROM MST_QUESTION ");
-		sql.append(" WHERE CATEGORY_ID = ");
-		sql.append("       ( ");
+		sql.append(" WHERE CATEGORY_ID IN (( ");
 		sql.append("       SELECT CATEGORY_ID  ");
 		sql.append("        FROM MST_CATEGORY  ");
 		sql.append("       WHERE SUBJECT = 'SQL' ");
-		sql.append("       ) ");
+		sql.append("      )) ");
 		sql.append(" AND DEL_FLG = '0' ");
 
 		Map<String, String> result = super.find(sql.toString());

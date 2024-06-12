@@ -7,6 +7,9 @@ public class EditDto {
 	/** 問題ID */
 	private String questionId;
 	
+	/** 解答解説ID */
+	private String answerId;
+
 	/** 教科 */
 	private String subject;
 	
@@ -55,6 +58,14 @@ public class EditDto {
 
 	public void setQuestionId(String questionId) {
 		this.questionId = questionId;
+	}
+	
+	public String getAnswerId() {
+		return answerId;
+	}
+
+	public void setAnswerId(String answerId) {
+		this.answerId = answerId;
 	}
 
 	public String getSubject() {

@@ -220,17 +220,17 @@ public class Const {
 	
 	/************* 区分値 *************/
 	/** 教科:Java　ON */
-	public static final String SELECT_JAVA_ON = "1";
+	public static final String SELECT_JAVA_ON = "java";
 	/** 教科:Java　OFF */
-	public static final String SELECT_JAVA_OFF = "0";
+	public static final String SELECT_JAVA_OFF = "";
 	/** 教科:SQL　ON */
-	public static final String SELECT_SQL_ON = "1";
+	public static final String SELECT_SQL_ON = "sql";
 	/** 教科:SQL　OFF */
-	public static final String SELECT_SQL_OFF = "0";
+	public static final String SELECT_SQL_OFF = "";
 	/** 教科:Java */
-	public static final String SUBJECT_JAVA = "java";
+	public static final String SUBJECT_JAVA = "Java";
 	/** 教科:SQL */
-	public static final String SUBJECT_SQL = "sql";
+	public static final String SUBJECT_SQL = "SQL";
 	
 	/************* ユーザマスタ *************/
 	/** 講師フラグ：コード値 1 */

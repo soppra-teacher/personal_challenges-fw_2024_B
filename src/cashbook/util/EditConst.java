@@ -9,6 +9,10 @@ public class EditConst {
 	/** フォーム名 */
 	public static final String FORM_TEACHER_EDIT = "editForm";
 
+	/** 問題ID */
+	public static final String KEY_QUESTION_ID_EDIT = "questionId";
+	/** 解答解説ID */
+	public static final String KEY_ANSWER_ID_EDIT = "answerId";
 	/** 教科 */
 	public static final String KEY_SUBJECT_EDIT = "subject";
 	/** 分類Java KEY */

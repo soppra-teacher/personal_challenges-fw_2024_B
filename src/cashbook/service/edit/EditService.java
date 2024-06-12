@@ -24,5 +24,12 @@ public interface EditService {
 	 * @param loginDto
 	 */
 	public void registQuestionAnswer(Map<String, Object> formMap, LoginDto loginDto) throws Exception;
+	
+	/**
+	 * 問題と解答解説を更新する
+	 * @param formMap
+	 * @param loginDto
+	 */
+	public void updateQuestionAnswer(Map<String, Object> formMap, LoginDto loginDto) throws Exception;
 
 }

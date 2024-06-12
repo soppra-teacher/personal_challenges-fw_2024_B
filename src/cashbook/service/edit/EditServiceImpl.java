@@ -33,24 +33,46 @@ public class EditServiceImpl implements EditService {
 	 */
 	public EditDto updateInit(Map<String, Object> formMap) {
 
-		//選択された問題IDを取得
+		// 選択された問題IDを取得
 		String questionId = CommonUtil.getStr(formMap.get(TeacherMenuConst.VIEW_TEACHER_QUESTION_ID));
-
+		
+		// 選択された問題IDの問題と解答解説を取得
 		var dbResult = editDao.findQuestionAnswer(questionId);
 
-		EditDto result = new EditDto();
-		result.setQuestionId(dbResult.get("QUESTION_ID"));
-		result.setSubject(dbResult.get("SUBJECT"));
-		result.setQuestionTitle(dbResult.get("QUESTION_TITLE"));
-		result.setQuestion(dbResult.get("QUESTION"));
-		result.setSentakuA(dbResult.get("SENTAKU_A"));
-		result.setSentakuB(dbResult.get("SENTAKU_B"));
-		result.setSentakuC(dbResult.get("SENTAKU_C"));
-		result.setSentakuD(dbResult.get("SENTAKU_D"));
+		EditDto dto = new EditDto();
 
-		result.setKaisetsu(dbResult.get("KAISETSU"));
+		// Javaの分類を取得
+		dto.setCategoryJava(editDao.getJavaCategory());
+		// SQLの分類を取得
+		dto.setCategorySql(editDao.getSQLCategory());
+		// どの選択肢が正解かを選択するドロップダウンに値を設定
+		var answerDropDown = new LinkedHashMap<String, String>();
+		answerDropDown.put("a", "a");
+		answerDropDown.put("b", "b");
+		answerDropDown.put("c", "c");
+		answerDropDown.put("d", "d");
+		dto.setAnswer(answerDropDown);
 
-		return result;
+		// テーブルから取得した情報をDTOの各項目に設定
+		dto.setQuestionId(dbResult.get("QUESTION_ID"));
+		dto.setAnswerId(dbResult.get("ANSWER_ID"));
+		if (dbResult.get("SUBJECT").equals(SUBJECT_JAVA)) {
+			dto.setSubject(SELECT_JAVA_ON);
+			dto.setCategoryKeyJava(dbResult.get("CATEGORY_ID"));
+		} else {
+			dto.setSubject(SELECT_SQL_ON);
+			dto.setCategoryKeySql(dbResult.get("CATEGORY_ID"));
+		}
+		dto.setQuestionTitle(dbResult.get("QUESTION_TITLE"));
+		dto.setQuestion(dbResult.get("QUESTION"));
+		dto.setSentakuA(dbResult.get("SENTAKU_A"));
+		dto.setSentakuB(dbResult.get("SENTAKU_B"));
+		dto.setSentakuC(dbResult.get("SENTAKU_C"));
+		dto.setSentakuD(dbResult.get("SENTAKU_D"));
+		dto.setAnswerKey(dbResult.get("ANSWER"));
+		dto.setKaisetsu(dbResult.get("KAISETSU"));
+
+		return dto;
 	}
 
 	/**
@@ -62,7 +84,7 @@ public class EditServiceImpl implements EditService {
 		EditDto dto = new EditDto();
 
 		// 教科のラジオボタンで、Javaが選択されているように設定
-		dto.setSubject(SUBJECT_JAVA);
+		dto.setSubject(SELECT_JAVA_ON);
 
 		// Javaの分類を取得
 		dto.setCategoryJava(editDao.getJavaCategory());
@@ -113,9 +135,9 @@ public class EditServiceImpl implements EditService {
 		answerDto.setInsUser(loginDto.getUserId());
 
 		String categoryId = "";
-		if (CommonUtil.getStr(formMap.get(EditConst.KEY_SUBJECT_EDIT)).equals(SUBJECT_JAVA)) {
+		if (CommonUtil.getStr(formMap.get(EditConst.KEY_SUBJECT_EDIT)).equals(SELECT_JAVA_ON)) {
 			categoryId = CommonUtil.getStr(formMap.get(EditConst.KEY_CATEGORY_KEY_JAVA_EDIT));
-		} else if (CommonUtil.getStr(formMap.get(EditConst.KEY_SUBJECT_EDIT)).equals(SUBJECT_SQL)) {
+		} else if (CommonUtil.getStr(formMap.get(EditConst.KEY_SUBJECT_EDIT)).equals(SELECT_SQL_ON)) {
 			categoryId = CommonUtil.getStr(formMap.get(EditConst.KEY_CATEGORY_KEY_SQL_EDIT));
 		}
 
@@ -135,12 +157,54 @@ public class EditServiceImpl implements EditService {
 		//
 		// 解答解説マスタに登録
 		//
-		editDao.registAnswer(answerDto, loginDto);
+		editDao.registAnswer(answerDto);
 
 		//
 		// 問題マスタに登録
 		//
-		editDao.registQuestion(questionDto, loginDto);
+		editDao.registQuestion(questionDto);
+	}
+
+	/**
+	 * 問題と解答解説を更新する
+	 * @param formMap
+	 * @param loginDto
+	 */
+	public void updateQuestionAnswer(Map<String, Object> formMap, LoginDto loginDto) {
+		
+		// 解答解説マスタ登録用の値を設定
+		AnswerDto answerDto = new AnswerDto();
+		answerDto.setAnswerId(CommonUtil.getStr(formMap.get(EditConst.KEY_ANSWER_ID_EDIT)).trim());
+		answerDto.setAnswer(CommonUtil.getStr(formMap.get(EditConst.KEY_ANSWER_KEY_EDIT)));
+		answerDto.setKaisetsu(CommonUtil.getStr(formMap.get(EditConst.KEY_KAISETSU_EDIT)));
+		answerDto.setUpdUser(loginDto.getUserId());
+
+		// 問題マスタ登録用の値を設定
+		QuestionDto questionDto = new QuestionDto();
+		questionDto.setQuestionId(CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTION_ID_EDIT)).trim());
+		questionDto.setAnswerId(answerDto.getAnswerId());
+		if(CommonUtil.getStr(formMap.get(EditConst.KEY_SUBJECT_EDIT)).equals(SELECT_JAVA_ON)) {
+			questionDto.setCategoryId(CommonUtil.getStr(formMap.get(EditConst.KEY_CATEGORY_KEY_JAVA_EDIT)));
+		}else {
+			questionDto.setCategoryId(CommonUtil.getStr(formMap.get(EditConst.KEY_CATEGORY_KEY_SQL_EDIT)));
+		}
+		questionDto.setQuestionTitle(CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIONTITLE_EDIT)));
+		questionDto.setQuestion(CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIO_EDIT)));
+		questionDto.setSentakuA(CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_A_EDIT)));
+		questionDto.setSentakuB(CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_B_EDIT)));
+		questionDto.setSentakuC(CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_C_EDIT)));
+		questionDto.setSentakuD(CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_D_EDIT)));
+		questionDto.setInsUser(loginDto.getUserId());
+		
+		//
+		// 解答解説マスタを更新
+		//
+		editDao.updateAnswer(answerDto);
+
+		//
+		// 問題マスタを更新
+		//
+		editDao.updateQuestion(questionDto);
 	}
 
 }

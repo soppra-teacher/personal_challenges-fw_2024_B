@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import cashbook.dao.common.BaseDaoImpl;
-import cashbook.dto.common.LoginDto;
 import cashbook.dto.edit.AnswerDto;
 import cashbook.dto.edit.QuestionDto;
 
@@ -65,8 +64,29 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 	 * @return 問題と解答
 	 */
 	public Map<String, String> findQuestionAnswer(String questionId) {
+		// SQLを組み立てる。
+		StringBuffer sql = new StringBuffer();
+		sql.append("SELECT A.QUESTION_ID ");
+		sql.append("     , B.CATEGORY_ID");
+		sql.append("     , C.ANSWER_ID");
+		sql.append("     , B.SUBJECT");
+		sql.append("     , A.QUESTION_TITLE");
+		sql.append("     , A.QUESTION");
+		sql.append("     , A.SENTAKU_A");
+		sql.append("     , A.SENTAKU_B");
+		sql.append("     , A.SENTAKU_C");
+		sql.append("     , A.SENTAKU_D");
+		sql.append("     , C.ANSWER");
+		sql.append("     , C.KAISETSU");
+		sql.append("  FROM MST_QUESTION A ");
+		sql.append("  INNER JOIN MST_CATEGORY B ");
+		sql.append("    ON A.CATEGORY_ID = B.CATEGORY_ID ");
+		sql.append("  INNER JOIN MST_ANSWER C ");
+		sql.append("    ON A.ANSWER_ID = C.ANSWER_ID ");
+		sql.append("  WHERE A.QUESTION_ID = '").append(questionId).append("'");
+		sql.append("  AND A.DEL_FLG = '0' ");
 
-		return null;
+		return super.find(sql.toString());
 	}
 
 	/**
@@ -142,7 +162,7 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 	 * @param answerDto
 	 * @param loginDto
 	 */
-	public void registAnswer(AnswerDto answerDto, LoginDto loginDto) {
+	public void registAnswer(AnswerDto answerDto) {
 		// SQLを組み立てる。
 		StringBuffer sql = new StringBuffer();
 		sql.append("INSERT INTO ");
@@ -175,7 +195,7 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 	 * @param questionDto
 	 * @param loginDto
 	 */
-	public void registQuestion(QuestionDto questionDto, LoginDto loginDto) {
+	public void registQuestion(QuestionDto questionDto) {
 		// SQLを組み立てる。
 		StringBuffer sql = new StringBuffer();
 		sql.append("INSERT INTO ");
@@ -218,6 +238,50 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 		sql.append("'").append(questionDto.getInsUser()).append("'");
 		sql.append(" ) ");
 
+		super.update(sql.toString());
+	}
+
+	/**
+	 * 解答解説マスタを更新する
+	 * @param answerDto
+	 * @param loginDto
+	 */
+	public void updateAnswer(AnswerDto answerDto) {
+		// SQLを組み立てる。
+		StringBuffer sql = new StringBuffer();
+		sql.append("UPDATE ");
+		sql.append("   MST_ANSWER ");
+		sql.append("    SET ANSWER = '").append(answerDto.getAnswer()).append("'");
+		sql.append("      , KAISETSU = '").append(answerDto.getKaisetsu()).append("'");
+		sql.append("      , UPD_USER = '").append(answerDto.getUpdUser()).append("'");
+		sql.append("      , UPD_DATE = SYSDATE");
+		sql.append("   WHERE ANSWER_ID = '").append(answerDto.getAnswerId()).append("'");
+
+		super.update(sql.toString());
+	}
+
+	/**
+	 * 問題マスタを更新する
+	 * @param questionDto
+	 * @param loginDto
+	 */
+	public void updateQuestion(QuestionDto questionDto) {
+		// SQLを組み立てる。
+		StringBuffer sql = new StringBuffer();
+		sql.append("UPDATE ");
+		sql.append("   MST_QUESTION ");
+		sql.append("    SET CATEGORY_ID = '").append(questionDto.getCategoryId()).append("'");
+		sql.append("      , ANSWER_ID = '").append(questionDto.getAnswerId()).append("'");
+		sql.append("      , SENTAKU_A = '").append(questionDto.getSentakuA()).append("'");
+		sql.append("      , SENTAKU_B = '").append(questionDto.getSentakuB()).append("'");
+		sql.append("      , SENTAKU_C = '").append(questionDto.getSentakuC()).append("'");
+		sql.append("      , SENTAKU_D = '").append(questionDto.getSentakuD()).append("'");
+		sql.append("      , QUESTION = '").append(questionDto.getQuestion()).append("'");
+		sql.append("      , QUESTION_TITLE = '").append(questionDto.getQuestionTitle()).append("'");
+		sql.append("      , UPD_DATE = SYSDATE");
+		sql.append("      , UPD_USER = '").append(questionDto.getUpdUser()).append("'");
+		sql.append("   WHERE QUESTION_ID = '").append(questionDto.getQuestionId()).append("'");
+		
 		super.update(sql.toString());
 	}
 

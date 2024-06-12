@@ -2,7 +2,6 @@ package cashbook.dao.edit;
 
 import java.util.Map;
 
-import cashbook.dto.common.LoginDto;
 import cashbook.dto.edit.AnswerDto;
 import cashbook.dto.edit.QuestionDto;
 
@@ -64,13 +63,27 @@ public interface EditDao {
 	 * @param answerDto
 	 * @param loginDto
 	 */
-	public void registAnswer(AnswerDto answerDto, LoginDto loginDto);
+	public void registAnswer(AnswerDto answerDto);
 	
 	/**
 	 * 問題マスタに登録する
 	 * @param questionDto
 	 * @param loginDto
 	 */
-	public void registQuestion(QuestionDto questionDto, LoginDto loginDto);
+	public void registQuestion(QuestionDto questionDto);
+	
+	/**
+	 * 解答解説マスタを更新する
+	 * @param answerDto
+	 * @param loginDto
+	 */
+	public void updateAnswer(AnswerDto answerDto);
+	
+	/**
+	 * 問題マスタを更新する
+	 * @param questionDto
+	 * @param loginDto
+	 */
+	public void updateQuestion(QuestionDto questionDto);
 
 }
