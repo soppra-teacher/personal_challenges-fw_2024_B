@@ -1,8 +1,6 @@
 package cashbook.util;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -83,20 +81,6 @@ public class CommonUtil {
      */
 	public static String getStr(Object obj) {
 		return (obj == null) ? "" : obj.toString();
-	}
-
-	/**
-	 * formMapからgetした削除チェックボックスの値を、List型に格納し、返却。
-	 * @param formMap
-	 * @return List<String>
-	 */
-	public static List<String> convFormMapToList(Map<String, Object> formMap){
-		String[] checkDel = (String[])formMap.get(Const.ITEM_CHECKBOX_DELETE);
-		List<String> list = new ArrayList<String>();
-		for (String str : checkDel){
-			list.add(str);
-		}
-		return list;
 	}
 
 	/**
