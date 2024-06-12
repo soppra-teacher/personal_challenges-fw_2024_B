@@ -60,7 +60,7 @@
 
 		<div class="form-area">
 			<p class="category">ñ‚ëËï∂ÅF</p>
-			<html:text name="inputBean" property="question" />
+			<html:textarea name="inputBean" property="question" />
 		</div>
 		<div class="index">
 			<div class="choice-list">

@@ -154,6 +154,8 @@ public class EditServiceImpl implements EditService {
 		questionDto.setQuestionTitle(CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIONTITLE_EDIT)));
 		questionDto.setInsUser(loginDto.getUserId());
 
+		System.out.println(CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIO_EDIT)));
+		
 		//
 		// 解答解説マスタに登録
 		//
