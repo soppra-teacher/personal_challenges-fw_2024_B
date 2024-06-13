@@ -53,7 +53,7 @@ public class TeacherMenuDto {
 		this.category = category;
 	}
 	
-	public String getQustionTitle() {
+	public String getQuestionTitle() {
 		return questionTitle;
 	}
 

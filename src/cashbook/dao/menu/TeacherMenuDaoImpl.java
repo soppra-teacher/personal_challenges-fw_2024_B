@@ -19,6 +19,7 @@ public class TeacherMenuDaoImpl extends BaseDaoImpl implements TeacherMenuDao {
 		sql.append("SELECT  A.QUESTION_ID ");
 		sql.append("       ,B.SUBJECT ");
 		sql.append("       ,B.CATEGORY ");
+		sql.append("       ,A.QUESTION_TITLE");
 		sql.append("       ,A.QUESTION ");
 		sql.append("       ,C.ANSWER ");
 		sql.append("       ,C.KAISETSU ");

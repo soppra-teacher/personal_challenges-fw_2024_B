@@ -48,6 +48,7 @@
 					<td>–â‘èID</td>
 					<td>‹³‰È</td>
 					<td>•ª—Þ</td>
+					<td>–â‘èƒ^ƒCƒgƒ‹</td>
 					<td>–â‘è</td>
 					<td>‰ð“š</td>
 					<td>‰ðà</td>
@@ -58,6 +59,7 @@
 							<td><bean:write name="list" property="questionId" /></td>
 							<td><bean:write name="list" property="subject" /></td>
 							<td><bean:write name="list" property="category" /></td>
+							<td><bean:write name="list" property="questionTitle" /></td>
 							<td><bean:write name="list" property="question" /></td>
 							<td><bean:write name="list" property="answer" /></td>
 							<td><bean:write name="list" property="kaisetsu" /></td>
@@ -77,6 +79,7 @@
 				<li class="item"><spna id=questionId></spna></li>
 				<li class="item"><spna id=subject></spna></li>
 				<li class="item"><spna id=category></spna></li>
+				<li class="item"><spna id=questionTitle_S></spna></li>
 				<li class="item"><spna id=questionText></spna></li>
 				<li class="item"><spna id=answer></spna></li>
 				<li class="item"><spna id=kaisetsuText></spna> </spna></li>

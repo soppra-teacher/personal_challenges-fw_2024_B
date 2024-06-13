@@ -8,6 +8,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	let questionId = document.getElementById("questionId");
 	let subject = document.getElementById("subject");
 	let category = document.getElementById("category");
+	let questionTitle = document.getElementById("questionTitle_S");
 	let questionText = document.getElementById("questionText");
 	let answer = document.getElementById("answer");
 	let kaisetsuText = document.getElementById("kaisetsuText");
@@ -34,22 +35,28 @@ window.addEventListener("DOMContentLoaded", () => {
 			let questionId_table = td_ele[0].innerText;
 			let subject_table = td_ele[1].innerText;
 			let category_table = td_ele[2].innerText;
-			let question_table = td_ele[3].innerText;
-			let answer_table = td_ele[4].innerText;
-			let kaisetsu_table = td_ele[5].innerText;
+			let question_table_title = td_ele[3].innerText;
+			let question_table = td_ele[4].innerText;
+			let answer_table = td_ele[5].innerText;
+			let kaisetsu_table = td_ele[6].innerText;
 
 			//innerTextをクリア
 			questionId.innerText = "問題ID: ";
 			subject.innerText = "教科: ";
 			category.innerText = "分類: ";
+			questionTitle.innerText = "問題タイトル: ";
 			questionText.innerText = "問題文: ";
 			answer.innerText = "解答: ";
 			kaisetsuText.innerText = "解説: ";
+			
+			console.log(questionTitle);
+			console.log(question_table_title);
 
 			//詳細表示エリアの各エレメントに値を追加で代入
 			questionId.innerText += questionId_table;
 			subject.innerText += subject_table;
 			category.innerText += category_table;
+			questionTitle.innerText += question_table_title;
 			questionText.innerText += question_table;
 			answer.innerText += answer_table;
 			kaisetsuText.innerText += kaisetsu_table;

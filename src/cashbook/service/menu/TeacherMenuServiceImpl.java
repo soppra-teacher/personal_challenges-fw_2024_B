@@ -39,6 +39,7 @@ public class TeacherMenuServiceImpl implements TeacherMenuService {
 			dto.setQuestionId(map.get("QUESTION_ID"));
 			dto.setSubject(map.get("SUBJECT"));
 			dto.setCategory(map.get("CATEGORY"));
+			dto.setQuestionTitle(map.get("QUESTION_TITLE"));
 			dto.setQuestion(map.get("QUESTION"));
 			dto.setAnswer(map.get("ANSWER"));
 			dto.setKaisetsu(map.get("KAISETSU"));
