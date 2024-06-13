@@ -29,4 +29,19 @@ public interface BaseDao {
 	 * @return 更新件数
 	 */
 	public int update(String strSql);
+	
+	/**
+	 * セーブポイントを作成
+	 */
+	public void savePoint();
+	
+	/**
+	 * コミットメソッド
+	 */
+	public void commit();
+	
+	/**
+	 * ロールバックメソッド
+	 */
+	public void rollback();
 }

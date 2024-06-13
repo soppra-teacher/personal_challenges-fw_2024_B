@@ -80,6 +80,25 @@ public class BaseDaoImpl extends JdbcDaoSupport implements BaseDao {
 	public int update(String strSql) {
 		return getJdbcTemplate().update(strSql);
 	}
-	
-	
+
+	/**
+	 * セーブポイントを作成
+	 */
+	public void savePoint() {
+		getJdbcTemplate().execute("SAVEPOINT");
+	}
+
+	/**
+	 * コミットメソッド
+	 */
+	public void commit() {
+		getJdbcTemplate().execute("COMMIT");
+	}
+
+	/**
+	 * ロールバックメソッド
+	 */
+	public void rollback() {
+		getJdbcTemplate().execute("ROLLBACK");
+	}
 }
