@@ -10,10 +10,7 @@
 <head>
 <meta content="ja" http-equiv="Content-Language" />
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/common.css" />
-	<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/insupd.css" />
+
 <script language="JavaScript" type="text/javascript" charset="shift_jis"
 	src="js/common.js"></script>
 <script language="JavaScript" type="text/javascript" charset="shift_jis"

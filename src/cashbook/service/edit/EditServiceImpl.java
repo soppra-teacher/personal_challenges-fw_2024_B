@@ -35,7 +35,7 @@ public class EditServiceImpl implements EditService {
 
 		// 選択された問題IDを取得
 		String questionId = CommonUtil.getStr(formMap.get(TeacherMenuConst.VIEW_TEACHER_QUESTION_ID));
-		
+
 		// 選択された問題IDの問題と解答解説を取得
 		var dbResult = editDao.findQuestionAnswer(questionId);
 
@@ -127,11 +127,18 @@ public class EditServiceImpl implements EditService {
 		} while (editDao.isExistQuestionId(countQuestion));
 		String questionId = "Q" + (editDao.getQuestionCount() + countQuestion);
 
+		//
 		// 解答解説マスタ登録用の値を設定
+		//
 		AnswerDto answerDto = new AnswerDto();
+		// 解答解説ID
 		answerDto.setAnswerId(answerId);
+		// 解答
 		answerDto.setAnswer(CommonUtil.getStr(formMap.get(EditConst.KEY_ANSWER_KEY_EDIT)));
-		answerDto.setKaisetsu(CommonUtil.getStr(formMap.get(EditConst.KEY_KAISETSU_EDIT)));
+		// 解説
+		String kaisetuForm = CommonUtil.getStr(formMap.get(EditConst.KEY_KAISETSU_EDIT));
+		answerDto.setKaisetsu(CommonUtil.addQuotation(kaisetuForm));
+		// 登録ユーザ
 		answerDto.setInsUser(loginDto.getUserId());
 
 		String categoryId = "";
@@ -143,19 +150,33 @@ public class EditServiceImpl implements EditService {
 
 		// 問題マスタ登録用の値を設定
 		QuestionDto questionDto = new QuestionDto();
+		// 問題ID
 		questionDto.setQuestionId(questionId);
+		// 分類ID
 		questionDto.setCategoryId(categoryId);
+		// 解答解説ID
 		questionDto.setAnswerId(answerDto.getAnswerId());
-		questionDto.setSentakuA(CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_A_EDIT)));
-		questionDto.setSentakuB(CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_B_EDIT)));
-		questionDto.setSentakuC(CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_C_EDIT)));
-		questionDto.setSentakuD(CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_D_EDIT)));
-		questionDto.setQuestion(CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIO_EDIT)));
-		questionDto.setQuestionTitle(CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIONTITLE_EDIT)));
+		// 問題タイトル
+		String questionTitleForm = CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIONTITLE_EDIT));
+		questionDto.setQuestionTitle(CommonUtil.addQuotation(questionTitleForm));
+		// 問題
+		String question = CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIO_EDIT));
+		questionDto.setQuestion(CommonUtil.addQuotation(question));
+		// 選択肢A
+		String sentakuA = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_A_EDIT));
+		questionDto.setSentakuA(CommonUtil.addQuotation(sentakuA));
+		// 選択肢B
+		String sentakuB = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_B_EDIT));
+		questionDto.setSentakuB(CommonUtil.addQuotation(sentakuB));
+		// 選択肢C
+		String sentakuC = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_C_EDIT));
+		questionDto.setSentakuC(CommonUtil.addQuotation(sentakuC));
+		// 選択肢D
+		String sentakuD = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_D_EDIT));
+		questionDto.setSentakuD(CommonUtil.addQuotation(sentakuD));
+		// 登録ユーザ
 		questionDto.setInsUser(loginDto.getUserId());
 
-		System.out.println(CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIO_EDIT)));
-		
 		//
 		// 解答解説マスタに登録
 		//
@@ -173,31 +194,57 @@ public class EditServiceImpl implements EditService {
 	 * @param loginDto
 	 */
 	public void updateQuestionAnswer(Map<String, Object> formMap, LoginDto loginDto) {
-		
+
+		//
 		// 解答解説マスタ登録用の値を設定
+		//
 		AnswerDto answerDto = new AnswerDto();
-		answerDto.setAnswerId(CommonUtil.getStr(formMap.get(EditConst.KEY_ANSWER_ID_EDIT)).trim());
-		answerDto.setAnswer(CommonUtil.getStr(formMap.get(EditConst.KEY_ANSWER_KEY_EDIT)));
-		answerDto.setKaisetsu(CommonUtil.getStr(formMap.get(EditConst.KEY_KAISETSU_EDIT)));
+		// 解答解説ID
+		answerDto.setAnswerId(CommonUtil.getStr(formMap.get(EditConst.KEY_ANSWER_ID_EDIT)));
+		// 解答
+		String answerForm = CommonUtil.getStr(formMap.get(EditConst.KEY_ANSWER_KEY_EDIT));
+		answerDto.setAnswer(CommonUtil.addQuotation(answerForm));
+		// 解説
+		String kaisetuForm = CommonUtil.getStr(formMap.get(EditConst.KEY_KAISETSU_EDIT));
+		answerDto.setKaisetsu(CommonUtil.addQuotation(kaisetuForm));
+		// 更新ユーザ
 		answerDto.setUpdUser(loginDto.getUserId());
 
+		//
 		// 問題マスタ登録用の値を設定
+		//
 		QuestionDto questionDto = new QuestionDto();
+		// 問題ID
 		questionDto.setQuestionId(CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTION_ID_EDIT)).trim());
+		// 解答解説ID
 		questionDto.setAnswerId(answerDto.getAnswerId());
-		if(CommonUtil.getStr(formMap.get(EditConst.KEY_SUBJECT_EDIT)).equals(SELECT_JAVA_ON)) {
+		// 分類ID
+		if (CommonUtil.getStr(formMap.get(EditConst.KEY_SUBJECT_EDIT)).equals(SELECT_JAVA_ON)) {
 			questionDto.setCategoryId(CommonUtil.getStr(formMap.get(EditConst.KEY_CATEGORY_KEY_JAVA_EDIT)));
-		}else {
+		} else {
 			questionDto.setCategoryId(CommonUtil.getStr(formMap.get(EditConst.KEY_CATEGORY_KEY_SQL_EDIT)));
 		}
-		questionDto.setQuestionTitle(CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIONTITLE_EDIT)));
-		questionDto.setQuestion(CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIO_EDIT)));
-		questionDto.setSentakuA(CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_A_EDIT)));
-		questionDto.setSentakuB(CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_B_EDIT)));
-		questionDto.setSentakuC(CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_C_EDIT)));
-		questionDto.setSentakuD(CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_D_EDIT)));
-		questionDto.setInsUser(loginDto.getUserId());
-		
+		// 問題タイトル
+		String questionTitleForm = CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIONTITLE_EDIT));
+		questionDto.setQuestionTitle(CommonUtil.addQuotation(questionTitleForm));
+		// 問題
+		String question = CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIO_EDIT));
+		questionDto.setQuestion(CommonUtil.addQuotation(question));
+		// 選択肢A
+		String sentakuA = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_A_EDIT));
+		questionDto.setSentakuA(CommonUtil.addQuotation(sentakuA));
+		// 選択肢B
+		String sentakuB = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_B_EDIT));
+		questionDto.setSentakuB(CommonUtil.addQuotation(sentakuB));
+		// 選択肢C
+		String sentakuC = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_C_EDIT));
+		questionDto.setSentakuC(CommonUtil.addQuotation(sentakuC));
+		// 選択肢D
+		String sentakuD = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_D_EDIT));
+		questionDto.setSentakuD(CommonUtil.addQuotation(sentakuD));
+		// 更新ユーザ
+		questionDto.setUpdUser(loginDto.getUserId());
+
 		//
 		// 解答解説マスタを更新
 		//
@@ -208,5 +255,4 @@ public class EditServiceImpl implements EditService {
 		//
 		editDao.updateQuestion(questionDto);
 	}
-
 }
