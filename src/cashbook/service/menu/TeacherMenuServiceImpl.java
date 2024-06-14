@@ -22,15 +22,13 @@ public class TeacherMenuServiceImpl implements TeacherMenuService {
 	}
 	
 	/**
-	 * 一覧画面検索メソッド
+	 * 問題・解答一覧表示テーブル用検索メソッド
+	 * @param formMap
 	 */
 	@Override
 	public List<TeacherMenuDto> listSearch(Map<String, Object> formMap) {
-		//------------------------------------------
-		// 一覧
-		//------------------------------------------
-		List<TeacherMenuDto> resultlist = new ArrayList<TeacherMenuDto>();
 		// 検索処理
+		List<TeacherMenuDto> resultlist = new ArrayList<TeacherMenuDto>();
 		List<Map<String, String>> list = teacherMenuDao.searchQuestion(formMap);
 		Iterator<Map<String, String>> it = list.iterator();
 		while (it.hasNext()) {

@@ -7,28 +7,25 @@ import cashbook.dto.edit.QuestionDto;
 
 /**
  * 登録・更新画面DAOインターフェース
- * @author soppra
  */
 public interface EditDao {
 
 	/**
 	 * Javaの分類を取得
-	 * @param formMap
-	 * @return 分類
+	 * @return Map<String, String> 分類ID:分類
 	 */
 	public Map<String, String> getJavaCategory();
 
 	/**
 	 * SQLの分類を取得
-	 * @param formMap
-	 * @return 分類
+	 * @return Map<String, String> 分類ID:分類
 	 */
 	public Map<String, String> getSQLCategory();
 
 	/**
-	 * 問題と解答の検索を行う
-	 * @param 問題ID
-	 * @return　引数IDの問題と解答
+	 * 引数の問題IDの問題と対応する解答を検索する
+	 * @param questionId 問題ID
+	 * @return 問題と解答
 	 */
 	public Map<String, String> findQuestionAnswer(String questionId);
 

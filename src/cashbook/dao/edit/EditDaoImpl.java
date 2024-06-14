@@ -12,8 +12,7 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 
 	/**
 	 * Javaの分類を取得
-	 * @param formMap
-	 * @return 分類
+	 * @return Map<String, String> 分類ID:分類
 	 */
 	public Map<String, String> getJavaCategory() {
 		// SQLを組み立てる。
@@ -36,8 +35,7 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 
 	/**
 	 * SQLの分類を取得
-	 * @param formMap
-	 * @return 分類
+	 * @return Map<String, String> 分類ID:分類
 	 */
 	public Map<String, String> getSQLCategory() {
 		// SQLを組み立てる。
@@ -59,8 +57,8 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 	}
 
 	/**
-	 * 問題と解答の検索を行う
-	 * @param formMap
+	 * 引数の問題IDの問題と対応する解答を検索する
+	 * @param questionId 問題ID
 	 * @return 問題と解答
 	 */
 	public Map<String, String> findQuestionAnswer(String questionId) {
@@ -159,8 +157,7 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 
 	/**
 	 * 解答解説マスタに登録する
-	 * @param answerDto
-	 * @param loginDto
+	 * @param AnswerDto
 	 */
 	public void registAnswer(AnswerDto answerDto) {
 		// SQLを組み立てる。
@@ -192,8 +189,7 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 
 	/**
 	 * 問題マスタに登録する
-	 * @param questionDto
-	 * @param loginDto
+	 * @param QuestionDto
 	 */
 	public void registQuestion(QuestionDto questionDto) {
 		// SQLを組み立てる。
@@ -243,8 +239,7 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 
 	/**
 	 * 解答解説マスタを更新する
-	 * @param answerDto
-	 * @param loginDto
+	 * @param AnswerDto
 	 */
 	public void updateAnswer(AnswerDto answerDto) {
 		// SQLを組み立てる。
@@ -262,8 +257,7 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 
 	/**
 	 * 問題マスタを更新する
-	 * @param questionDto
-	 * @param loginDto
+	 * @param QuestionDto
 	 */
 	public void updateQuestion(QuestionDto questionDto) {
 		// SQLを組み立てる。

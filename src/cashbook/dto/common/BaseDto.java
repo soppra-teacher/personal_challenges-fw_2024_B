@@ -2,7 +2,6 @@ package cashbook.dto.common;
 
 /**
  * DTO基底クラス
- * @author soppra
  */
 public class BaseDto {
 	

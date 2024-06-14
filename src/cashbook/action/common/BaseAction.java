@@ -17,7 +17,6 @@ import cashbook.util.Const;
 
 /**
  * アクション基底クラス
- * @author soppra
  */
 public abstract class BaseAction extends Action {
 

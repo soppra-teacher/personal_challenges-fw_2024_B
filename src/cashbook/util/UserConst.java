@@ -1,8 +1,7 @@
 package cashbook.util;
 
 /**
- * 共通定数クラス(ユーザマスタ用)
- * @author soppra
+ * 共通定数クラス
  */
 public class UserConst {
 

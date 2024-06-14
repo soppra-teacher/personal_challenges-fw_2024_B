@@ -11,7 +11,6 @@ import org.apache.struts.action.DynaActionForm;
 
 /**
  * 共通ユーティリティークラス
- * @author soppra
  */
 public class CommonUtil {
 
@@ -138,11 +137,11 @@ public class CommonUtil {
 	}
 
 	/**
-	 * 引数文字列に含まれているクォテーションをDBに登録できるように、整形
+	 * 引数文字列に含まれているクォテーションをエスケープ
 	 * @param target 文字列
-	 * @return DBに登録できるようにした文字列
+	 * @return クォテーションをエスケープした文字列
 	 */
-	public static String addQuotation(String target) {
+	public static String escapeQuotation(String target) {
 
 		StringBuilder sb = new StringBuilder();
 

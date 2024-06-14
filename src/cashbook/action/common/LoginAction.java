@@ -60,7 +60,7 @@ public class LoginAction extends Action {
 		// フォームの値をもとに、ログイン処理
 		LoginDto loginDto = loginService.execute(formMap);
 
-		// ログイン情報DTO.個人IDが設定されている場合
+		// ログイン情報DTO.ユーザIDが設定されている場合
 		if (loginDto.getUserId() != null) {
 			
 			// ログイン日を更新
@@ -68,12 +68,6 @@ public class LoginAction extends Action {
 
 			// ログイン成功
 			request.getSession().setAttribute(Const.SESSION_LOGIN_DTO, loginDto);
-			
-			// 各登録画面の戻り先をセッションから削除する。
-			//request.getSession().removeAttribute(Const.SESSION_REGIST_BACK_HIMOKU); // 費目マスタ登録画面 戻り先
-			//request.getSession().removeAttribute(Const.SESSION_REGIST_BACK_SETAI); // 世帯マスタ登録画面 戻り先
-			//request.getSession().removeAttribute(Const.SESSION_REGIST_BACK_KOJIN); // 個人マスタ登録画面 戻り先
-			//request.getSession().removeAttribute(Const.SESSION_REGIST_BACK_SHUSHI); // 収支登録画面 戻り先
 
 			if (loginDto.getTeacherFlg().equals(Const.TEACHER_FLG_ON)) {
 
@@ -93,10 +87,10 @@ public class LoginAction extends Action {
 			ActionErrors errors = new ActionErrors();
 			// ログイン失敗メッセージを設定
 			errors.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(Const.MSG_ERRORS_LOGIN_ERROR));
-			// リクエストにエラーを設定する。
+			// リクエストにエラーを設定する
 			saveErrors(request, errors);
 
-			// このアクションのinputプロパティに対応する ActionForwardを（必要に応じて）生成して返します。
+			// このアクションのinputプロパティに対応する ActionForwardを（必要に応じて）生成して返す
 			return map.getInputForward();
 
 		}

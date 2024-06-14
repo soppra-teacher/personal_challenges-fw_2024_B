@@ -2,7 +2,6 @@ package cashbook.dao.common;
 
 /**
  * 共通DAOクラス
- * @author soppra
  */
 public interface CommonDao {
 
@@ -31,24 +30,28 @@ public interface CommonDao {
 	public String getYyyyMmDd();
 	
 	/**
-	 * セーブポイントを作成
+	 * セーブポイントを作成する
 	 */
 	public void savePoint();
 	
 	/**
-	 * コミットを実行
+	 * 一連の処理をコミットする
 	 */
 	public void commit();
 	
 	/**
-	 * ロールバックを実行
+	 * セーブポイントまで、ロールバックする
 	 */
 	public void rollback();
 	
 	/**
-	 * 引数名のテーブルをロック
-	 * @param ロック対象のテーブル
+	 * 問題マスタをロックする
 	 */
-	public void lockTable(String tableName);
+	public void lockMstQuestion();
+	
+	/**
+	 * 解答解説マスタをロックする
+	 */
+	public void lockMstAnswer();
 
 }

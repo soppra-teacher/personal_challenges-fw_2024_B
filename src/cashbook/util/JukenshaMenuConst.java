@@ -2,7 +2,6 @@ package cashbook.util;
 
 /**
  * 共通定数クラス
- * @author soppra
  */
 public class JukenshaMenuConst {
 	

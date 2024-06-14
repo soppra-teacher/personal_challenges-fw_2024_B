@@ -13,7 +13,6 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
 /**
  * DAO基底クラス
- * @author soppra
  */
 public class BaseDaoImpl extends JdbcDaoSupport implements BaseDao {
 
@@ -82,21 +81,21 @@ public class BaseDaoImpl extends JdbcDaoSupport implements BaseDao {
 	}
 
 	/**
-	 * セーブポイントを作成
+	 * セーブポイントを作成する
 	 */
 	public void savePoint() {
 		getJdbcTemplate().execute("SAVEPOINT");
 	}
 
 	/**
-	 * コミットメソッド
+	 * 一連の処理をコミットする
 	 */
 	public void commit() {
 		getJdbcTemplate().execute("COMMIT");
 	}
 
 	/**
-	 * ロールバックメソッド
+	 * セーブポイントまで、ロールバックする
 	 */
 	public void rollback() {
 		getJdbcTemplate().execute("ROLLBACK");

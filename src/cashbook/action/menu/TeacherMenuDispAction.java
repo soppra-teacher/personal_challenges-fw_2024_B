@@ -12,7 +12,6 @@ import org.apache.struts.actions.DispatchAction;
 
 /**
  * 講師メニュー画面ディスパッチアクションクラス
- * @author soppra
  */
 public class TeacherMenuDispAction  extends DispatchAction {
 

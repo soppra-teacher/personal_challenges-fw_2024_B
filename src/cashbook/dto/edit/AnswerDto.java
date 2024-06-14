@@ -4,6 +4,15 @@ import cashbook.dto.common.BaseDto;
 
 public class AnswerDto extends BaseDto {
 
+	/** 解答解説ID */
+	private String answerId;
+
+	/** 解答 */
+	private String answer;
+
+	/** 解説 */
+	private String kaisetsu;
+
 	public String getAnswerId() {
 		return answerId;
 	}
@@ -28,13 +37,4 @@ public class AnswerDto extends BaseDto {
 		this.kaisetsu = kaisetsu;
 	}
 
-	/** 解答解説ID */
-	private String answerId;
-	
-	/** 解答 */
-	private String answer;
-	
-	/** 解説 */
-	private String kaisetsu;
-	
 }

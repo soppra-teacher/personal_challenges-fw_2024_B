@@ -2,7 +2,6 @@ package cashbook.util;
 
 /**
  * 共通定数クラス
- * @author soppra
  */
 public class EditConst {
 
@@ -39,4 +38,5 @@ public class EditConst {
 	public static final String KEY_ANSWER_EDIT = "answer";
 	/** 解説 */
 	public static final String KEY_KAISETSU_EDIT = "kaisetsu";
+
 }

@@ -51,9 +51,6 @@ public class TeacherMenuDeleteAction extends BaseAction {
 		// フォームの値を取得する。
 		Map<String, Object> formMap = CommonUtil.getFormMap((DynaActionForm) form);
 
-		// 講師メニュー画面の戻り先をセッションから削除する。
-		//request.getSession().removeAttribute(SESSION_REGIST_BACK_KOJIN);
-
 		// 問題一覧を表示するテーブル用にDBからデータを取得
 		TeacherMenuDto dto = new TeacherMenuDto();
 		dto.setList(teacherMenuService.listSearch(formMap));

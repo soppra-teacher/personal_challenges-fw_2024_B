@@ -6,7 +6,6 @@ import cashbook.util.UserConst;
 
 /**
  * ログインDAOクラス
- * @author soppra
  */
 public class LoginDaoImpl extends BaseDaoImpl implements LoginDao {
 
@@ -19,7 +18,9 @@ public class LoginDaoImpl extends BaseDaoImpl implements LoginDao {
 
 		// フォーム項目の入力値でSQLを組み立てる。
 		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT * ");
+		sql.append("SELECT USER_ID ");
+		sql.append("     , USER_NAME");
+		sql.append("     , TEACHER_FLG");
 		sql.append("  FROM MST_USER ");
 		sql.append(" WHERE USER_ID = '").append(formMap.get(UserConst.KEY_USER_ID)).append("' ");
 		sql.append("   AND PASSWORD = '").append(formMap.get(UserConst.KEY_PASSWORD)).append("' ");

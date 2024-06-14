@@ -19,7 +19,6 @@ import cashbook.util.CommonUtil;
 
 /**
  * 登録・更新画面 登録・更新アクションクラス
- * @author soppra
  */
 public class InsUpdAction extends BaseAction {
 
@@ -37,7 +36,7 @@ public class InsUpdAction extends BaseAction {
 	/**
 	 * <p><b>
 	 * 登録・更新画面
-	 * <br>初期表示処理
+	 * <br>登録・更新処理
 	 * </b></p>
 	 *
 	 * @param map      アクションマッピング

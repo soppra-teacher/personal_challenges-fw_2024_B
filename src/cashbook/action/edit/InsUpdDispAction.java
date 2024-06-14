@@ -12,7 +12,6 @@ import org.apache.struts.actions.DispatchAction;
 
 /**
  * 登録・更新画面ディスパッチアクションクラス
- * @author soppra
  */
 public class InsUpdDispAction extends DispatchAction {
 

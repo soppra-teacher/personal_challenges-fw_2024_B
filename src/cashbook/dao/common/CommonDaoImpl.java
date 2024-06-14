@@ -4,7 +4,6 @@ import java.util.Map;
 
 /**
  * 共通DAOクラス
- * @author soppra
  */
 public class CommonDaoImpl extends BaseDaoImpl implements CommonDao {
 
@@ -69,33 +68,42 @@ public class CommonDaoImpl extends BaseDaoImpl implements CommonDao {
 	}
 	
 	/**
-	 * セーブポイントを作成
+	 * セーブポイントを作成する
 	 */
 	public void savePoint() {
 		super.savePoint();
 	}
 	
 	/**
-	 * コミットを実行
+	 * 一連の処理をコミットする
 	 */
 	public void commit() {
 		super.commit();
 	}
 	
 	/**
-	 * ロールバックを実行
+	 * セーブポイントまで、ロールバックする
 	 */
 	public void rollback() {
 		super.rollback();
 	}
 	
 	/**
-	 * 引数名のテーブルをロック
-	 * @param ロック対象のテーブル
+	 * 問題マスタをロックする
 	 */
-	public void lockTable(String tableName) {
+	public void lockMstQuestion() {
 		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT * FROM ").append(tableName);
+		sql.append("SELECT * FROM MST_QUESTION");
+		sql.append("   FOR UPDATE ");
+		super.search(sql.toString());
+	}
+	
+	/**
+	 * 解答解説マスタをロックする
+	 */
+	public void lockMstAnswer() {
+		StringBuffer sql = new StringBuffer();
+		sql.append("SELECT * FROM MST_ANSWER");
 		sql.append("   FOR UPDATE ");
 		super.search(sql.toString());
 	}

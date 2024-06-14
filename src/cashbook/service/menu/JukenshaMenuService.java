@@ -5,16 +5,16 @@ import java.util.Map;
 public interface JukenshaMenuService {
 	
 	/**
-	 * 問題数を取得
+	 * Java問題数を取得
 	 * @param formMap
-	 * @return 
+	 * @return Javaの問題数
 	 */
 	public Map<String, String> getJavaQuestionCount(Map<String, Object> formMap);
 	
 	/**
-	 * 問題数を取得
+	 * SQL問題数を取得
 	 * @param formMap
-	 * @return 
+	 * @return SQLの問題数
 	 */
 	public Map<String, String> getSQLQuestionCount(Map<String, Object> formMap);
 

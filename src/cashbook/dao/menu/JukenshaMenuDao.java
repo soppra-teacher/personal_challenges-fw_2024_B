@@ -7,15 +7,14 @@ public interface JukenshaMenuDao {
 	/**
 	 * Javaの問題件数を取得
 	 * @param formMap フォーム項目
-	 * @return 問題数
+	 * @return Javaの問題数
 	 */
 	public int getJavaQuestionCount(Map<String, Object> formMap);
 
-	
 	/**
 	 * SQLの問題件数を取得
 	 * @param formMap フォーム項目
-	 * @return 問題数
+	 * @return SQLの問題数
 	 */
 	public int getSQLQuestionCount(Map<String, Object> formMap);
 }

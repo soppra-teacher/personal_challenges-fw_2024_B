@@ -19,9 +19,9 @@ public class JukenshaMenuServiceImpl implements JukenshaMenuService {
 	}
 
 	/**
-	 * JAVA問題数を取得
+	 * Java問題数を取得
 	 * @param formMap
-	 * @return 問題数
+	 * @return Javaの問題数
 	 */
 	public Map<String, String> getJavaQuestionCount(Map<String, Object> formMap) {
 
@@ -53,7 +53,7 @@ public class JukenshaMenuServiceImpl implements JukenshaMenuService {
 	/**
 	 * SQL問題数を取得
 	 * @param formMap
-	 * @return 問題数
+	 * @return SQLの問題数
 	 */
 	public Map<String, String> getSQLQuestionCount(Map<String, Object> formMap) {
 

@@ -5,7 +5,6 @@ import java.util.Map;
 
 /**
  * DAO基底クラス
- * @author soppra
  */
 public interface BaseDao {
 
@@ -31,17 +30,17 @@ public interface BaseDao {
 	public int update(String strSql);
 	
 	/**
-	 * セーブポイントを作成
+	 * セーブポイントを作成する
 	 */
 	public void savePoint();
 	
 	/**
-	 * コミットメソッド
+	 * 一連の処理をコミットする
 	 */
 	public void commit();
 	
 	/**
-	 * ロールバックメソッド
+	 * セーブポイントまで、ロールバックする
 	 */
 	public void rollback();
 }
