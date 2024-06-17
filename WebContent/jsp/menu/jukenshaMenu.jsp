@@ -19,7 +19,7 @@
 </head>
 
 <body>
-
+		
 	<bean:define id="inputBean" name="jukenshaForm" />
 
 	<jsp:include page="/jsp/common/header.jsp">
