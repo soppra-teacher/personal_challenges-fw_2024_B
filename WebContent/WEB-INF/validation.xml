@@ -18,17 +18,8 @@
 					<var-value>^[0-9a-zA-Z ]+$</var-value>
 				</var>
 			</field>
-			<field property="password" depends="required,maxlength,mask">
+			<field property="password" depends="required">
 				<arg0 key="loginForm.param.password" resource="true" />
-				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
-				<var>
-					<var-name>maxlength</var-name>
-					<var-value>20</var-value>
-				</var>
-				<var>
-					<var-name>mask</var-name>
-					<var-value>^[0-9a-zA-Z ]+$</var-value>
-				</var>
 			</field>
 		</form>
 
