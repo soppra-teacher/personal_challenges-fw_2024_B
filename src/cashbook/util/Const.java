@@ -67,7 +67,9 @@ public class Const {
 	public static final String SESSION_DTO_QUESTION_REGIST = "REGIST_DTO";
 	/** 登録・更新画面（更新モード） DTO */
 	public static final String SESSION_DTO_QUESTION_UPDATE = "UPDATE_DTO";
-
+	
+	/** 問題解答画面 DTO */
+	public static final String SESSION_DTO_QUESTION_ANSWER = "QUESTION_ANSWER_DTO";
 	
 	/************* 区分値 *************/
 	/** 教科:Java　ON */

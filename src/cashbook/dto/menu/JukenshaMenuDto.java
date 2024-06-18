@@ -7,8 +7,11 @@ public class JukenshaMenuDto {
 	/** 教科選択用のラジオボタン */
 	private String subjectRadio;
 
-	/** 問題数Key */
-	private String questionNumberKey;
+	/** Java問題数Key */
+	private Map<String, String> javaQuestionNumberKey;
+	
+	/** SQL問題数Key */
+	private Map<String, String> sqlQuestionNumberKey;
 
 	/** Java問題数 */
 	private Map<String, String> javaQuestionNumber;
@@ -24,12 +27,20 @@ public class JukenshaMenuDto {
 		this.subjectRadio = subjectRadio;
 	}
 
-	public String getQuestionNumberKey() {
-		return questionNumberKey;
+	public Map<String, String> getJavaQuestionNumberKey() {
+		return javaQuestionNumberKey;
 	}
 
-	public void setQuestionNumberKey(String questionNumberKey) {
-		this.questionNumberKey = questionNumberKey;
+	public void setJavaQuestionNumberKey(Map<String, String> javaQuestionNumberKey) {
+		this.javaQuestionNumberKey = javaQuestionNumberKey;
+	}
+
+	public Map<String, String> getSqlQuestionNumberKey() {
+		return sqlQuestionNumberKey;
+	}
+
+	public void setSqlQuestionNumberKey(Map<String, String> sqlQuestionNumberKey) {
+		this.sqlQuestionNumberKey = sqlQuestionNumberKey;
 	}
 
 	public Map<String, String> getJavaQuestionNumber() {

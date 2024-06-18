@@ -13,18 +13,16 @@ public class JukenshaMenuDaoImpl extends BaseDaoImpl implements JukenshaMenuDao 
 	 */
 	public int getJavaQuestionCount(Map<String, Object> formMap) {
 		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT COUNT(QUESTION_ID) ");
-		sql.append("  FROM MST_QUESTION ");
-		sql.append(" WHERE CATEGORY_ID IN (( ");
-		sql.append("       SELECT CATEGORY_ID  ");
-		sql.append("        FROM MST_CATEGORY  ");
-		sql.append("       WHERE SUBJECT = 'Java' ");
-		sql.append("      )) ");
-		sql.append(" AND DEL_FLG = '0' ");
+		sql.append("SELECT COUNT(A.QUESTION_ID) ");
+		sql.append("  FROM MST_QUESTION A ");
+		sql.append("  INNER JOIN MST_CATEGORY B ");
+		sql.append("     ON A.CATEGORY_ID = B.CATEGORY_ID ");
+		sql.append("  WHERE B.SUBJECT = 'Java' ");
+		sql.append("    AND A.DEL_FLG = '0' ");
 
 		Map<String, String> result = super.find(sql.toString());
 
-		return Integer.parseInt(result.get("COUNT(QUESTION_ID)"));
+		return Integer.parseInt(result.get("COUNT(A.QUESTION_ID)"));
 	}
 
 	/**
@@ -34,17 +32,15 @@ public class JukenshaMenuDaoImpl extends BaseDaoImpl implements JukenshaMenuDao 
 	 */
 	public int getSQLQuestionCount(Map<String, Object> formMap) {
 		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT COUNT(QUESTION_ID) ");
-		sql.append("  FROM MST_QUESTION ");
-		sql.append(" WHERE CATEGORY_ID IN (( ");
-		sql.append("       SELECT CATEGORY_ID  ");
-		sql.append("        FROM MST_CATEGORY  ");
-		sql.append("       WHERE SUBJECT = 'SQL' ");
-		sql.append("      )) ");
-		sql.append(" AND DEL_FLG = '0' ");
+		sql.append("SELECT COUNT(A.QUESTION_ID) ");
+		sql.append("  FROM MST_QUESTION A ");
+		sql.append("  INNER JOIN MST_CATEGORY B ");
+		sql.append("     ON A.CATEGORY_ID = B.CATEGORY_ID ");
+		sql.append("  WHERE B.SUBJECT = 'SQL' ");
+		sql.append("    AND A.DEL_FLG = '0' ");
 
 		Map<String, String> result = super.find(sql.toString());
 
-		return Integer.parseInt(result.get("COUNT(QUESTION_ID)"));
+		return Integer.parseInt(result.get("COUNT(A.QUESTION_ID)"));
 	}
 }

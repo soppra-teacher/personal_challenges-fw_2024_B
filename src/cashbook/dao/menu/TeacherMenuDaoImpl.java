@@ -27,6 +27,7 @@ public class TeacherMenuDaoImpl extends BaseDaoImpl implements TeacherMenuDao {
 		sql.append("  ON A.CATEGORY_ID = B.CATEGORY_ID ");
 		sql.append("  INNER JOIN MST_ANSWER C ");
 		sql.append("  ON A.ANSWER_ID = C.ANSWER_ID ");
+		sql.append("  WHERE A.DEL_FLG = '0' ");
 		sql.append("  ORDER BY A.INS_DATE DESC ");
 		
 		result = super.search(sql.toString());

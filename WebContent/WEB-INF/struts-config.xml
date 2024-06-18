@@ -20,8 +20,9 @@
 		<!-- 受験者メニュー画面 -->
 		<form-bean name="jukenshaForm" type="org.apache.struts.validator.DynaValidatorForm">
 			<form-property name="subjectRadio" type="java.lang.String" />
-			<form-property name="questionNumberKey" type="java.lang.String" />
+			<form-property name="javaQuestionNumberKey" type="java.lang.String" />
 			<form-property name="javaQuestionNumber" type="java.lang.String" />
+			<form-property name="sqlQuestionNumberKey" type="java.lang.String" />
 			<form-property name="sqlQuestionNumber" type="java.lang.String" />
 		</form-bean>
 		<!-- 登録・更新画面 -->
@@ -50,7 +51,7 @@
 	<action-mappings>
 		<!--
 		****************************
-		* ログイン画面             *
+		* ログイン画面                 *
 		****************************
 		-->
 		<action
@@ -160,6 +161,20 @@
 			input="/jsp/controller/edit.jsp"
 			scope="request">
 			<forward name="success" path="/TeacherMenuInit.do" redirect="true" />
+		</action>
+		<!--
+		****************************
+		* 問題解答画面               *
+		****************************
+		-->
+		<!-- 初期表示 -->
+		<action
+			path="/QuestionAnswerInit"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="jukenshaForm"
+			validate="false"
+			scope="request">
+			<forward name="success" path="/jsp/qa/questionAnswer.jsp" />
 		</action>
 	</action-mappings>
 	<message-resources parameter="application" />
