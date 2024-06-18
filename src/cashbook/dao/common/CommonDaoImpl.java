@@ -1,13 +1,9 @@
 package cashbook.dao.common;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
  * 共通DAOクラス
- * @author soppra
  */
 public class CommonDaoImpl extends BaseDaoImpl implements CommonDao {
 
@@ -70,67 +66,45 @@ public class CommonDaoImpl extends BaseDaoImpl implements CommonDao {
 
 		return result.get("YYYMMDD");
 	}
-
+	
 	/**
-	 * コードマスタより、コード、コード名称をリスト型で取得する
-	 *
-	 * @param クラスコード
+	 * セーブポイントを作成する
 	 */
-	public Map<String, String> getCode(String classCd) {
-
-		List<Map<String, String>> mapList = new ArrayList<Map<String, String>>();
-		Map<String, String> result = new LinkedHashMap<String, String>();
-
-		StringBuffer sql = new StringBuffer();
-		sql.append(" SELECT  mc.cd ");
-		sql.append("        ,mc.cd || ':' || mc.cd_nm AS cd_nm ");
-		sql.append(" FROM    mst_code mc ");
-		sql.append(" WHERE   mc.class_code = '").append(classCd).append("' ");
-		sql.append(" ORDER BY  mc.cd ASC ");
-
-		mapList = super.search(String.valueOf(sql));
-
-		if (mapList.size() == 0) {
-			return null;
-
-		} else {
-			// 1つ目に空白をセット
-			result.put("", "");
-
-			// リストの内容分回し、形式を変えて呼び元へ返す
-			for (Map<String, String> map : mapList) {
-				result.put(map.get("CD"), map.get("CD_NM"));
-			}
-
-			return result;
-		}
+	public void savePoint() {
+		super.savePoint();
 	}
-
+	
 	/**
-	 * コードマスタより、コード名称を文字列型で取得する
-	 *
-	 * @param classCd クラスコード
-	 * @param cd コード
+	 * 一連の処理をコミットする
 	 */
-	public String getCodeName(String classCd, String cd) {
-
-		Map<String, String> resultMap = new LinkedHashMap<String, String>();
-		String result = "";
-
+	public void commit() {
+		super.commit();
+	}
+	
+	/**
+	 * セーブポイントまで、ロールバックする
+	 */
+	public void rollback() {
+		super.rollback();
+	}
+	
+	/**
+	 * 問題マスタをロックする
+	 */
+	public void lockMstQuestion() {
 		StringBuffer sql = new StringBuffer();
-		sql.append(" SELECT  mc.cd_nm ");
-		sql.append(" FROM    mst_code mc ");
-		sql.append(" WHERE   mc.class_code = '").append(classCd).append("' ");
-		sql.append(" AND     mc.cd = '").append(cd).append("' ");
-
-		resultMap = super.find(String.valueOf(sql));
-
-		if ("".equals(resultMap.get("CD_NM"))) {
-			return null;
-		} else {
-			result = resultMap.get("CD_NM");
-		}
-
-		return result;
+		sql.append("SELECT * FROM MST_QUESTION");
+		sql.append("   FOR UPDATE ");
+		super.search(sql.toString());
+	}
+	
+	/**
+	 * 解答解説マスタをロックする
+	 */
+	public void lockMstAnswer() {
+		StringBuffer sql = new StringBuffer();
+		sql.append("SELECT * FROM MST_ANSWER");
+		sql.append("   FOR UPDATE ");
+		super.search(sql.toString());
 	}
 }

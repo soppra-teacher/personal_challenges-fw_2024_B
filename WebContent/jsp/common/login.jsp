@@ -1,61 +1,54 @@
-<%@ page pageEncoding="Windows-31J" %>
-<%@ page contentType="text/html;charset=Windows-31J" %>
-<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
-<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
-<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ page pageEncoding="Windows-31J"%>
+<%@ page contentType="text/html;charset=Windows-31J"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
 
 <!DOCTYPE html>
-<html:html>
+<html:html lang="ja">
+
 <head>
-
-	<meta content="ja" http-equiv="Content-Language" />
-	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-	<title>
-		ソプブーのマネーノート　ログイン
-	</title>
-	<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/common.css" />
-	<script type="text/javascript" charset="shift_jis" src="js/common.js" ></script>
-
+<meta content="ja" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>ログイン画面</title>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/signInStyle.css" />
 </head>
 
-<body onload="document.forms[0].elements[0].focus();">
+<body>
 
-	<div class="base-width bg-yellow text-center">
+	<html:messages id="msg" message="false">
+		<p class="msg-err">
+			<bean:write name="msg" ignore="true" filter="false" />
+		</p>
+	</html:messages>
 
-		<html:form action="/Login?getKey=aaa" focus="kojinId">
-
-			<img class="top-img" src="img/login.png" />
-
-			<div class="contents block-center">
-				<html:messages id="msg" message="false">
-					<p class="msg-err">
-						・<bean:write name="msg" ignore="true" filter="false"/>
-					</p>
-				</html:messages>
-
-				<table class="block-center layout-table">
-					<tr>
-						<th class="login_field">
-							ログインID:
-						</th>
-						<td class="login_field">
-							<html:text property="kojinId" styleClass="input-text-m" tabindex="1" />
-						</td>
-					</tr>
-					<tr>
-						<th class="login_field">
-							パスワード:
-						</th>
-						<td class="login_field">
-							<html:password property="pass" styleClass="input-text-m" tabindex="2" />
-						</td>
-					</tr>
-				</table>
-
-				<html:submit value="ログイン" styleClass="btn" tabindex="3" />
+	<html:form action="/Login?getKey=aaa" focus=""
+		styleClass="signinform form_360_550">
+		<h2>ログイン</h2>
+		<div class="mtop_15">
+			<div class="leftborder">
+				<p class="item_title">ユーザ名</p>
 			</div>
+			<html:text property="userId" tabindex="1" />
+		</div>
+		<div class="mtop_15">
+			<div class="leftborder">
+				<p class="item_title">パスワード</p>
+			</div>
+			<html:password property="password" tabindex="2" />
+		</div>
+		<div class="submit">
+			<html:submit value="はじめる" tabindex="3" />
+		</div>
+	</html:form>
 
-		</html:form>
-	</div>
+	<script type="text/javascript">
+		let ele = document.querySelectorAll("input");
+		ele[0].placeholder = "ユーザIDを入力";
+		ele[1].placeholder = "パスワードを入力";
+	</script>
+
 </body>
+
 </html:html>

@@ -1,8 +1,6 @@
 package cashbook.util;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -13,7 +11,6 @@ import org.apache.struts.action.DynaActionForm;
 
 /**
  * 共通ユーティリティークラス
- * @author soppra
  */
 public class CommonUtil {
 
@@ -23,7 +20,7 @@ public class CommonUtil {
 	 */
 	public static Map<String, String> getYearMap() {
 		Map<String, String> result = new LinkedHashMap<String, String>();
-		for (int i = 2000; i <= 2050; i++ ) {
+		for (int i = 2000; i <= 2050; i++) {
 			result.put(String.valueOf(i), String.valueOf(i) + "年");
 		}
 		return result;
@@ -35,7 +32,7 @@ public class CommonUtil {
 	 */
 	public static Map<String, String> getMonthMap() {
 		Map<String, String> result = new LinkedHashMap<String, String>();
-		for (int i = 1; i <= 12; i++ ) {
+		for (int i = 1; i <= 12; i++) {
 			String month = String.format("%02d", i);
 			result.put(month, month + "月");
 		}
@@ -52,51 +49,37 @@ public class CommonUtil {
 		return false;
 	}
 
-    /**
-     * 対象文字列が比較文字列パターンないの値かを判定する。
-     *
-     * @param str 対象文字列
-     * @param patternFormat 比較文字列パターン
-     * @return チェックOKならtrue、チェックNGならfalse
-     */
-    public static boolean isStringPatternFormat(String str, String patternFormat) {
-        Pattern pattern = Pattern.compile(patternFormat);
-        Matcher matcher = pattern.matcher(str);
-        return matcher.matches();
-    }
+	/**
+	 * 対象文字列が比較文字列パターンないの値かを判定する。
+	 *
+	 * @param str 対象文字列
+	 * @param patternFormat 比較文字列パターン
+	 * @return チェックOKならtrue、チェックNGならfalse
+	 */
+	public static boolean isStringPatternFormat(String str, String patternFormat) {
+		Pattern pattern = Pattern.compile(patternFormat);
+		Matcher matcher = pattern.matcher(str);
+		return matcher.matches();
+	}
 
-    /**
-     * 引数のオブジェクトが文字列かどうかを判定する。
-     *
-     * @param obj 対象オブジェクト
-     * @return 文字列ならFalse
-     */
+	/**
+	 * 引数のオブジェクトが文字列かどうかを判定する。
+	 *
+	 * @param obj 対象オブジェクト
+	 * @return 文字列ならFalse
+	 */
 	protected static boolean isString(Object obj) {
 		return (obj == null) ? true : String.class.isInstance(obj);
 	}
 
-    /**
-     * 引数のオブジェクトがnullならから文字を、文字列なら文字列を返す。
-     *
-     * @param obj 対象オブジェクト
-     * @return nullなら"",文字列なら文字列
-     */
+	/**
+	 * 引数のオブジェクトがnullならから文字を、文字列なら文字列を返す。
+	 *
+	 * @param obj 対象オブジェクト
+	 * @return nullなら"",文字列なら文字列
+	 */
 	public static String getStr(Object obj) {
 		return (obj == null) ? "" : obj.toString();
-	}
-
-	/**
-	 * formMapからgetした削除チェックボックスの値を、List型に格納し、返却。
-	 * @param formMap
-	 * @return List<String>
-	 */
-	public static List<String> convFormMapToList(Map<String, Object> formMap){
-		String[] checkDel = (String[])formMap.get(Const.ITEM_CHECKBOX_DELETE);
-		List<String> list = new ArrayList<String>();
-		for (String str : checkDel){
-			list.add(str);
-		}
-		return list;
 	}
 
 	/**
@@ -120,6 +103,64 @@ public class CommonUtil {
 		return String.format("%,d", value);
 	}
 
+	/**
+	 * 引数文字列のエスケープ処理を行う
+	 * @param target 文字列
+	 * @return エスケープ処理を施した文字列
+	 */
+	public static String toEscape(String target) {
+
+		StringBuilder sb = new StringBuilder();
+
+		char[] chars = target.toCharArray();
+		for (int f = 0; f < chars.length; f++) {
+
+			char c = chars[f];
+
+			if (c == '&') {
+				sb.append("&amp;");
+			} else if (c == '<') {
+				sb.append("&lt;");
+			} else if (c == '>') {
+				sb.append("&gt;");
+			} else if (c == '"') {
+				sb.append("&quot;");
+			} else if (c == '\'') {
+				sb.append("&#39;");
+			} else {
+				sb.append(c);
+			}
+
+		}
+
+		return sb.toString();
+	}
+
+	/**
+	 * 引数文字列に含まれているクォテーションをエスケープ
+	 * @param target 文字列
+	 * @return クォテーションをエスケープした文字列
+	 */
+	public static String escapeQuotation(String target) {
+
+		StringBuilder sb = new StringBuilder();
+
+		char[] chars = target.toCharArray();
+		for (int f = 0; f < chars.length; f++) {
+
+			char c = chars[f];
+
+			if (c == '\'') {
+				sb.append(c);
+			}
+
+			sb.append(c);
+
+		}
+
+		return sb.toString();
+	}
+
 	@SuppressWarnings("unchecked")
 	public static Map<String, Object> getFormMap(DynaActionForm dynaForm) {
 		return dynaForm.getMap();
@@ -127,7 +168,6 @@ public class CommonUtil {
 
 	@SuppressWarnings("unchecked")
 	public static Map<String, Object> getSessionMap(HttpServletRequest request, String str) {
-		return (Map<String, Object>)request.getSession().getAttribute(str);
+		return (Map<String, Object>) request.getSession().getAttribute(str);
 	}
 }
-

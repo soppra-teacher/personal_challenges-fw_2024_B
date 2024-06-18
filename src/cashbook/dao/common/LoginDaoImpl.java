@@ -2,9 +2,10 @@ package cashbook.dao.common;
 
 import java.util.Map;
 
+import cashbook.util.UserConst;
+
 /**
  * ログインDAOクラス
- * @author soppra
  */
 public class LoginDaoImpl extends BaseDaoImpl implements LoginDao {
 
@@ -17,15 +18,34 @@ public class LoginDaoImpl extends BaseDaoImpl implements LoginDao {
 
 		// フォーム項目の入力値でSQLを組み立てる。
 		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT * ");
-		sql.append("  FROM MST_KOJIN M1 ");
-		sql.append(" WHERE M1.KOJIN_ID = '").append(formMap.get("kojinId")).append("' ");
-		sql.append("   AND M1.PASS = '").append(formMap.get("pass")).append("' ");
+		sql.append("SELECT USER_ID ");
+		sql.append("     , USER_NAME");
+		sql.append("     , TEACHER_FLG");
+		sql.append("  FROM MST_USER ");
+		sql.append(" WHERE USER_ID = '").append(formMap.get(UserConst.KEY_USER_ID)).append("' ");
+		sql.append("   AND PASSWORD = '").append(formMap.get(UserConst.KEY_PASSWORD)).append("' ");
 
 		// 組み立てたSQLで検索処理を行う。
 		Map<String, String> result = super.find(sql.toString());
 
 		// 処理結果を返却する。
 		return result;
+	}
+
+	/**
+	 * ログイン日を更新する
+	 * @param formMap フォーム項目
+	 * @return ログイン情報
+	 */
+	public void updateLoginDate(Map<String, Object> formMap) {
+		
+		// フォーム項目の入力値でSQLを組み立てる。
+		StringBuffer sql = new StringBuffer();
+		sql.append("UPDATE MST_USER ");
+		sql.append("  SET LOGIN_DATE = SYSDATE ");
+		sql.append(" WHERE USER_ID = '").append(formMap.get(UserConst.KEY_USER_ID)).append("' ");
+
+		// 組み立てたSQLで検索処理を行う。
+		super.update(sql.toString());
 	}
 }

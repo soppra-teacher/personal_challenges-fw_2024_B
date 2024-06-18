@@ -2,80 +2,58 @@ package cashbook.dto.common;
 
 /**
  * ログイン情報DTOクラス
- * @author soppra
  */
 public class LoginDto {
 
-	/** 個人ＩＤ */
-	private String kojinId;
-	/** 世帯ＩＤ */
-	private String setaiId;
-	/** 個人名 */
-	private String kojinNm;
-	/** 世帯主フラグ */
-	private String setainushiFlg;
+	/** ユーザＩＤ */
+	private String userId;
+	/** ユーザ名 */
+	private String userNm;
+	/** パスワード */
+	private String password;
+	/** ログイン日 */
+	private String loginDate;
+	/** 講師フラグ */
+	private String teacherFlg;
 
-	/**
-	 * 個人ＩＤを取得します。
-	 * @return 個人ＩＤ
-	 */
-	public String getKojinId() {
-	    return kojinId;
+	public String getUserId() {
+		return userId;
 	}
 
-	/**
-	 * 個人ＩＤを設定します。
-	 * @param kojinId 個人ＩＤ
-	 */
-	public void setKojinId(String kojinId) {
-	    this.kojinId = kojinId;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	/**
-	 * 世帯ＩＤを取得します。
-	 * @return 世帯ＩＤ
-	 */
-	public String getSetaiId() {
-	    return setaiId;
+	public String getUserNm() {
+		return userNm;
 	}
 
-	/**
-	 * 世帯ＩＤを設定します。
-	 * @param setaiId 世帯ＩＤ
-	 */
-	public void setSetaiId(String setaiId) {
-	    this.setaiId = setaiId;
+	public void setUserNm(String userNm) {
+		this.userNm = userNm;
 	}
 
-	/**
-	 * 個人名を取得します。
-	 * @return 個人名
-	 */
-	public String getKojinNm() {
-	    return kojinNm;
+	public String getPassword() {
+		return password;
 	}
 
-	/**
-	 * 個人名を設定します。
-	 * @param kojinNm 個人名
-	 */
-	public void setKojinNm(String kojinNm) {
-	    this.kojinNm = kojinNm;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	/**
-	 * 世帯主フラグを取得します。
-	 * @return 世帯主フラグ
-	 */
-	public String getSetainushiFlg() {
-	    return setainushiFlg;
+	public String getLoginDate() {
+		return loginDate;
 	}
 
-	/**
-	 * 世帯主フラグを設定します。
-	 * @param setainushiFlg 世帯主フラグ
-	 */
-	public void setSetainushiFlg(String setainushiFlg) {
-	    this.setainushiFlg = setainushiFlg;
+	public void setLoginDate(String loginDate) {
+		this.loginDate = loginDate;
 	}
+
+	public String getTeacherFlg() {
+		return teacherFlg;
+	}
+
+	public void setTeacherFlg(String teacherFlg) {
+		this.teacherFlg = teacherFlg;
+	}
+
 }

@@ -12,7 +12,6 @@ import cashbook.util.Const;
 
 /**
  * ログアウトアクションクラス
- * @author soppra
  */
 public class LogoutAction extends Action {
 

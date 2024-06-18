@@ -7,23 +7,30 @@ import cashbook.dto.common.LoginDto;
 
 /**
  * ログインサービス
- * @author soppra
  */
 public class LoginServiceImpl implements LoginService{
+	
 	private LoginDao loginDao;
 
 	/**
 	 * ログイン実行メソッド
-	 * @param loginService
+	 * @param formMap
 	 */
 	public LoginDto execute(Map<String, Object> formMap){
 		LoginDto result = new LoginDto();
 		Map<String, String> map = loginDao.find(formMap);
-		result.setKojinId(map.get("KOJIN_ID"));
-		result.setSetaiId(map.get("SETAI_ID"));
-		result.setKojinNm(map.get("KOJIN_NM"));
-		result.setSetainushiFlg(map.get("SETAINUSHI_FLG"));
+		result.setUserId(map.get("USER_ID"));
+		result.setUserNm(map.get("USER_NAME"));
+		result.setTeacherFlg(map.get("TEACHER_FLG"));
 		return result;
+	}
+	
+	/**
+	 * ログイン日更新メソッド
+	 * @param formMap
+	 */
+	public void updateLoginDate(Map<String, Object> formMap) {
+		loginDao.updateLoginDate(formMap);
 	}
 
 	/**

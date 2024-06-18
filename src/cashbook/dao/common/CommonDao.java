@@ -1,10 +1,7 @@
 package cashbook.dao.common;
 
-import java.util.Map;
-
 /**
  * 共通DAOクラス
- * @author soppra
  */
 public interface CommonDao {
 
@@ -31,15 +28,30 @@ public interface CommonDao {
 	 * @return システム年月日(YYYY/MM/DD)
 	 */
 	public String getYyyyMmDd();
-
+	
 	/**
-	 * コードマスタより、コード、コード名称をリスト型で取得する
+	 * セーブポイントを作成する
 	 */
-	public Map<String ,String> getCode(String classCd);
-
+	public void savePoint();
+	
 	/**
-	 * コードマスタより、コード名称を文字列型で取得する
+	 * 一連の処理をコミットする
 	 */
-	public String getCodeName(String classCd ,String cd);
+	public void commit();
+	
+	/**
+	 * セーブポイントまで、ロールバックする
+	 */
+	public void rollback();
+	
+	/**
+	 * 問題マスタをロックする
+	 */
+	public void lockMstQuestion();
+	
+	/**
+	 * 解答解説マスタをロックする
+	 */
+	public void lockMstAnswer();
 
 }
