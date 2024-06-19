@@ -21,8 +21,14 @@
 <body>
 
 	<bean:define id="inputBean" name="editForm" />
-	<bean:define id="viewRegistBean" name="REGIST_DTO" />
+	<bean:define id="viewBean" name="EDIT_DTO" />
 	<bean:define id="viewUpdateBean" name="UPDATE_DTO" />
+
+	<html:messages id="msg" message="false">
+		<p class="msg-err">
+			<bean:write name="msg" ignore="true" filter="false" />
+		</p>
+	</html:messages>
 
 	<html:form action="/InsUpdDisp">
 
@@ -46,12 +52,12 @@
 					<p class="category1">ï™óﬁÅF</p>
 					<html:select name="inputBean" property="categoryKeyJava"
 						styleClass="select select1">
-						<html:optionsCollection name="inputBean" property="categoryJava"
+						<html:optionsCollection name="viewBean" property="categoryJava"
 							value="key" label="value" />
 					</html:select>
 					<html:select name="inputBean" property="categoryKeySql"
 						styleClass="hide">
-						<html:optionsCollection name="inputBean" property="categorySql"
+						<html:optionsCollection name="viewBean" property="categorySql"
 							value="key" label="value" />
 					</html:select>
 				</div>
@@ -94,7 +100,7 @@
 								<p class="answer2">âìö</p>
 								<html:select name="inputBean" styleClass="select2"
 									property="answerKey">
-									<html:optionsCollection name="inputBean" property="answer"
+									<html:optionsCollection name="viewBean" property="answer"
 										value="key" label="value" />
 								</html:select>
 							</div>
@@ -116,12 +122,12 @@
 			</div>
 
 
-			<logic:notEmpty name="viewRegistBean">
+			<logic:empty name="viewUpdateBean">
 				<html:button property="insert"
 					onclick="callAction(this.form, 'insert');">
               ìoò^
             </html:button>
-			</logic:notEmpty>
+			</logic:empty>
 			<logic:notEmpty name="viewUpdateBean">
 				<html:button property="update"
 					onclick="callAction(this.form, 'update');">

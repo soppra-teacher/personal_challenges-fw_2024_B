@@ -20,10 +20,21 @@
 
 <body>
 
+	<bean:define id="viewBean" name="qaForm" />
+
 	<jsp:include page="/jsp/common/header.jsp">
 		<jsp:param name="screenTitle" value="–â‘è‰ð“š‰æ–Ê" />
 	</jsp:include>
+	
+	<bean:write name="viewBean" property="question" />
+	<bean:write name="viewBean" property="sentakuA" />
+	<bean:write name="viewBean" property="sentakuB" />
+	<bean:write name="viewBean" property="sentakuC" />
+	<bean:write name="viewBean" property="sentakuD" />
+	<bean:write name="viewBean" property="answer" />
+	<bean:write name="viewBean" property="kaisetsu" />
 
+	<html:link action="/QuestionAnswerInit">ŽŸ‚Ì–â‘è</html:link>
 
 </body>
 </html:html>

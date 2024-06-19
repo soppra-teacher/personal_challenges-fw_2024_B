@@ -56,31 +56,31 @@ public interface EditDao {
 	public boolean isExistAnswerId(int addCount);
 
 	/**
-	 * 解答解説マスタに登録する
+	 * 解答解説マスタに登録するためのSQLを作成する
 	 * @param answerDto
-	 * @param loginDto
+	 * @return 登録用のSQL
 	 */
-	public void registAnswer(AnswerDto answerDto) throws Exception;
+	public void registAnswer(AnswerDto answerDto);
 
 	/**
-	 * 問題マスタに登録する
+	 * 問題マスタに登録するためのSQLを作成する
 	 * @param questionDto
-	 * @param loginDto
+	 * @return 登録用のSQL
 	 */
-	public void registQuestion(QuestionDto questionDto) throws Exception;
+	public void registQuestion(QuestionDto questionDto);
 
 	/**
-	 * 解答解説マスタを更新する
+	 * 解答解説マスタを更新するためのSQLを作成する
 	 * @param answerDto
-	 * @param loginDto
+	 * @return 更新用のSQL
 	 */
-	public void updateAnswer(AnswerDto answerDto) throws Exception;
+	public void updateAnswer(AnswerDto answerDto);
 
 	/**
-	 * 問題マスタを更新する
+	 * 問題マスタを更新するためのSQLを作成する
 	 * @param questionDto
-	 * @param loginDto
+	 * @return 更新用のSQL
 	 */
-	public void updateQuestion(QuestionDto questionDto) throws Exception;;
+	public void updateQuestion(QuestionDto questionDto);
 
 }

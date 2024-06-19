@@ -44,6 +44,16 @@
 			<form-property name="answer" type="java.lang.String" />
 			<form-property name="kaisetsu" type="java.lang.String" />
 		</form-bean>
+		<!-- 問題解答画面 -->
+		<form-bean name="qaForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="question" type="java.lang.String" />
+			<form-property name="sentakuA" type="java.lang.String" />
+			<form-property name="sentakuB" type="java.lang.String" />
+			<form-property name="sentakuC" type="java.lang.String" />
+			<form-property name="sentakuD" type="java.lang.String" />
+			<form-property name="answer" type="java.lang.String" />
+			<form-property name="kaisetsu" type="java.lang.String" />
+		</form-bean>
 	</form-beans>
 	<global-forwards>
 		<forward name="sessionError" path="/jsp/common/sessionError.jsp" />
@@ -102,7 +112,7 @@
 			validate="false"
 			input="/jsp/menu/teacherMenu.jsp"
 			scope="request">
-			<forward name="success" path="/TeacherMenuSearch.do" redirect="true" />
+			<forward name="success" path="/TeacherMenuInit.do" redirect="true" />
 		</action>
 		<!--
 		****************************
@@ -175,6 +185,7 @@
 			validate="false"
 			scope="request">
 			<forward name="success" path="/jsp/qa/questionAnswer.jsp" />
+			<forward name="jukenshaMenu" path="/JukenshaMenuInit.do" />
 		</action>
 	</action-mappings>
 	<message-resources parameter="application" />

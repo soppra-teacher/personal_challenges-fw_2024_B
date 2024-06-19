@@ -158,6 +158,7 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 	/**
 	 * 解答解説マスタに登録する
 	 * @param AnswerDto
+	 * @return 登録用のSQL
 	 */
 	public void registAnswer(AnswerDto answerDto) {
 		// SQLを組み立てる。
@@ -190,6 +191,7 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 	/**
 	 * 問題マスタに登録する
 	 * @param QuestionDto
+	 * @return 登録用のSQL
 	 */
 	public void registQuestion(QuestionDto questionDto) {
 		// SQLを組み立てる。
@@ -238,8 +240,9 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 	}
 
 	/**
-	 * 解答解説マスタを更新する
-	 * @param AnswerDto
+	 * 解答解説マスタを更新するためのSQLを作成する
+	 * @param answerDto
+	 * @return 更新用のSQL
 	 */
 	public void updateAnswer(AnswerDto answerDto) {
 		// SQLを組み立てる。
@@ -256,8 +259,9 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 	}
 
 	/**
-	 * 問題マスタを更新する
-	 * @param QuestionDto
+	 * 問題マスタを更新するためのSQLを作成する
+	 * @param questionDto
+	 * @return 更新用のSQL
 	 */
 	public void updateQuestion(QuestionDto questionDto) {
 		// SQLを組み立てる。

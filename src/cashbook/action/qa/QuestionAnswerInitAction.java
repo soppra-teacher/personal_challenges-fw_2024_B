@@ -14,11 +14,25 @@ import org.apache.struts.action.DynaActionForm;
 
 import cashbook.action.common.BaseAction;
 import cashbook.dto.common.LoginDto;
-import cashbook.dto.qa.QADto;
+import cashbook.dto.qa.QaDto;
+import cashbook.dto.qa.QaSettingDto;
+import cashbook.service.qa.QaService;
 import cashbook.util.CommonUtil;
 import cashbook.util.JukenshaMenuConst;
+import cashbook.util.QaConst;
 
 public class QuestionAnswerInitAction extends BaseAction {
+	
+	/** 問題解答サービス */
+	private QaService qaService;
+
+	/**
+	 * 問題解答サービスを設定します。
+	 * @param EditService 問題解答サービス
+	 */
+	public void setQaService(QaService qaService) {
+		this.qaService = qaService;
+	}
 
 	/**
 	 * <p><b>
@@ -40,31 +54,56 @@ public class QuestionAnswerInitAction extends BaseAction {
 		// フォームの値を取得する。
 		Map<String, Object> formMap = CommonUtil.getFormMap((DynaActionForm) form);
 
-		if (CommonUtil.isNull(CommonUtil.getStr(request.getSession().getAttribute(SESSION_DTO_QUESTION_ANSWER)))) {
+		QaSettingDto settingDto;
+		QaDto qaDto;
+
+		if (CommonUtil.isNull(CommonUtil.getStr(request.getSession().getAttribute(SESSION_DTO_QUESTION_ANSWER_SETTING)))) {
 
 			//
 			//	受験者メニュー画面で選択された出題の設定を保持
 			//
-			QADto dto = new QADto();
-			dto.setSubject(CommonUtil.getStr(formMap.get(JukenshaMenuConst.KEY_SUBJECT_RADIO)));
+			settingDto = new QaSettingDto();
+			// 選択された教科
+			settingDto.setSubject(CommonUtil.getStr(formMap.get(JukenshaMenuConst.KEY_SUBJECT_RADIO)));
+			// 選択された問題数
 			String str_questionCount = CommonUtil.getStr(formMap.get(JukenshaMenuConst.KEY_JAVA_QUESTION_NUMBER_KEY));
-			dto.setQuestionCount(Integer.parseInt(str_questionCount));
-			dto.setCurrentQuestionCount(0);
-			
-			//
-			//	最初の問題を出題
-			//
+			settingDto.setQuestionCount(Integer.parseInt(str_questionCount));
+			// 現在の問題数
+			settingDto.setCurrentQuestionCount(0);
+			// ひとつ前の問題ID
+			settingDto.setBeforeQuestionId("");
 
-			// 現在の出題数を+1
-			dto.incrementCurrentQuestionCount();
-			
 		} else {
 
 			//
-			//	次の問題を出題
+			//	出題の設定をチェック
 			//
 			
+			// 出題の設定を取得
+			settingDto = (QaSettingDto) request.getSession().getAttribute(SESSION_DTO_QUESTION_ANSWER_SETTING);
+
+			if (settingDto.getCurrentQuestionCount() >= settingDto.getQuestionCount()) {
+
+				// 選択した出題数に達した場合は、受験者メニューへ遷移
+				return map.findForward(ACTION_FOWARD_JUKENSHA_MENU);
+
+			} 
 		}
+		
+		//
+		//	問題を出題
+		//
+		
+		// 出題する問題と解答を取得
+		qaDto = qaService.getQA(settingDto);
+		
+		// 現在の出題数を+1
+		settingDto.incrementCurrentQuestionCount();
+
+		// 取得した情報をリクエストに設定
+		request.getSession().setAttribute(QaConst.FORM_QUESTION_ANSWER, qaDto);
+		// 出題設定をセッションに保持
+		request.getSession().setAttribute(SESSION_DTO_QUESTION_ANSWER_SETTING, settingDto);
 
 		// 処理成功時の遷移先を指定する。
 		return map.findForward(ACTION_FOWARD_SUCCESS);

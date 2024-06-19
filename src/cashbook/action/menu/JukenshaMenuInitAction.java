@@ -56,12 +56,14 @@ public class JukenshaMenuInitAction extends BaseAction {
 		// 教科のラジオボタンで、Javaが選択されているように設定
 		dto.setSubjectRadio(SELECT_JAVA_ON);
 		// Javaの問題数を問題数ドロップダウンに設定
-		dto.setJavaQuestionNumber(jukenshaMenuService.getJavaQuestionCount(formMap));
+		dto.setJavaQuestionNumber(jukenshaMenuService.getJavaQuestionCount());
 		// SQLの問題数を問題数ドロップダウンに設定
-		dto.setSqlQuestionNumber(jukenshaMenuService.getSQLQuestionCount(formMap));
+		dto.setSqlQuestionNumber(jukenshaMenuService.getSQLQuestionCount());
 
 		// 取得した情報をリクエストに設定
 		request.setAttribute(JukenshaMenuConst.FORM_JUKENSHA_MENU, dto);
+		// 出題設定保持用のセッションをクリア
+		request.getSession().setAttribute(SESSION_DTO_QUESTION_ANSWER_SETTING, EMPTY);
 
 		// 処理成功時の遷移先を指定する。
 		return map.findForward(ACTION_FOWARD_SUCCESS);

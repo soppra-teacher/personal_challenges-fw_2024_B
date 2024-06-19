@@ -26,10 +26,10 @@ public class TeacherMenuServiceImpl implements TeacherMenuService {
 	 * @param formMap
 	 */
 	@Override
-	public List<TeacherMenuDto> listSearch(Map<String, Object> formMap) {
+	public List<TeacherMenuDto> listSearch() {
 		// 検索処理
 		List<TeacherMenuDto> resultlist = new ArrayList<TeacherMenuDto>();
-		List<Map<String, String>> list = teacherMenuDao.searchQuestion(formMap);
+		List<Map<String, String>> list = teacherMenuDao.searchQuestion();
 		Iterator<Map<String, String>> it = list.iterator();
 		while (it.hasNext()) {
 			Map<String, String> map = it.next();

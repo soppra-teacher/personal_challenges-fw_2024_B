@@ -75,6 +75,12 @@
 					<html:submit>‚±‚Ì–â‘è‚ðXV</html:submit>
 				</div>
 			</html:form>
+			<html:form action="/TeacherMenuDelete">
+				<html:hidden name="inputBean" property="questionId" />
+				<div id="updlink" class="">
+					<html:submit>‚±‚Ì–â‘è‚ðíœ</html:submit>
+				</div>
+			</html:form>
 			<ul id="liwapper" class="hide">
 				<li class="item"><spna id=questionId></spna></li>
 				<li class="item"><spna id=subject></spna></li>

@@ -10,10 +10,11 @@ public interface EditService {
 	/**
 	 * 登録・更新画面(登録モード)の初期表示を行う。
 	 */
-	public EditDto registInit(Map<String, Object> formMap);
+	public EditDto registInit();
 
 	/**
 	 * 登録・更新画面(更新モード)の初期表示を行う。
+	 * @param formMap
 	 * @return 更新対象の問題・解答
 	 */
 	public EditDto updateInit(Map<String, Object> formMap);

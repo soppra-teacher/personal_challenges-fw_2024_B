@@ -30,21 +30,6 @@ public interface CommonDao {
 	public String getYyyyMmDd();
 	
 	/**
-	 * セーブポイントを作成する
-	 */
-	public void savePoint();
-	
-	/**
-	 * 一連の処理をコミットする
-	 */
-	public void commit();
-	
-	/**
-	 * セーブポイントまで、ロールバックする
-	 */
-	public void rollback();
-	
-	/**
 	 * 問題マスタをロックする
 	 */
 	public void lockMstQuestion();

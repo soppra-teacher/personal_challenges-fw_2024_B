@@ -14,20 +14,16 @@ errors.overLap=対象データは既に登録されています
 errors.lock=対象データが更新または削除されています
 
 #ログイン画面
-loginForm.error.login=個人IDまたはパスワードが間違っています
-loginForm.param.kojinId=個人ID
+loginForm.error.login=ユーザIDまたはパスワードが間違っています
+loginForm.param.kojinId=ユーザID
 loginForm.param.pass=パスワード
 
-#世帯マスタ登録画面
-setaiRegistForm.param.setaiId=世帯ID
-setaiRegistForm.param.setaiNm=世帯名
-setaiRegistForm.param.setaiNmKana=世帯名ｶﾅ
-setaiRegistForm.param.postNo=郵便番号
-setaiRegistForm.param.address=住所
-setaiRegistForm.param.telNo=電話番号
-
-#費目マスタ登録画面
-himokuRegistForm.param.himokuCd=費目CD
-himokuRegistForm.param.himokuNm=費目名
-himokuRegistForm.param.himokuKbnKey=費目区分
+#登録・更新画面
+editForm.param.questionTitle=問題タイトル
+editForm.param.question=問題文
+editForm.param.sentakuA=選択肢A
+editForm.param.sentakuB=選択肢B
+editForm.param.sentakuC=選択肢C
+editForm.param.sentakuD=選択肢D
+editForm.param.kaisetsu=解説
 

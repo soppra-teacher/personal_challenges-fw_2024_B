@@ -8,10 +8,9 @@ public class JukenshaMenuDaoImpl extends BaseDaoImpl implements JukenshaMenuDao 
 
 	/**
 	 * Javaの問題件数を取得
-	 * @param formMap フォーム項目
 	 * @return Javaの問題数
 	 */
-	public int getJavaQuestionCount(Map<String, Object> formMap) {
+	public int getJavaQuestionCount() {
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT COUNT(A.QUESTION_ID) ");
 		sql.append("  FROM MST_QUESTION A ");
@@ -27,10 +26,9 @@ public class JukenshaMenuDaoImpl extends BaseDaoImpl implements JukenshaMenuDao 
 
 	/**
 	 * SQLの問題件数を取得
-	 * @param formMap フォーム項目
 	 * @return SQLの問題数
 	 */
-	public int getSQLQuestionCount(Map<String, Object> formMap) {
+	public int getSQLQuestionCount() {
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT COUNT(A.QUESTION_ID) ");
 		sql.append("  FROM MST_QUESTION A ");

@@ -60,6 +60,12 @@
 			<ref local="dataSource" />
 		</property>
 	</bean>
+	<!-- 問題解答画面 -->
+	<bean id="QaDaoId" class="cashbook.dao.qa.QaDaoImpl">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+	</bean>
 	<!-- Service -->
 	<!-- ログイン画面 -->
 	<bean id="LoginServiceId" class="cashbook.service.common.LoginServiceImpl">
@@ -86,6 +92,15 @@
 		</property>
 		<property name="editDao">
 			<ref local="EditDaoId" />
+		</property>
+	</bean>
+	<!-- 問題解答画面 -->
+	<bean id="QaServiceId" class="cashbook.service.qa.QaServiceImpl">
+		<property name="jukenshaMenuDao">
+			<ref local="JukenshaMenuDaoId" />
+		</property>
+		<property name="qaDao">
+			<ref local="QaDaoId" />
 		</property>
 	</bean>
 	<!-- Action -->
@@ -132,6 +147,8 @@
 	</bean>
 	<!-- 問題解答画面 -->
 	<bean name="/QuestionAnswerInit" class="cashbook.action.qa.QuestionAnswerInitAction">
-	
+		<property name="qaService">
+			<ref local="QaServiceId" />
+		</property>
 	</bean>
 </beans>

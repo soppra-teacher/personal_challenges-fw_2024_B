@@ -14,7 +14,8 @@ window.addEventListener("DOMContentLoaded", () => {
 	let kaisetsuText = document.getElementById("kaisetsuText");
 
 	//hiddenフィールドの各エレメントを取得
-	let questionId_hidden = document.getElementsByName("questionId")[0];
+	let questionId_hidden_upd = document.getElementsByName("questionId")[0];
+	let questionId_hidden_del = document.getElementsByName("questionId")[1];
 
 	let updlink = document.getElementById("updlink");
 	let liwapper = document.getElementById("liwapper");
@@ -62,7 +63,8 @@ window.addEventListener("DOMContentLoaded", () => {
 			kaisetsuText.innerText += kaisetsu_table;
 
 			//hiddenフィールドに値を代入
-			questionId_hidden.value = questionId_table;
+			questionId_hidden_upd.value = questionId_table;
+			questionId_hidden_del.value = questionId_table;
 			
 		});
 	}

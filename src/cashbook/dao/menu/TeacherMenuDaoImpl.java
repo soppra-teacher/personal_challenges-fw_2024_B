@@ -12,7 +12,7 @@ public class TeacherMenuDaoImpl extends BaseDaoImpl implements TeacherMenuDao {
 	 * @param formMap フォーム項目
 	 * @return 問題一覧
 	 */
-	public List<Map<String, String>> searchQuestion(Map<String, Object> formMap){
+	public List<Map<String, String>> searchQuestion(){
 		List<Map<String, String>> result;
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT  A.QUESTION_ID ");

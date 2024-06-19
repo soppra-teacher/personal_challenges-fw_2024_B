@@ -68,27 +68,6 @@ public class CommonDaoImpl extends BaseDaoImpl implements CommonDao {
 	}
 	
 	/**
-	 * セーブポイントを作成する
-	 */
-	public void savePoint() {
-		super.savePoint();
-	}
-	
-	/**
-	 * 一連の処理をコミットする
-	 */
-	public void commit() {
-		super.commit();
-	}
-	
-	/**
-	 * セーブポイントまで、ロールバックする
-	 */
-	public void rollback() {
-		super.rollback();
-	}
-	
-	/**
 	 * 問題マスタをロックする
 	 */
 	public void lockMstQuestion() {
