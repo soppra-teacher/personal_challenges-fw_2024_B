@@ -23,14 +23,16 @@ public interface EditService {
 	 * 問題と解答解説を登録する
 	 * @param formMap
 	 * @param loginDto
+	 * @return 成功時はtrue、それ以外はfalse
 	 */
-	public void registQuestionAnswer(Map<String, Object> formMap, LoginDto loginDto) throws Exception;
+	public boolean registQuestionAnswer(Map<String, Object> formMap, LoginDto loginDto) throws Exception;
 	
 	/**
 	 * 問題と解答解説を更新する
 	 * @param formMap
 	 * @param loginDto
+	 * @return 成功時はtrue、それ以外はfalse
 	 */
-	public void updateQuestionAnswer(Map<String, Object> formMap, LoginDto loginDto) throws Exception;
+	public boolean updateQuestionAnswer(Map<String, Object> formMap, LoginDto loginDto) throws Exception;
 
 }

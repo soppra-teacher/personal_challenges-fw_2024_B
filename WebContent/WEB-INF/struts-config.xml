@@ -171,6 +171,7 @@
 			input="/jsp/controller/edit.jsp"
 			scope="request">
 			<forward name="success" path="/TeacherMenuInit.do" redirect="true" />
+			<forward name="error" path="/jsp/common/error.jsp" />
 		</action>
 		<!--
 		****************************

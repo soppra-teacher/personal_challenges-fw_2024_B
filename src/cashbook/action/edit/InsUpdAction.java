@@ -52,20 +52,34 @@ public class InsUpdAction extends BaseAction {
 
 		// フォームの値を取得する。
 		Map<String, Object> formMap = CommonUtil.getFormMap((DynaActionForm) form);
-		
+
 		if (CommonUtil.isNull(CommonUtil.getStr(request.getSession().getAttribute(SESSION_DTO_QUESTION_UPDATE)))) {
 
 			//
 			//	登録処理
 			//
-			editService.registQuestionAnswer(formMap, loginDto);
-			
+			boolean result = editService.registQuestionAnswer(formMap, loginDto);
+
+			if (!result) {
+
+				// エラーページへ遷移
+				return map.findForward(ACTION_FOWARD_ERROR);
+
+			}
+
 		} else {
 
 			//
 			//	更新処理
 			//
-			editService.updateQuestionAnswer(formMap, loginDto);
+			boolean result = editService.updateQuestionAnswer(formMap, loginDto);
+
+			if (!result) {
+
+				// エラーページへ遷移
+				return map.findForward(ACTION_FOWARD_ERROR);
+
+			}
 
 		}
 

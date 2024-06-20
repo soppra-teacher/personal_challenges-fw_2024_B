@@ -29,6 +29,10 @@
 			<ref local="dataSource" />
 		</property>
 	</bean>
+	<bean id="transactionTemplateRequired" class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="propagationBehaviorName" value="PROPAGATION_REQUIRED" />
+	</bean>
 	<!-- DAO -->
 	<!-- 共通 -->
 	<bean id="CommonDaoId" class="cashbook.dao.common.CommonDaoImpl">
@@ -92,6 +96,9 @@
 		</property>
 		<property name="editDao">
 			<ref local="EditDaoId" />
+		</property>
+		<property name="transactionTemplate">
+			<ref local="transactionTemplateRequired" />
 		</property>
 	</bean>
 	<!-- 問題解答画面 -->
