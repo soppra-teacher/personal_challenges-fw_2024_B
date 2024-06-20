@@ -1,9 +1,9 @@
 package cashbook.service.qa;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import cashbook.dao.menu.JukenshaMenuDao;
 import cashbook.dao.qa.QaDao;
 import cashbook.dto.qa.QaDto;
 import cashbook.dto.qa.QaSettingDto;
@@ -12,19 +12,8 @@ import cashbook.util.Const;
 
 public class QaServiceImpl implements QaService {
 
-	/** 受験者メニューDao */
-	private JukenshaMenuDao jukenshaMenuDao;
-
 	/** 問題解答Dao */
 	private QaDao qaDao;
-
-	/**
-	 * 受験者ニューDAOを設定します。
-	 * @param JukenshaMenuDao 講師メニューDao
-	 */
-	public void setJukenshaMenuDao(JukenshaMenuDao jukenshaMenuDao) {
-		this.jukenshaMenuDao = jukenshaMenuDao;
-	}
 
 	/**
 	 * 問題解答DAOを設定します。
@@ -46,51 +35,95 @@ public class QaServiceImpl implements QaService {
 		// 教科を取得
 		String subject = qaSetting.getSubject();
 
-		String questionId = "";
-		
-		Map<String, String> dbresult = null;
+		Random random = new Random();
 
-		Random rnd = new Random();
+		// 出題問題を格納する変数
+		Map<String, String> question = null;
 
 		if (subject.equals(Const.SELECT_JAVA_ON)) {
 
-			// Javaの問題数を取得
-			int javaQuestionCount = jukenshaMenuDao.getJavaQuestionCount();
-			
-			do {
-				
-				questionId = "Q" + rnd.nextInt(javaQuestionCount + 1);
+			//
+			//	Javaの問題を出題
+			//
 
-				dbresult = qaDao.findQuestionAnswer(questionId);
+			// 出題可能な問題IDを取得
+			List<Map<String, String>> dbresult = qaDao.getJavaQuestionId();
 
-			} while (dbresult.size() == 0 || questionId.equals(qaSetting.getBeforeQuestionId()));
+			// 前回の問題IDを取得する
+			String beforQuestionId = CommonUtil.getStr(qaSetting.getBeforeQuestionId());
+
+			int index = 0;
+			String[] questionIdAry = new String[dbresult.size()];
+			for (Map<String, String> map : dbresult) {
+				questionIdAry[index] = map.get("QUESTION_ID");
+				index++;
+			}
+
+			String questionId;
+			while (true) {
+
+				// ランダムな問題IDを取得
+				questionId = questionIdAry[random.nextInt(questionIdAry.length)];
+
+				// 問題を取得
+				question = qaDao.findJavaQA(questionId);
+
+				if (question.size() > 0 && !questionId.equals(beforQuestionId)) {
+					break;
+				}
+
+			}
+
+			// 前回の問題IDに値を設定
+			qaSetting.setBeforeQuestionId(questionId);
 
 		} else if (subject.equals(Const.SELECT_SQL_ON)) {
 
-			//　SQLの問題数を取得
-			int sqlQuestionCount = jukenshaMenuDao.getSQLQuestionCount();
-			
-			do {
-				questionId = "Q" + rnd.nextInt(sqlQuestionCount + 1);
+			//
+			//	SQLの問題を出題
+			//
 
-				dbresult = qaDao.findQuestionAnswer(questionId);
+			// 出題可能な問題IDを取得
+			List<Map<String, String>> dbresult = qaDao.getSQLQuestionId();
 
-			} while (dbresult.size() == 0 || questionId.equals(qaSetting.getBeforeQuestionId()));
+			// 前回の問題IDを取得する
+			String beforQuestionId = CommonUtil.getStr(qaSetting.getBeforeQuestionId());
+
+			int index = 0;
+			String[] questionIdAry = new String[dbresult.size()];
+			for (Map<String, String> map : dbresult) {
+				questionIdAry[index] = map.get("QUESTION_ID");
+				index++;
+			}
+
+			String questionId;
+			while (true) {
+
+				// ランダムな問題IDを取得
+				questionId = questionIdAry[random.nextInt(questionIdAry.length)];
+
+				// 問題を取得
+				question = qaDao.findJavaQA(questionId);
+
+				if (question.size() > 0 && !questionId.equals(beforQuestionId)) {
+					break;
+				}
+
+			}
+
+			// 前回の問題IDに値を設定
+			qaSetting.setBeforeQuestionId(questionId);
 
 		}
 
-		// 指定した問題IDの問題と解答を取得
-		//Map<String, String> dbresult = qaDao.findQuestionAnswer(questionId);
-		qaSetting.setBeforeQuestionId(questionId);
-
 		// 問題マスタ、解答マスタより取得したデータを返却用変数に格納
-		result.setQuestion(CommonUtil.getStr(dbresult.get("QUESTION")));
-		result.setSentakuA(CommonUtil.getStr(dbresult.get("SENTAKU_A")));
-		result.setSentakuB(CommonUtil.getStr(dbresult.get("SENTAKU_B")));
-		result.setSentakuC(CommonUtil.getStr(dbresult.get("SENTAKU_C")));
-		result.setSentakuD(CommonUtil.getStr(dbresult.get("SENTAKU_D")));
-		result.setAnswer(CommonUtil.getStr(dbresult.get("ANSWER")));
-		result.setKaisetsu(CommonUtil.getStr(dbresult.get("KAISETSU")));
+		result.setQuestion(CommonUtil.getStr(question.get("QUESTION")));
+		result.setSentakuA(CommonUtil.getStr(question.get("SENTAKU_A")));
+		result.setSentakuB(CommonUtil.getStr(question.get("SENTAKU_B")));
+		result.setSentakuC(CommonUtil.getStr(question.get("SENTAKU_C")));
+		result.setSentakuD(CommonUtil.getStr(question.get("SENTAKU_D")));
+		result.setAnswer(CommonUtil.getStr(question.get("ANSWER")));
+		result.setKaisetsu(CommonUtil.getStr(question.get("KAISETSU")));
 
 		return result;
 	}

@@ -96,9 +96,6 @@
 	</bean>
 	<!-- 問題解答画面 -->
 	<bean id="QaServiceId" class="cashbook.service.qa.QaServiceImpl">
-		<property name="jukenshaMenuDao">
-			<ref local="JukenshaMenuDaoId" />
-		</property>
 		<property name="qaDao">
 			<ref local="QaDaoId" />
 		</property>

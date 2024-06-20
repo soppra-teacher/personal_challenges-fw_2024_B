@@ -11,4 +11,5 @@ public interface QaService {
 	 * @return QaDto
 	 */
 	public QaDto getQA(QaSettingDto setting);
+	
 }

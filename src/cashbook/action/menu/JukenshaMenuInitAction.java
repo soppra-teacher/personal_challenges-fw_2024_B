@@ -2,21 +2,17 @@ package cashbook.action.menu;
 
 import static cashbook.util.Const.*;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.DynaActionForm;
 
 import cashbook.action.common.BaseAction;
 import cashbook.dto.common.LoginDto;
 import cashbook.dto.menu.JukenshaMenuDto;
 import cashbook.service.menu.JukenshaMenuService;
-import cashbook.util.CommonUtil;
 import cashbook.util.JukenshaMenuConst;
 
 public class JukenshaMenuInitAction extends BaseAction {
@@ -48,9 +44,6 @@ public class JukenshaMenuInitAction extends BaseAction {
 	 */
 	protected ActionForward doProcess(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response, LoginDto loginDto) throws Exception {
-
-		// フォームの値を取得する。
-		Map<String, Object> formMap = CommonUtil.getFormMap((DynaActionForm) form);
 
 		JukenshaMenuDto dto = new JukenshaMenuDto();
 		// 教科のラジオボタンで、Javaが選択されているように設定
