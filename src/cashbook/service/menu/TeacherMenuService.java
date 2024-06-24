@@ -7,7 +7,6 @@ import cashbook.dto.menu.TeacherMenuDto;
 
 /**
  * 講師メニューサービスインターフェース
- * @author soppra
  *
  */
 public interface TeacherMenuService {
