@@ -12,7 +12,7 @@ public class JukenshaMenuServiceImpl implements JukenshaMenuService {
 
 	/**
 	 * 受験者ニューDAOを設定します。
-	 * @param TeacherMenuDao 講師メニューDao
+	 * @param JukenshaMenuDao 講師メニューDao
 	 */
 	public void setJukenshaMenuDao(JukenshaMenuDao jukenshaMenuDao) {
 		this.jukenshaMenuDao = jukenshaMenuDao;
@@ -23,10 +23,10 @@ public class JukenshaMenuServiceImpl implements JukenshaMenuService {
 	 * @param formMap
 	 * @return Javaの問題数
 	 */
-	public Map<String, String> getJavaQuestionCount(Map<String, Object> formMap) {
+	public Map<String, String> getJavaQuestionCount() {
 
 		// Javaの問題数を取得
-		int max = jukenshaMenuDao.getJavaQuestionCount(formMap);
+		int max = jukenshaMenuDao.getJavaQuestionCount();
 
 		// 取得した問題数を返却用変数に格納
 		Map<String, String> result = new LinkedHashMap<String, String>();
@@ -55,10 +55,10 @@ public class JukenshaMenuServiceImpl implements JukenshaMenuService {
 	 * @param formMap
 	 * @return SQLの問題数
 	 */
-	public Map<String, String> getSQLQuestionCount(Map<String, Object> formMap) {
+	public Map<String, String> getSQLQuestionCount() {
 
 		// SQLの問題数を取得
-		int max = jukenshaMenuDao.getSQLQuestionCount(formMap);
+		int max = jukenshaMenuDao.getSQLQuestionCount();
 
 		// 取得した問題数を返却用変数に格納
 		Map<String, String> result = new LinkedHashMap<String, String>();

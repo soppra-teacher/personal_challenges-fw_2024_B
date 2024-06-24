@@ -1,7 +1,7 @@
 package cashbook.util;
 
 /**
- * 共通定数クラス
+ * ログイン画面定数クラス
  */
 public class UserConst {
 

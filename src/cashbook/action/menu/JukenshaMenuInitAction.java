@@ -2,21 +2,17 @@ package cashbook.action.menu;
 
 import static cashbook.util.Const.*;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.DynaActionForm;
 
 import cashbook.action.common.BaseAction;
 import cashbook.dto.common.LoginDto;
 import cashbook.dto.menu.JukenshaMenuDto;
 import cashbook.service.menu.JukenshaMenuService;
-import cashbook.util.CommonUtil;
 import cashbook.util.JukenshaMenuConst;
 
 public class JukenshaMenuInitAction extends BaseAction {
@@ -49,19 +45,18 @@ public class JukenshaMenuInitAction extends BaseAction {
 	protected ActionForward doProcess(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response, LoginDto loginDto) throws Exception {
 
-		// フォームの値を取得する。
-		Map<String, Object> formMap = CommonUtil.getFormMap((DynaActionForm) form);
-
 		JukenshaMenuDto dto = new JukenshaMenuDto();
 		// 教科のラジオボタンで、Javaが選択されているように設定
 		dto.setSubjectRadio(SELECT_JAVA_ON);
 		// Javaの問題数を問題数ドロップダウンに設定
-		dto.setJavaQuestionNumber(jukenshaMenuService.getJavaQuestionCount(formMap));
+		dto.setJavaQuestionNumber(jukenshaMenuService.getJavaQuestionCount());
 		// SQLの問題数を問題数ドロップダウンに設定
-		dto.setSqlQuestionNumber(jukenshaMenuService.getSQLQuestionCount(formMap));
+		dto.setSqlQuestionNumber(jukenshaMenuService.getSQLQuestionCount());
 
 		// 取得した情報をリクエストに設定
 		request.setAttribute(JukenshaMenuConst.FORM_JUKENSHA_MENU, dto);
+		// 出題設定保持用のセッションをクリア
+		request.getSession().setAttribute(SESSION_DTO_QUESTION_ANSWER_SETTING, EMPTY);
 
 		// 処理成功時の遷移先を指定する。
 		return map.findForward(ACTION_FOWARD_SUCCESS);

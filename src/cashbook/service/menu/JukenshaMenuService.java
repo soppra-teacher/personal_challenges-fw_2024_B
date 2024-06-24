@@ -9,13 +9,13 @@ public interface JukenshaMenuService {
 	 * @param formMap
 	 * @return Javaの問題数
 	 */
-	public Map<String, String> getJavaQuestionCount(Map<String, Object> formMap);
+	public Map<String, String> getJavaQuestionCount();
 	
 	/**
 	 * SQL問題数を取得
 	 * @param formMap
 	 * @return SQLの問題数
 	 */
-	public Map<String, String> getSQLQuestionCount(Map<String, Object> formMap);
+	public Map<String, String> getSQLQuestionCount();
 
 }

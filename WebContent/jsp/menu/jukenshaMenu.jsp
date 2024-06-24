@@ -26,32 +26,36 @@
 		<jsp:param name="screenTitle" value="受験者メニュー" />
 	</jsp:include>
 
-	<div class="contents">
-		<ul>
-			<li class="title">問題種類：</li>
-			<li><html:radio name="inputBean" property="subjectRadio"
-					value="java" /> Java</li>
-			<li><html:radio name="inputBean" property="subjectRadio"
-					value="sql" />SQL</li>
-		</ul>
+	<html:form action="/QuestionAnswerInit">
 
-		<ul>
-			<li class="title">問題数：</li>
-			<li><html:select name="inputBean" property="questionNumberKey"
-					styleClass="select">
-					<html:optionsCollection name="inputBean"
-						property="javaQuestionNumber" value="key" label="value" />
-				</html:select> <html:select name="inputBean" property="questionNumberKey"
-					styleClass="hide">
-					<html:optionsCollection name="inputBean"
-						property="sqlQuestionNumber" value="key" label="value" />
-				</html:select></li>
-		</ul>
+		<div class="contents">
+			<ul>
+				<li class="title">問題種類：</li>
+				<li><html:radio name="inputBean" property="subjectRadio"
+						value="java" /> Java</li>
+				<li><html:radio name="inputBean" property="subjectRadio"
+						value="sql" />SQL</li>
+			</ul>
 
-		<div class="submit">
-			<html:link action="" styleClass="link">スタート</html:link>
+			<ul>
+				<li class="title">問題数：</li>
+				<li><html:select name="inputBean" property="javaQuestionNumberKey"
+						styleClass="select">
+						<html:optionsCollection name="inputBean"
+							property="javaQuestionNumber" value="key" label="value" />
+					</html:select> <html:select name="inputBean" property="sqlQuestionNumberKey"
+						styleClass="hide">
+						<html:optionsCollection name="inputBean"
+							property="sqlQuestionNumber" value="key" label="value" />
+					</html:select></li>
+			</ul>
+
+			<div class="submit">
+				<html:submit styleClass="link">スタート</html:submit>
+			</div>
 		</div>
-	</div>
 
+	</html:form>
+	
 </body>
 </html:html>

@@ -7,8 +7,6 @@ public class LoginDto {
 
 	/** ユーザＩＤ */
 	private String userId;
-	/** ユーザ名 */
-	private String userNm;
 	/** パスワード */
 	private String password;
 	/** ログイン日 */
@@ -22,14 +20,6 @@ public class LoginDto {
 
 	public void setUserId(String userId) {
 		this.userId = userId;
-	}
-
-	public String getUserNm() {
-		return userNm;
-	}
-
-	public void setUserNm(String userNm) {
-		this.userNm = userNm;
 	}
 
 	public String getPassword() {

@@ -17,10 +17,10 @@
 			<value>jdbc:oracle:thin:@//localhost:1521/XEPDB1</value>
 		</property>
 		<property name="username">
-			<value>YAMAMOTO</value>
+			<value>JSSSYSTEM</value>
 		</property>
 		<property name="password">
-			<value>YAMAMOTO</value>
+			<value>JSSSYSTEM</value>
 		</property>
 	</bean>
 	<!-- TransactionManager -->
@@ -28,6 +28,10 @@
 		<property name="dataSource">
 			<ref local="dataSource" />
 		</property>
+	</bean>
+	<bean id="transactionTemplateRequired" class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="propagationBehaviorName" value="PROPAGATION_REQUIRED" />
 	</bean>
 	<!-- DAO -->
 	<!-- 共通 -->
@@ -60,6 +64,12 @@
 			<ref local="dataSource" />
 		</property>
 	</bean>
+	<!-- 問題解答画面 -->
+	<bean id="QaDaoId" class="cashbook.dao.qa.QaDaoImpl">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+	</bean>
 	<!-- Service -->
 	<!-- ログイン画面 -->
 	<bean id="LoginServiceId" class="cashbook.service.common.LoginServiceImpl">
@@ -86,6 +96,15 @@
 		</property>
 		<property name="editDao">
 			<ref local="EditDaoId" />
+		</property>
+		<property name="transactionTemplate">
+			<ref local="transactionTemplateRequired" />
+		</property>
+	</bean>
+	<!-- 問題解答画面 -->
+	<bean id="QaServiceId" class="cashbook.service.qa.QaServiceImpl">
+		<property name="qaDao">
+			<ref local="QaDaoId" />
 		</property>
 	</bean>
 	<!-- Action -->
@@ -128,6 +147,12 @@
 	<bean name="/InsUpd" class="cashbook.action.edit.InsUpdAction">
 		<property name="editService">
 			<ref local="EditServiceId" />
+		</property>
+	</bean>
+	<!-- 問題解答画面 -->
+	<bean name="/QuestionAnswerInit" class="cashbook.action.qa.QuestionAnswerInitAction">
+		<property name="qaService">
+			<ref local="QaServiceId" />
 		</property>
 	</bean>
 </beans>

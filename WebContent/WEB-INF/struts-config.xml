@@ -20,8 +20,9 @@
 		<!-- 受験者メニュー画面 -->
 		<form-bean name="jukenshaForm" type="org.apache.struts.validator.DynaValidatorForm">
 			<form-property name="subjectRadio" type="java.lang.String" />
-			<form-property name="questionNumberKey" type="java.lang.String" />
+			<form-property name="javaQuestionNumberKey" type="java.lang.String" />
 			<form-property name="javaQuestionNumber" type="java.lang.String" />
+			<form-property name="sqlQuestionNumberKey" type="java.lang.String" />
 			<form-property name="sqlQuestionNumber" type="java.lang.String" />
 		</form-bean>
 		<!-- 登録・更新画面 -->
@@ -43,6 +44,16 @@
 			<form-property name="answer" type="java.lang.String" />
 			<form-property name="kaisetsu" type="java.lang.String" />
 		</form-bean>
+		<!-- 問題解答画面 -->
+		<form-bean name="qaForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="question" type="java.lang.String" />
+			<form-property name="sentakuA" type="java.lang.String" />
+			<form-property name="sentakuB" type="java.lang.String" />
+			<form-property name="sentakuC" type="java.lang.String" />
+			<form-property name="sentakuD" type="java.lang.String" />
+			<form-property name="answer" type="java.lang.String" />
+			<form-property name="kaisetsu" type="java.lang.String" />
+		</form-bean>
 	</form-beans>
 	<global-forwards>
 		<forward name="sessionError" path="/jsp/common/sessionError.jsp" />
@@ -50,7 +61,7 @@
 	<action-mappings>
 		<!--
 		****************************
-		* ログイン画面             *
+		* ログイン画面                 *
 		****************************
 		-->
 		<action
@@ -101,7 +112,7 @@
 			validate="false"
 			input="/jsp/menu/teacherMenu.jsp"
 			scope="request">
-			<forward name="success" path="/TeacherMenuSearch.do" redirect="true" />
+			<forward name="success" path="/TeacherMenuInit.do" redirect="true" />
 		</action>
 		<!--
 		****************************
@@ -160,6 +171,22 @@
 			input="/jsp/controller/edit.jsp"
 			scope="request">
 			<forward name="success" path="/TeacherMenuInit.do" redirect="true" />
+			<forward name="error" path="/jsp/common/error.jsp" />
+		</action>
+		<!--
+		****************************
+		* 問題解答画面               *
+		****************************
+		-->
+		<!-- 初期表示 -->
+		<action
+			path="/QuestionAnswerInit"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="jukenshaForm"
+			validate="false"
+			scope="request">
+			<forward name="success" path="/jsp/qa/questionAnswer.jsp" />
+			<forward name="jukenshaMenu" path="/JukenshaMenuInit.do" />
 		</action>
 	</action-mappings>
 	<message-resources parameter="application" />

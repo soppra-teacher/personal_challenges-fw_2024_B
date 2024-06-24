@@ -63,11 +63,13 @@ public class Const {
 	/** 受験者メニュー画面 DTO */
 	public static final String SESSION_DTO_JUKENSHA = "JUKENSHA_DTO";
 	
-	/** 登録・更新画面（登録モード） DTO */
-	public static final String SESSION_DTO_QUESTION_REGIST = "REGIST_DTO";
+	/** 登録・更新画面（共通表示） DTO */
+	public static final String SESSION_DTO_EDIT = "EDIT_DTO";
 	/** 登録・更新画面（更新モード） DTO */
 	public static final String SESSION_DTO_QUESTION_UPDATE = "UPDATE_DTO";
-
+	
+	/** 問題解答画面 DTO */
+	public static final String SESSION_DTO_QUESTION_ANSWER_SETTING = "QUESTION_ANSWER_SETTING_DTO";
 	
 	/************* 区分値 *************/
 	/** 教科:Java　ON */

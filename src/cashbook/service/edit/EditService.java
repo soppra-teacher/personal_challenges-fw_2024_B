@@ -10,10 +10,11 @@ public interface EditService {
 	/**
 	 * 登録・更新画面(登録モード)の初期表示を行う。
 	 */
-	public EditDto registInit(Map<String, Object> formMap);
+	public EditDto registInit();
 
 	/**
 	 * 登録・更新画面(更新モード)の初期表示を行う。
+	 * @param formMap
 	 * @return 更新対象の問題・解答
 	 */
 	public EditDto updateInit(Map<String, Object> formMap);
@@ -22,14 +23,16 @@ public interface EditService {
 	 * 問題と解答解説を登録する
 	 * @param formMap
 	 * @param loginDto
+	 * @return 成功時はtrue、それ以外はfalse
 	 */
-	public void registQuestionAnswer(Map<String, Object> formMap, LoginDto loginDto) throws Exception;
+	public boolean registQuestionAnswer(Map<String, Object> formMap, LoginDto loginDto) throws Exception;
 	
 	/**
 	 * 問題と解答解説を更新する
 	 * @param formMap
 	 * @param loginDto
+	 * @return 成功時はtrue、それ以外はfalse
 	 */
-	public void updateQuestionAnswer(Map<String, Object> formMap, LoginDto loginDto) throws Exception;
+	public boolean updateQuestionAnswer(Map<String, Object> formMap, LoginDto loginDto) throws Exception;
 
 }

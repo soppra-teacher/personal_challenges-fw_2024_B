@@ -59,7 +59,7 @@ public class UpdateInitAction extends BaseAction {
 		request.setAttribute(EditConst.FORM_TEACHER_EDIT, dto);
 
 		// 取得した情報をセッションに設定
-		request.getSession().setAttribute(SESSION_DTO_QUESTION_REGIST, "");
+		request.getSession().setAttribute(SESSION_DTO_EDIT, dto);
 		request.getSession().setAttribute(SESSION_DTO_QUESTION_UPDATE, dto);
 		
 		// 処理成功時の遷移先を指定する。

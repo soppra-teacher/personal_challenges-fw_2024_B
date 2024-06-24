@@ -22,5 +22,65 @@
 				<arg0 key="loginForm.param.password" resource="true" />
 			</field>
 		</form>
+		<!-- 登録・更新画面 -->
+		<form name="editForm">
+			<field property="questionTitle" depends="required,maxlength">
+				<arg0 key="editForm.param.questionTitle" resource="true" />
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>100</var-value>
+				</var>
+			</field>
+			<field property="question" depends="required,maxlength">
+				<arg0 key="editForm.param.question" resource="true" />
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>900</var-value>
+				</var>
+			</field>
+			<field property="sentakuA" depends="required,maxlength">
+				<arg0 key="editForm.param.sentakuA" resource="true" />
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>200</var-value>
+				</var>
+			</field>
+			<field property="sentakuB" depends="required,maxlength">
+				<arg0 key="editForm.param.sentakuB" resource="true" />
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>200</var-value>
+				</var>
+			</field>
+			<field property="sentakuC" depends="required,maxlength">
+				<arg0 key="editForm.param.sentakuC" resource="true" />
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>200</var-value>
+				</var>
+			</field>
+			<field property="sentakuD" depends="required,maxlength">
+				<arg0 key="editForm.param.sentakuD" resource="true" />
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>200</var-value>
+				</var>
+			</field>
+			<field property="kaisetsu" depends="maxlength">
+				<arg0 key="editForm.param.sentakuA" resource="true" />
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>900</var-value>
+				</var>
+			</field>
+		</form>
+		
 	</formset>
 </form-validation>

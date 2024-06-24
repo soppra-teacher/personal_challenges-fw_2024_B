@@ -1,9 +1,8 @@
 window.addEventListener("DOMContentLoaded", () => {
 
 	//出題数を取得するドロップダウンリストのエレメントを取得
-	let selectEle = document.getElementsByName("questionNumberKey");
-	let javaSelect = selectEle[0];
-	let sqlSelect = selectEle[1];
+	let javaSelect = document.getElementsByName("javaQuestionNumberKey")[0];
+	let sqlSelect = document.getElementsByName("sqlQuestionNumberKey")[0];
 
 	//教科を選択するラジオボタンのエレメントを取得
 	let radioBtns = document.getElementsByName("subjectRadio");

@@ -8,23 +8,19 @@ import cashbook.dto.common.LoginDto;
 /**
  * ログインサービス
  */
-public class LoginServiceImpl implements LoginService{
-	
+public class LoginServiceImpl implements LoginService {
+
+	/** ログインDao */
 	private LoginDao loginDao;
 
 	/**
-	 * ログイン実行メソッド
-	 * @param formMap
+	 * DAOのsetter
+	 * @param loginDao
 	 */
-	public LoginDto execute(Map<String, Object> formMap){
-		LoginDto result = new LoginDto();
-		Map<String, String> map = loginDao.find(formMap);
-		result.setUserId(map.get("USER_ID"));
-		result.setUserNm(map.get("USER_NAME"));
-		result.setTeacherFlg(map.get("TEACHER_FLG"));
-		return result;
+	public void setLoginDao(LoginDao loginDao) {
+		this.loginDao = loginDao;
 	}
-	
+
 	/**
 	 * ログイン日更新メソッド
 	 * @param formMap
@@ -34,11 +30,22 @@ public class LoginServiceImpl implements LoginService{
 	}
 
 	/**
-	 * DAOのsetter
-	 * @param loginDao
+	 * ログイン実行メソッド
+	 * @param formMap
+	 * @return LoginDto
 	 */
-	public void setLoginDao(LoginDao loginDao){
-		this.loginDao = loginDao;
+	public LoginDto execute(Map<String, Object> formMap) {
+
+		LoginDto result = new LoginDto();
+
+		// ユーザマスタからデータを取得
+		Map<String, String> map = loginDao.findUser(formMap);
+
+		// 取得したデータを返却用変数の各項目に設定
+		result.setUserId(map.get("USER_ID"));
+		result.setTeacherFlg(map.get("TEACHER_FLG"));
+
+		return result;
 	}
 
 }

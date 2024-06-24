@@ -12,7 +12,7 @@ public class TeacherMenuDaoImpl extends BaseDaoImpl implements TeacherMenuDao {
 	 * @param formMap フォーム項目
 	 * @return 問題一覧
 	 */
-	public List<Map<String, String>> searchQuestion(Map<String, Object> formMap){
+	public List<Map<String, String>> searchQuestion(){
 		List<Map<String, String>> result;
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT  A.QUESTION_ID ");
@@ -27,6 +27,7 @@ public class TeacherMenuDaoImpl extends BaseDaoImpl implements TeacherMenuDao {
 		sql.append("  ON A.CATEGORY_ID = B.CATEGORY_ID ");
 		sql.append("  INNER JOIN MST_ANSWER C ");
 		sql.append("  ON A.ANSWER_ID = C.ANSWER_ID ");
+		sql.append("  WHERE A.DEL_FLG = '0' ");
 		sql.append("  ORDER BY A.INS_DATE DESC ");
 		
 		result = super.search(sql.toString());

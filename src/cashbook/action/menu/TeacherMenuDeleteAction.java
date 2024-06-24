@@ -14,7 +14,6 @@ import org.apache.struts.action.DynaActionForm;
 
 import cashbook.action.common.BaseAction;
 import cashbook.dto.common.LoginDto;
-import cashbook.dto.menu.TeacherMenuDto;
 import cashbook.service.menu.TeacherMenuService;
 import cashbook.util.CommonUtil;
 
@@ -51,12 +50,7 @@ public class TeacherMenuDeleteAction extends BaseAction {
 		// フォームの値を取得する。
 		Map<String, Object> formMap = CommonUtil.getFormMap((DynaActionForm) form);
 
-		// 問題一覧を表示するテーブル用にDBからデータを取得
-		TeacherMenuDto dto = new TeacherMenuDto();
-		dto.setList(teacherMenuService.listSearch(formMap));
 		
-		// 取得した情報をセッションに設定
-		request.getSession().setAttribute(SESSION_LIST_DTO_TEACHER, dto);
 
 		// 処理成功時の遷移先を指定する。
 		return map.findForward(ACTION_FOWARD_SUCCESS);

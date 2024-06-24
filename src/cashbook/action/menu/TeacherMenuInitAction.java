@@ -2,21 +2,17 @@ package cashbook.action.menu;
 
 import static cashbook.util.Const.*;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.DynaActionForm;
 
 import cashbook.action.common.BaseAction;
 import cashbook.dto.common.LoginDto;
 import cashbook.dto.menu.TeacherMenuDto;
 import cashbook.service.menu.TeacherMenuService;
-import cashbook.util.CommonUtil;
 import cashbook.util.TeacherMenuConst;
 
 public class TeacherMenuInitAction extends BaseAction {
@@ -48,16 +44,13 @@ public class TeacherMenuInitAction extends BaseAction {
 	 */
 	protected ActionForward doProcess(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response, LoginDto loginDto) throws Exception {
-		
-		// フォームの値を取得する。
-		Map<String, Object> formMap = CommonUtil.getFormMap((DynaActionForm) form);
 
 		// 初期表示情報を取得
 		TeacherMenuDto dto = new TeacherMenuDto();
-		dto.setList(teacherMenuService.listSearch(formMap));
+		dto.setList(teacherMenuService.listSearch());
 
 		// 取得した情報をリクエストに設定
-		request.setAttribute(TeacherMenuConst.VIEW_TEACHER_QUESTION_ID, dto);
+		request.setAttribute(TeacherMenuConst.VIEW_TEACHER_QUESTION_ID, new TeacherMenuDto());
 
 		// 取得した情報をセッションに設定
 		request.getSession().setAttribute(SESSION_LIST_DTO_TEACHER, dto);

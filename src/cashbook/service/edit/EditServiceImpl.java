@@ -5,6 +5,10 @@ import static cashbook.util.Const.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallbackWithoutResult;
+import org.springframework.transaction.support.TransactionTemplate;
+
 import cashbook.dao.common.CommonDao;
 import cashbook.dao.edit.EditDao;
 import cashbook.dto.common.LoginDto;
@@ -23,6 +27,9 @@ public class EditServiceImpl implements EditService {
 	/** 共通Dao */
 	private CommonDao commonDao;
 
+	/** 共通Dao */
+	private TransactionTemplate transactionTemplate;
+
 	/**
 	 * 共通Daoを設定します。
 	 * @param commonDao
@@ -40,11 +47,19 @@ public class EditServiceImpl implements EditService {
 	}
 
 	/**
+	 * トランザクションDAOを設定します。
+	 * @param transactionTemplate
+	 */
+	public void setTransactionTemplate(TransactionTemplate transactionTemplate) {
+		this.transactionTemplate = transactionTemplate;
+	}
+
+	/**
 	 * 登録・更新画面(登録モード)の初期表示を行う。
 	 * @param formMap
 	 * @return EditDto 初期値が格納されたDTO
 	 */
-	public EditDto registInit(Map<String, Object> formMap) {
+	public EditDto registInit() {
 
 		EditDto dto = new EditDto();
 
@@ -121,108 +136,108 @@ public class EditServiceImpl implements EditService {
 	 * @param formMap
 	 * @param loginDto
 	 */
-	public void registQuestionAnswer(Map<String, Object> formMap, LoginDto loginDto) {
+	public boolean registQuestionAnswer(Map<String, Object> formMap, LoginDto loginDto) {
 
 		try {
 
-			// セーブポイントを作成
-			commonDao.savePoint();
+			transactionTemplate.execute(new TransactionCallbackWithoutResult() {
 
-			// 問題マスタにロックをかける
-			commonDao.lockMstQuestion();
-			// 解答解説マスタにロックをかける
-			commonDao.lockMstAnswer();
+				@Override
+				protected void doInTransactionWithoutResult(TransactionStatus arg0) {
 
-			//
-			// 登録可能な解答解説IDを検索
-			//
-			int countAns = 0;
-			do {
-				countAns++;
-			} while (editDao.isExistAnswerId(countAns));
-			String answerId = "A" + (editDao.getAnswerCount() + countAns);
+					// 問題マスタにロックをかける
+					commonDao.lockMstQuestion();
+					// 解答解説マスタにロックをかける
+					commonDao.lockMstAnswer();
 
-			//
-			// 登録可能な問題IDを検索
-			//
-			int countQuestion = 0;
-			do {
-				countQuestion++;
-			} while (editDao.isExistQuestionId(countQuestion));
-			String questionId = "Q" + (editDao.getQuestionCount() + countQuestion);
+					//
+					// 登録可能な解答解説IDを検索
+					//
+					int countAns = 0;
+					do {
+						countAns++;
+					} while (editDao.isExistAnswerId(countAns));
+					String answerId = "A" + (editDao.getAnswerCount() + countAns);
 
-			//
-			// 解答解説マスタ登録用に値を設定
-			//
-			AnswerDto answerDto = new AnswerDto();
-			// 解答解説ID
-			answerDto.setAnswerId(answerId);
-			// 解答
-			answerDto.setAnswer(CommonUtil.getStr(formMap.get(EditConst.KEY_ANSWER_KEY_EDIT)));
-			// 解説
-			String kaisetuForm = CommonUtil.getStr(formMap.get(EditConst.KEY_KAISETSU_EDIT));
-			answerDto.setKaisetsu(CommonUtil.escapeQuotation(kaisetuForm));
-			// 登録ユーザ
-			answerDto.setInsUser(loginDto.getUserId());
+					//
+					// 登録可能な問題IDを検索
+					//
+					int countQuestion = 0;
+					do {
+						countQuestion++;
+					} while (editDao.isExistQuestionId(countQuestion));
+					String questionId = "Q" + (editDao.getQuestionCount() + countQuestion);
 
-			//
-			// 問題マスタ登録用の値を設定
-			//
-			QuestionDto questionDto = new QuestionDto();
-			// 問題ID
-			questionDto.setQuestionId(questionId);
-			// 分類ID
-			if (CommonUtil.getStr(formMap.get(EditConst.KEY_SUBJECT_EDIT)).equals(SELECT_JAVA_ON)) {
-				questionDto.setCategoryId(CommonUtil.getStr(formMap.get(EditConst.KEY_CATEGORY_KEY_JAVA_EDIT)));
-			} else if (CommonUtil.getStr(formMap.get(EditConst.KEY_SUBJECT_EDIT)).equals(SELECT_SQL_ON)) {
-				questionDto.setCategoryId(CommonUtil.getStr(formMap.get(EditConst.KEY_CATEGORY_KEY_SQL_EDIT)));
-			}
-			// 解答解説ID
-			questionDto.setAnswerId(answerDto.getAnswerId());
-			// 問題タイトル
-			String questionTitleForm = CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIONTITLE_EDIT));
-			questionDto.setQuestionTitle(CommonUtil.escapeQuotation(questionTitleForm));
-			// 問題
-			String question = CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIO_EDIT));
-			questionDto.setQuestion(CommonUtil.escapeQuotation(question));
-			// 選択肢A
-			String sentakuA = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_A_EDIT));
-			questionDto.setSentakuA(CommonUtil.escapeQuotation(sentakuA));
-			// 選択肢B
-			String sentakuB = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_B_EDIT));
-			questionDto.setSentakuB(CommonUtil.escapeQuotation(sentakuB));
-			// 選択肢C
-			String sentakuC = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_C_EDIT));
-			questionDto.setSentakuC(CommonUtil.escapeQuotation(sentakuC));
-			// 選択肢D
-			String sentakuD = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_D_EDIT));
-			questionDto.setSentakuD(CommonUtil.escapeQuotation(sentakuD));
-			// 登録ユーザ
-			questionDto.setInsUser(loginDto.getUserId());
+					//
+					// 解答解説マスタ登録用に値を設定
+					//
+					AnswerDto answerDto = new AnswerDto();
+					// 解答解説ID
+					answerDto.setAnswerId(answerId);
+					// 解答
+					answerDto.setAnswer(CommonUtil.getStr(formMap.get(EditConst.KEY_ANSWER_KEY_EDIT)));
+					// 解説
+					String kaisetuForm = CommonUtil.getStr(formMap.get(EditConst.KEY_KAISETSU_EDIT));
+					answerDto.setKaisetsu(CommonUtil.escapeQuotation(kaisetuForm));
+					// 登録ユーザ
+					answerDto.setInsUser(loginDto.getUserId());
 
-			//
-			// 解答解説マスタに登録
-			//
-			editDao.registAnswer(answerDto);
+					//
+					// 問題マスタ登録用の値を設定
+					//
+					QuestionDto questionDto = new QuestionDto();
+					// 問題ID
+					questionDto.setQuestionId(questionId);
+					// 分類ID
+					if (CommonUtil.getStr(formMap.get(EditConst.KEY_SUBJECT_EDIT)).equals(SELECT_JAVA_ON)) {
+						questionDto.setCategoryId(CommonUtil.getStr(formMap.get(EditConst.KEY_CATEGORY_KEY_JAVA_EDIT)));
+					} else if (CommonUtil.getStr(formMap.get(EditConst.KEY_SUBJECT_EDIT)).equals(SELECT_SQL_ON)) {
+						questionDto.setCategoryId(CommonUtil.getStr(formMap.get(EditConst.KEY_CATEGORY_KEY_SQL_EDIT)));
+					}
+					// 解答解説ID
+					questionDto.setAnswerId(answerDto.getAnswerId());
+					// 問題タイトル
+					String questionTitleForm = CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIONTITLE_EDIT));
+					questionDto.setQuestionTitle(CommonUtil.escapeQuotation(questionTitleForm));
+					// 問題
+					String question = CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIO_EDIT));
+					questionDto.setQuestion(CommonUtil.escapeQuotation(question));
+					// 選択肢A
+					String sentakuA = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_A_EDIT));
+					questionDto.setSentakuA(CommonUtil.escapeQuotation(sentakuA));
+					// 選択肢B
+					String sentakuB = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_B_EDIT));
+					questionDto.setSentakuB(CommonUtil.escapeQuotation(sentakuB));
+					// 選択肢C
+					String sentakuC = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_C_EDIT));
+					questionDto.setSentakuC(CommonUtil.escapeQuotation(sentakuC));
+					// 選択肢D
+					String sentakuD = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_D_EDIT));
+					questionDto.setSentakuD(CommonUtil.escapeQuotation(sentakuD));
+					// 登録ユーザ
+					questionDto.setInsUser(loginDto.getUserId());
 
-			//
-			// 問題マスタに登録
-			//
-			editDao.registQuestion(questionDto);
+					//
+					//	登録処理
+					//
 
-			// 処理をコミット
-			commonDao.commit();
+					// 解答解説マスタに登録
+					editDao.registAnswer(answerDto);
+					// 問題マスタに登録
+					editDao.registQuestion(questionDto);
+
+				}
+			});
+
+			return true;
 
 		} catch (Exception e) {
 
-			// キャッチしたエラーをコンソールへ表示
 			System.out.println(e.getMessage());
 
-			// 処理をロールバック
-			commonDao.rollback();
+			return false;
 
 		}
-
 	}
 
 	/**
@@ -230,90 +245,90 @@ public class EditServiceImpl implements EditService {
 	 * @param formMap
 	 * @param loginDto
 	 */
-	public void updateQuestionAnswer(Map<String, Object> formMap, LoginDto loginDto) {
+	public boolean updateQuestionAnswer(Map<String, Object> formMap, LoginDto loginDto) {
 
 		try {
 
-			// セーブポイントを作成
-			commonDao.savePoint();
+			transactionTemplate.execute(new TransactionCallbackWithoutResult() {
 
-			// 問題マスタにロックをかける
-			commonDao.lockMstQuestion();
-			// 解答解説マスタにロックをかける
-			commonDao.lockMstAnswer();
+				@Override
+				protected void doInTransactionWithoutResult(TransactionStatus arg0) {
 
-			//
-			// 解答解説マスタ登録用の値を設定
-			//
-			AnswerDto answerDto = new AnswerDto();
-			// 解答解説ID
-			answerDto.setAnswerId(CommonUtil.getStr(formMap.get(EditConst.KEY_ANSWER_ID_EDIT)));
-			// 解答
-			String answerForm = CommonUtil.getStr(formMap.get(EditConst.KEY_ANSWER_KEY_EDIT));
-			answerDto.setAnswer(CommonUtil.escapeQuotation(answerForm));
-			// 解説
-			String kaisetuForm = CommonUtil.getStr(formMap.get(EditConst.KEY_KAISETSU_EDIT));
-			answerDto.setKaisetsu(CommonUtil.escapeQuotation(kaisetuForm));
-			// 更新ユーザ
-			answerDto.setUpdUser(loginDto.getUserId());
+					// 問題マスタにロックをかける
+					commonDao.lockMstQuestion();
+					// 解答解説マスタにロックをかける
+					commonDao.lockMstAnswer();
 
-			//
-			// 問題マスタ登録用の値を設定
-			//
-			QuestionDto questionDto = new QuestionDto();
-			// 問題ID
-			questionDto.setQuestionId(CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTION_ID_EDIT)));
-			// 解答解説ID
-			questionDto.setAnswerId(answerDto.getAnswerId());
-			// 分類ID
-			if (CommonUtil.getStr(formMap.get(EditConst.KEY_SUBJECT_EDIT)).equals(SELECT_JAVA_ON)) {
-				questionDto.setCategoryId(CommonUtil.getStr(formMap.get(EditConst.KEY_CATEGORY_KEY_JAVA_EDIT)));
-			} else {
-				questionDto.setCategoryId(CommonUtil.getStr(formMap.get(EditConst.KEY_CATEGORY_KEY_SQL_EDIT)));
-			}
-			// 問題タイトル
-			String questionTitleForm = CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIONTITLE_EDIT));
-			questionDto.setQuestionTitle(CommonUtil.escapeQuotation(questionTitleForm));
-			// 問題
-			String question = CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIO_EDIT));
-			questionDto.setQuestion(CommonUtil.escapeQuotation(question));
-			// 選択肢A
-			String sentakuA = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_A_EDIT));
-			questionDto.setSentakuA(CommonUtil.escapeQuotation(sentakuA));
-			// 選択肢B
-			String sentakuB = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_B_EDIT));
-			questionDto.setSentakuB(CommonUtil.escapeQuotation(sentakuB));
-			// 選択肢C
-			String sentakuC = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_C_EDIT));
-			questionDto.setSentakuC(CommonUtil.escapeQuotation(sentakuC));
-			// 選択肢D
-			String sentakuD = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_D_EDIT));
-			questionDto.setSentakuD(CommonUtil.escapeQuotation(sentakuD));
-			// 更新ユーザ
-			questionDto.setUpdUser(loginDto.getUserId());
+					//
+					// 解答解説マスタ登録用の値を設定
+					//
+					AnswerDto answerDto = new AnswerDto();
+					// 解答解説ID
+					answerDto.setAnswerId(CommonUtil.getStr(formMap.get(EditConst.KEY_ANSWER_ID_EDIT)));
+					// 解答
+					String answerForm = CommonUtil.getStr(formMap.get(EditConst.KEY_ANSWER_KEY_EDIT));
+					answerDto.setAnswer(CommonUtil.escapeQuotation(answerForm));
+					// 解説
+					String kaisetuForm = CommonUtil.getStr(formMap.get(EditConst.KEY_KAISETSU_EDIT));
+					answerDto.setKaisetsu(CommonUtil.escapeQuotation(kaisetuForm));
+					// 更新ユーザ
+					answerDto.setUpdUser(loginDto.getUserId());
 
-			//
-			// 解答解説マスタを更新
-			//
-			editDao.updateAnswer(answerDto);
+					//
+					// 問題マスタ登録用の値を設定
+					//
+					QuestionDto questionDto = new QuestionDto();
+					// 問題ID
+					questionDto.setQuestionId(CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTION_ID_EDIT)));
+					// 解答解説ID
+					questionDto.setAnswerId(answerDto.getAnswerId());
+					// 分類ID
+					if (CommonUtil.getStr(formMap.get(EditConst.KEY_SUBJECT_EDIT)).equals(SELECT_JAVA_ON)) {
+						questionDto.setCategoryId(CommonUtil.getStr(formMap.get(EditConst.KEY_CATEGORY_KEY_JAVA_EDIT)));
+					} else {
+						questionDto.setCategoryId(CommonUtil.getStr(formMap.get(EditConst.KEY_CATEGORY_KEY_SQL_EDIT)));
+					}
+					// 問題タイトル
+					String questionTitleForm = CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIONTITLE_EDIT));
+					questionDto.setQuestionTitle(CommonUtil.escapeQuotation(questionTitleForm));
+					// 問題
+					String question = CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIO_EDIT));
+					questionDto.setQuestion(CommonUtil.escapeQuotation(question));
+					// 選択肢A
+					String sentakuA = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_A_EDIT));
+					questionDto.setSentakuA(CommonUtil.escapeQuotation(sentakuA));
+					// 選択肢B
+					String sentakuB = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_B_EDIT));
+					questionDto.setSentakuB(CommonUtil.escapeQuotation(sentakuB));
+					// 選択肢C
+					String sentakuC = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_C_EDIT));
+					questionDto.setSentakuC(CommonUtil.escapeQuotation(sentakuC));
+					// 選択肢D
+					String sentakuD = CommonUtil.getStr(formMap.get(EditConst.KEY_SENTAKU_D_EDIT));
+					questionDto.setSentakuD(CommonUtil.escapeQuotation(sentakuD));
+					// 更新ユーザ
+					questionDto.setUpdUser(loginDto.getUserId());
 
-			//
-			// 問題マスタを更新
-			//
-			editDao.updateQuestion(questionDto);
+					//
+					//	更新処理
+					//
 
-			// 処理をコミット
-			commonDao.commit();
+					// 解答解説マスタを更新
+					editDao.updateAnswer(answerDto);
+					// 問題マスタを更新
+					editDao.updateQuestion(questionDto);
+
+				}
+			});
+
+			return true;
 
 		} catch (Exception e) {
 
-			// キャッチしたエラーをコンソールへ表示
 			System.out.println(e.getMessage());
 
-			// 処理をロールバック
-			commonDao.rollback();
+			return false;
 
 		}
-
 	}
 }

@@ -11,14 +11,13 @@ public interface LoginDao {
 	/**
 	 * ログイン情報を取得する
 	 * @param formMap フォーム項目
-	 * @return ログイン情報
+	 * @return ユーザID
 	 */
-	public Map<String, String> find(Map<String, Object> formMap);
+	public Map<String, String> findUser(Map<String, Object> formMap);
 	
 	/**
 	 * ログイン日を更新する
 	 * @param formMap フォーム項目
-	 * @return ログイン情報
 	 */
 	public void updateLoginDate(Map<String, Object> formMap);
 }
