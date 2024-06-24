@@ -1,13 +1,13 @@
 package cashbook.util;
 
 /**
- * 共通定数クラス
+ * 問題解答画面の定数クラス
  */
 public class QaConst {
 
 	/** フォーム名 */
 	public static final String FORM_QUESTION_ANSWER = "qaForm";
-	
+
 	/** 問題 */
 	public static final String KEY_QUESTIO_EDIT = "question";
 	/** 選択A */
@@ -22,4 +22,5 @@ public class QaConst {
 	public static final String KEY_ANSWER_EDIT = "answer";
 	/** 解説 */
 	public static final String KEY_KAISETSU_EDIT = "kaisetsu";
+	
 }

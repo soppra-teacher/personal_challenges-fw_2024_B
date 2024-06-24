@@ -9,16 +9,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	//分類ドロップダウンリストの初期表示
 	if (radioBtns[0].checked) {
-		javaSelect.className = "select select1";
+		javaSelect.className = "select";
 		sqlSelect.className = "hide";
 	} else {
 		javaSelect.className = "hide";
-		sqlSelect.className = "select select1";
+		sqlSelect.className = "select";
 	}
 
 	radioBtns[0].addEventListener("change", () => {
 
-		javaSelect.className = "select select1";
+		javaSelect.className = "select";
 		sqlSelect.className = "hide";
 
 	});
@@ -26,14 +26,10 @@ window.addEventListener("DOMContentLoaded", () => {
 	radioBtns[1].addEventListener("change", () => {
 
 		javaSelect.className = "hide";
-		sqlSelect.className = "select select1";
+		sqlSelect.className = "select";
 
 	});
 
-
-	//
-	//	画面レイアウト2を表示
-	//
 	document.getElementById("btn").addEventListener("click", () => {
 
 		const content1 = document.getElementById("content1");
@@ -49,12 +45,11 @@ window.addEventListener("DOMContentLoaded", () => {
 			content2.className = "hide";
 			content3.className = "hide";
 		}
+		//		明日やるよ！！！！！！by山本優太
+		//		document.
 
 	});
 
-	//
-	//	画面レイアウト3を表示
-	//
 	document.getElementById("btn2").addEventListener("click", () => {
 
 		const content1 = document.getElementById("content1");
@@ -73,10 +68,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	});
 
-
-	//
-	//	画面レイアウト1を表示
-	//
 	document.getElementById("updatebtn").addEventListener("click", () => {
 
 		const content1 = document.getElementById("content1");
@@ -95,9 +86,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	});
 
-	//
-	//	画面レイアウト2を表示
-	//
 	document.getElementById("updatebtn2").addEventListener("click", () => {
 
 		const content1 = document.getElementById("content1");
@@ -116,4 +104,91 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	});
 
+	document.getElementById("btn").addEventListener("click", () => {
+		elem1 = document.getElementById("output1");
+
+		elem1.innerHTML = "";
+		//①ラジオボタン要素の取得
+		radio = document.getElementsByName("subject");
+
+		//②ラジオボタン選択状態の取得
+		//if(radio[i].checked)のみならずfor文で要素をループさせる必要あり。
+		for (i = 0; i < radio.length; i++) {
+			if (radio[i].checked) {
+				//③ラジオボタン選択値の取得
+				//　→結果を<div id="output1">要素に出力
+				elem1.innerHTML += radio[i].value;
+			}
+		}
+	});
+
+	//分類セレクトボックスの取得Java
+	document.getElementById("btn2").addEventListener("click", () => {
+		const ta4 = document.getElementsByName("categoryKeyJava")[0].selectedIndex;
+		var a = document.getElementsByName("categoryKeyJava")[0].options[ta4].label;
+		target = document.getElementById("output2");
+		target.innerText = a;
+	});
+
+	//分類セレクトボックスの取得SQL
+	document.getElementById("btn2").addEventListener("click", () => {
+		const ta4 = document.getElementsByName("categoryKeySql")[0].selectedIndex;
+		var a = document.getElementsByName("categoryKeySql")[0].options[ta4].label;
+		target = document.getElementById("output2");
+		target.innerText = a;
+	});
+
+	//問題タイトルテキストボックスの取得
+	document.getElementById("btn").addEventListener("click", () => {
+		input = document.getElementsByName("questionTitle")[0].value;
+		target = document.getElementById("output3");
+		target.innerHTML = input;
+	});
+
+	//問題文テキストエリアの取得
+	document.getElementById("btn").addEventListener("click", () => {
+		const ta3 = document.getElementsByName("question")[0].value;
+		document.getElementById("output4").textContent = ta3;
+	});
+
+	//選択肢aテキストボックスの取得
+	document.getElementById("btn2").addEventListener("click", () => {
+		input = document.getElementsByName("sentakuA")[0].value;
+		target = document.getElementById("output5");
+		target.innerHTML = input;
+	});
+
+	//選択肢bテキストボックスの取得
+	document.getElementById("btn2").addEventListener("click", () => {
+		input = document.getElementsByName("sentakuB")[0].value;
+		target = document.getElementById("output6");
+		target.innerHTML = input;
+	});
+
+	//選択肢cテキストボックスの取得
+	document.getElementById("btn2").addEventListener("click", () => {
+		input = document.getElementsByName("sentakuC")[0].value;
+		target = document.getElementById("output7");
+		target.innerHTML = input;
+	});
+
+	//選択肢dテキストボックスの取得
+	document.getElementById("btn2").addEventListener("click", () => {
+		input = document.getElementsByName("sentakuD")[0].value;
+		target = document.getElementById("output8");
+		target.innerHTML = input;
+	});
+
+	//解答セレクトボックスの取得
+	document.getElementById("btn2").addEventListener("click", () => {
+		const ta4 = document.getElementsByName("answerKey")[0].value;
+		document.getElementById("output9").textContent = ta4;
+	});
+
+
+	//解説テキストエリアの取得
+	document.getElementById("btn2").addEventListener("click", () => {
+		const ta4 = document.getElementsByName("kaisetsu")[0].value;
+		document.getElementById("output10").textContent = ta4;
+	});
 });

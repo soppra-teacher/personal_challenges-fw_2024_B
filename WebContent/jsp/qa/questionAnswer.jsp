@@ -14,6 +14,8 @@
 	href="<%=request.getContextPath()%>/css/common.css" />
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/qa.css" />
+<script language="JavaScript" type="text/javascript" charset="utf-8"
+	src="<%=request.getContextPath()%>/js/qalogic.js"></script>
 <title>–â‘è‰ğ“š‰æ–Ê</title>
 </head>
 
@@ -27,32 +29,43 @@
 	</jsp:include>
 
 	<div class="content">
-		<div class="CurrentQuestionCount">
-			<p>
-				‘æ
-				<bean:write name="viewBeanSetting" property="currentQuestionCount" />
-				–â
-			</p>
-		</div>
+		<div class="hide" id="popup"></div>
 		<div class="questionArea">
-			<html:textarea name="viewBean" property="question" readonly="true" />
+			<div class="questionNumber">
+				<span> ‘æ<bean:write name="viewBeanSetting"
+						property="currentQuestionCount" />–â
+				</span>
+			</div>
+			<div class="question">
+				<html:textarea name="viewBean" property="question" readonly="true" />
+			</div>
 		</div>
-		<div class="sentakushiArea">
+		<div class="sentakushi">
 			<ul>
-				<li><span>A</span>
-				<html:textarea name="viewBean" property="sentakuA" readonly="true" /></li>
-				<li><span>B</span>
-				<html:textarea name="viewBean" property="sentakuB" readonly="true" /></li>
-				<li><span>C</span>
-				<html:textarea name="viewBean" property="sentakuC" readonly="true" /></li>
-				<li><span>D</span>
-				<html:textarea name="viewBean" property="sentakuD" readonly="true" /></li>
+				<li><button class="selectBtn">a</button>
+					<html:textarea name="viewBean" property="sentakuA" readonly="true" /></li>
+				<li><button class="selectBtn">b</button>
+					<html:textarea name="viewBean" property="sentakuB" readonly="true" /></li>
+				<li><button class="selectBtn">c</button>
+					<html:textarea name="viewBean" property="sentakuC" readonly="true" /></li>
+				<li><button class="selectBtn">d</button>
+					<html:textarea name="viewBean" property="sentakuD" readonly="true" /></li>
 			</ul>
 		</div>
+		<div class="showAnswerBtnArea">
+			<button id="showAnswerBtn">³‰ğ‚ğ•\¦</button>
+		</div>
+		<div id="answer" class="answerArea hide">
+			<div class="answerSentakushiArea">
+				<span>³‰ğ</span><span id="answerSentakushi"><bean:write
+						name="viewBean" property="answer" />
+				</span>
+			</div>
+			<div class="kaisetuArea">
+				<bean:write name="viewBean" property="kaisetsu" />
+			</div>
+		</div>
 	</div>
-
-	<bean:write name="viewBean" property="answer" />
-	<bean:write name="viewBean" property="kaisetsu" />
 
 	<html:link action="/QuestionAnswerInit">Ÿ‚Ì–â‘è</html:link>
 
