@@ -1,7 +1,7 @@
 package cashbook.util;
 
 /**
- * 共通定数クラス
+ * 講師メニュー画面定数クラス
  */
 public class TeacherMenuConst {
 	

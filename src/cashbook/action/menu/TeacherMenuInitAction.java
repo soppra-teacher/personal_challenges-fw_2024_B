@@ -45,8 +45,9 @@ public class TeacherMenuInitAction extends BaseAction {
 	protected ActionForward doProcess(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response, LoginDto loginDto) throws Exception {
 
-		// 初期表示情報を取得
 		TeacherMenuDto dto = new TeacherMenuDto();
+
+		// 初期表示情報を取得
 		dto.setList(teacherMenuService.listSearch());
 
 		// 取得した情報をリクエストに設定
@@ -57,5 +58,6 @@ public class TeacherMenuInitAction extends BaseAction {
 
 		// 処理成功時の遷移先を指定する。
 		return map.findForward(ACTION_FOWARD_SUCCESS);
+		
 	}
 }
