@@ -12,14 +12,13 @@ public class LoginDaoImpl extends BaseDaoImpl implements LoginDao {
 	/**
 	 * ログイン情報を取得する
 	 * @param formMap フォーム項目
-	 * @return ログイン情報
+	 * @return ユーザID
 	 */
-	public Map<String, String> find(Map<String, Object> formMap) {
+	public Map<String, String> findUser(Map<String, Object> formMap) {
 
 		// フォーム項目の入力値でSQLを組み立てる。
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT USER_ID ");
-		sql.append("     , USER_NAME");
 		sql.append("     , TEACHER_FLG");
 		sql.append("  FROM MST_USER ");
 		sql.append(" WHERE USER_ID = '").append(formMap.get(UserConst.KEY_USER_ID)).append("' ");
@@ -35,7 +34,6 @@ public class LoginDaoImpl extends BaseDaoImpl implements LoginDao {
 	/**
 	 * ログイン日を更新する
 	 * @param formMap フォーム項目
-	 * @return ログイン情報
 	 */
 	public void updateLoginDate(Map<String, Object> formMap) {
 		
