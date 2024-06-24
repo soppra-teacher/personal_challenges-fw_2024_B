@@ -1,13 +1,13 @@
 package cashbook.util;
 
 /**
- * 共通定数クラス
+ * 受験者メニュー画面定数クラス
  */
 public class JukenshaMenuConst {
-	
+
 	/** フォーム名(受験者フォーム) */
 	public static final String FORM_JUKENSHA_MENU = "jukenshaForm";
-	
+
 	/** キー値：教科 */
 	public static final String KEY_SUBJECT_RADIO = "subjectRadio";
 	/** キー値：Java問題数KEY */
@@ -18,4 +18,5 @@ public class JukenshaMenuConst {
 	public static final String KEY_JAVA_QUESTION_NUMBER = "javaQuestionNumber";
 	/** キー値：SQL問題数 */
 	public static final String KEY_SQL_QUESTION_NUMBER = "sqlQuestionNumber";
+	
 }

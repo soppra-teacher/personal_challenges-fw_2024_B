@@ -11,6 +11,7 @@ public class JukenshaMenuDaoImpl extends BaseDaoImpl implements JukenshaMenuDao 
 	 * @return Javaの問題数
 	 */
 	public int getJavaQuestionCount() {
+		// SQLを組み立てる
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT COUNT(A.QUESTION_ID) ");
 		sql.append("  FROM MST_QUESTION A ");
@@ -19,8 +20,10 @@ public class JukenshaMenuDaoImpl extends BaseDaoImpl implements JukenshaMenuDao 
 		sql.append("  WHERE B.SUBJECT = 'Java' ");
 		sql.append("    AND A.DEL_FLG = '0' ");
 
+		// SQLを実行
 		Map<String, String> result = super.find(sql.toString());
 
+		// データ件数を取得し、返却
 		return Integer.parseInt(result.get("COUNT(A.QUESTION_ID)"));
 	}
 
@@ -29,6 +32,7 @@ public class JukenshaMenuDaoImpl extends BaseDaoImpl implements JukenshaMenuDao 
 	 * @return SQLの問題数
 	 */
 	public int getSQLQuestionCount() {
+		// SQLを組み立てる
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT COUNT(A.QUESTION_ID) ");
 		sql.append("  FROM MST_QUESTION A ");
@@ -37,8 +41,10 @@ public class JukenshaMenuDaoImpl extends BaseDaoImpl implements JukenshaMenuDao 
 		sql.append("  WHERE B.SUBJECT = 'SQL' ");
 		sql.append("    AND A.DEL_FLG = '0' ");
 
+		// SQLを実行
 		Map<String, String> result = super.find(sql.toString());
 
+		// データ件数を取得し、返却
 		return Integer.parseInt(result.get("COUNT(A.QUESTION_ID)"));
 	}
 }

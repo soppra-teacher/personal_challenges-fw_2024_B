@@ -30,7 +30,7 @@
 
 		<div class="contents">
 			<ul>
-				<li class="title">問題種類：</li>
+				<li class="title">教科：</li>
 				<li><html:radio name="inputBean" property="subjectRadio"
 						value="java" /> Java</li>
 				<li><html:radio name="inputBean" property="subjectRadio"
@@ -38,7 +38,7 @@
 			</ul>
 
 			<ul>
-				<li class="title">問題数：</li>
+				<li class="title">出題数：</li>
 				<li><html:select name="inputBean" property="javaQuestionNumberKey"
 						styleClass="select">
 						<html:optionsCollection name="inputBean"

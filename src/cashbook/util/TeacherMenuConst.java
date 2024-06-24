@@ -20,4 +20,5 @@ public class TeacherMenuConst {
 	public static final String VIEW_TEACHER_ANSWER = "answer";
 	/** 解説 */
 	public static final String VIEW_TEACHER_KAISETSU = "kaisetsu";
+	
 }
