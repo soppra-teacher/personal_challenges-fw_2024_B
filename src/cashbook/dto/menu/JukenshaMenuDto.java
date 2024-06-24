@@ -2,6 +2,9 @@ package cashbook.dto.menu;
 
 import java.util.Map;
 
+/**
+ * 受験者メニュー画面DTOクラス
+ */
 public class JukenshaMenuDto {
 
 	/** 教科選択用のラジオボタン */

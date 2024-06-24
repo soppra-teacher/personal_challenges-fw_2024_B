@@ -16,6 +16,7 @@ import cashbook.action.common.BaseAction;
 import cashbook.dto.common.LoginDto;
 import cashbook.service.menu.TeacherMenuService;
 import cashbook.util.CommonUtil;
+import cashbook.util.TeacherMenuConst;
 
 public class TeacherMenuDeleteAction extends BaseAction {
 
@@ -50,9 +51,14 @@ public class TeacherMenuDeleteAction extends BaseAction {
 		// フォームの値を取得する。
 		Map<String, Object> formMap = CommonUtil.getFormMap((DynaActionForm) form);
 
-		
+		// 選択された問題IDを取得
+		String questionId = CommonUtil.getStr(formMap.get(TeacherMenuConst.VIEW_TEACHER_QUESTION_ID));
+
+		// 削除処理
+		teacherMenuService.deleteQA(questionId, loginDto);
 
 		// 処理成功時の遷移先を指定する。
 		return map.findForward(ACTION_FOWARD_SUCCESS);
+		
 	}
 }

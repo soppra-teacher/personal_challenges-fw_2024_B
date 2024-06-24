@@ -1,5 +1,5 @@
 <%@ page pageEncoding="Windows-31J"%>
-<%@ page contentType="text/html;charset=Windows-31J"%>
+<%@ page contentType="text/html;charset=utf-8"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
@@ -9,12 +9,14 @@
 <html:html lang="ja">
 <head>
 <meta content="ja" http-equiv="Content-Language" />
-<meta  charset=utf-8" http-equiv="Content-Type" />
+<meta charset=utf-8 " http-equiv="Content-Type" />
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/teacherMenu.css" />
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/common.css" />
 <script type="text/javascript" charset="utf-8" src="js/teacherMenu.js"></script>
+<script language="JavaScript" type="text/javascript" charset="shift_jis"
+	src="js/common.js"></script>
 <title>講師メニュー</title>
 </head>
 
@@ -73,24 +75,25 @@
 				<html:hidden name="inputBean" property="questionId" />
 				<div id="updlink" class="hide">
 					<html:submit>この問題を更新</html:submit>
-				</div>
 			</html:form>
 			<html:form action="/TeacherMenuDelete">
-				<html:hidden name="inputBean" property="questionId" />
-				<div id="updlink" class="">
-					<html:submit>この問題を削除</html:submit>
-				</div>
+				<html:hidden property="operation" value="" />
+				<html:hidden name="inputBean" property="questionId"
+					styleClass="update" />
+				<html:submit property="operation"
+					onclick="callAction(this.form, 'delete');">この問題を削除</html:submit>
 			</html:form>
-			<ul id="liwapper" class="hide">
-				<li class="item"><spna id=questionId></spna></li>
-				<li class="item"><spna id=subject></spna></li>
-				<li class="item"><spna id=category></spna></li>
-				<li class="item"><spna id=questionTitle_S></spna></li>
-				<li class="item"><spna id=questionText></spna></li>
-				<li class="item"><spna id=answer></spna></li>
-				<li class="item"><spna id=kaisetsuText></spna> </spna></li>
-			</ul>
+
 		</div>
+		<ul id="liwapper" class="hide">
+			<li class="item"><spna id=questionId></spna></li>
+			<li class="item"><spna id=subject></spna></li>
+			<li class="item"><spna id=category></spna></li>
+			<li class="item"><spna id=questionTitle_S></spna></li>
+			<li class="item"><spna id=questionText></spna></li>
+			<li class="item"><spna id=answer></spna></li>
+			<li class="item"><spna id=kaisetsuText></spna> </spna></li>
+		</ul>
 	</div>
 </body>
 </html:html>

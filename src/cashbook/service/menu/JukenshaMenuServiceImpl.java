@@ -20,7 +20,6 @@ public class JukenshaMenuServiceImpl implements JukenshaMenuService {
 
 	/**
 	 * Java問題数を取得
-	 * @param formMap
 	 * @return Javaの問題数
 	 */
 	public Map<String, String> getJavaQuestionCount() {
@@ -28,7 +27,6 @@ public class JukenshaMenuServiceImpl implements JukenshaMenuService {
 		// Javaの問題数を取得
 		int max = jukenshaMenuDao.getJavaQuestionCount();
 
-		// 取得した問題数を返却用変数に格納
 		Map<String, String> result = new LinkedHashMap<String, String>();
 
 		// 問題を5問ずつに区切る
@@ -52,7 +50,6 @@ public class JukenshaMenuServiceImpl implements JukenshaMenuService {
 
 	/**
 	 * SQL問題数を取得
-	 * @param formMap
 	 * @return SQLの問題数
 	 */
 	public Map<String, String> getSQLQuestionCount() {
@@ -60,9 +57,9 @@ public class JukenshaMenuServiceImpl implements JukenshaMenuService {
 		// SQLの問題数を取得
 		int max = jukenshaMenuDao.getSQLQuestionCount();
 
-		// 取得した問題数を返却用変数に格納
 		Map<String, String> result = new LinkedHashMap<String, String>();
 
+		// 問題を5問ずつに区切る
 		int count = 1;
 		int ans = 0;
 		while (true) {

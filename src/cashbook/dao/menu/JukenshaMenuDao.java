@@ -13,4 +13,5 @@ public interface JukenshaMenuDao {
 	 * @return SQLの問題数
 	 */
 	public int getSQLQuestionCount();
+	
 }

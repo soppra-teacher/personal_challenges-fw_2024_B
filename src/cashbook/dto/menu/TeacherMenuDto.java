@@ -2,6 +2,9 @@ package cashbook.dto.menu;
 
 import java.util.List;
 
+/**
+ * 講師メニュー画面DTOクラス
+ */
 public class TeacherMenuDto {
 
 	/** 問題ID */

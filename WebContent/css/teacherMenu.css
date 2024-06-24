@@ -1,3 +1,4 @@
+
 @charset "UTF-8";
 
 * {
@@ -171,11 +172,13 @@ div.questionID a {
 }
 
 .update {
+	display: flex;
 	text-align: left;
 	margin-left: 5%;
 	padding-top: 2%;
 	padding-bottom: 5%;
 	border-bottom: solid 1px dimgray;
+	display: flex;
 }
 
 .site-header__middle {
@@ -196,8 +199,17 @@ input[type=submit] {
 	background: white;
 	box-shadow: 0 0 5px lightgrey;
 	font-size: 1.2rem;
+	margin:10px;
 }
 
+
 input[type=submit]:hover {
-	cursor: pointer;
+	margin: 10px;
+	padding: 5px 30px 5px 30px;
+	border-radius: 3px;
+	color: blue;
+	border: solid 1px lightgray;
+	background: white;
+	box-shadow: 0 0 5px lightgrey;
+	font-size: 1.2rem;
 }

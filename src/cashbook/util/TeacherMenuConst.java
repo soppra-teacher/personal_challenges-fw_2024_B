@@ -1,7 +1,7 @@
 package cashbook.util;
 
 /**
- * 共通定数クラス
+ * 講師メニュー画面定数クラス
  */
 public class TeacherMenuConst {
 	
@@ -20,4 +20,5 @@ public class TeacherMenuConst {
 	public static final String VIEW_TEACHER_ANSWER = "answer";
 	/** 解説 */
 	public static final String VIEW_TEACHER_KAISETSU = "kaisetsu";
+	
 }

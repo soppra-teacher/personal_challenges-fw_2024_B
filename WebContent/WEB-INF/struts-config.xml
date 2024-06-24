@@ -94,16 +94,6 @@
 			scope="request">
 			<forward name="success" path="/jsp/menu/teacherMenu.jsp" />
 		</action>
-		<!-- ディスパッチ -->
-		<action
-			path="/TeacherMenuDisp"
-			type="cashbook.action.menu.TeacherMenuDispAction"
-			name="teacherListForm"
-			validate="false"
-			parameter="operation"
-			scope="request">
-			<forward name="delete" path="/TeacherMenuDelete.do" />
-		</action>
 		<!-- 削除 -->
 		<action
 			path="/TeacherMenuDelete"
