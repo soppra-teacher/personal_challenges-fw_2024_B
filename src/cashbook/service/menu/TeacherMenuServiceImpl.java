@@ -59,6 +59,7 @@ public class TeacherMenuServiceImpl implements TeacherMenuService {
 	 */
 	public void deleteQA(String questioId, LoginDto loginDto) {
 
+		// 引数問題IDの問題を論理削除する
 		teacherMenuDao.deleteQuestion(questioId, loginDto);
 
 	}

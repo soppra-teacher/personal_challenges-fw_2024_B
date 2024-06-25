@@ -1,7 +1,7 @@
 package cashbook.util;
 
 /**
- * 共通定数クラス
+ * 登録・更新画面定数クラス
  */
 public class EditConst {
 

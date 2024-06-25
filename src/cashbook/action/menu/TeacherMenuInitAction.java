@@ -51,7 +51,7 @@ public class TeacherMenuInitAction extends BaseAction {
 		dto.setList(teacherMenuService.listSearch());
 
 		// 取得した情報をリクエストに設定
-		request.setAttribute(TeacherMenuConst.VIEW_TEACHER_QUESTION_ID, new TeacherMenuDto());
+		request.setAttribute(TeacherMenuConst.FORM_TEACHER_MENU, dto);
 
 		// 取得した情報をセッションに設定
 		request.getSession().setAttribute(SESSION_LIST_DTO_TEACHER, dto);

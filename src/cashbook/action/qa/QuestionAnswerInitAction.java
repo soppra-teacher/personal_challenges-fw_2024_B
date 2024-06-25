@@ -77,15 +77,15 @@ public class QuestionAnswerInitAction extends BaseAction {
 						.getStr(formMap.get(JukenshaMenuConst.KEY_SQL_QUESTION_NUMBER_KEY));
 				settingDto.setQuestionCount(Integer.parseInt(str_questionCount));
 			}
-			// 現在の問題数
+			// 現在の問題数に0を設定
 			settingDto.setCurrentQuestionCount(0);
-			// ひとつ前の問題ID
+			// ひとつ前の問題IDをクリア
 			settingDto.setBeforeQuestionId("");
 
 		} else {
 
 			//
-			//	出題の設定をチェック
+			//	出題数のチェック
 			//
 
 			// 出題の設定を取得

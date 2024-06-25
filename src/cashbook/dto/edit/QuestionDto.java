@@ -2,6 +2,9 @@ package cashbook.dto.edit;
 
 import cashbook.dto.common.BaseDto;
 
+/**
+ * 問題マスタDTOクラス
+ */
 public class QuestionDto extends BaseDto {
 
 	/** 問題ID */

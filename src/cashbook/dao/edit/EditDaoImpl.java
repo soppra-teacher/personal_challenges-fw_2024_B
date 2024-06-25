@@ -12,7 +12,7 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 
 	/**
 	 * Javaの分類を取得
-	 * @return Map<String, String> 分類ID:分類
+	 * @return Map<String, String> 分類ID、分類
 	 */
 	public Map<String, String> getJavaCategory() {
 		// SQLを組み立てる。
@@ -23,8 +23,9 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 
 		// 組み立てたSQLで検索処理を行う。
 		List<Map<String, String>> dbresult = super.search(sql.toString());
-		Map<String, String> result = new LinkedHashMap<String, String>();
 
+		// 返却用変数に格納
+		Map<String, String> result = new LinkedHashMap<String, String>();
 		for (int f = 0; f < dbresult.size(); f++) {
 			result.put(dbresult.get(f).get("CATEGORY_ID"), dbresult.get(f).get("CATEGORY"));
 		}
@@ -35,7 +36,7 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 
 	/**
 	 * SQLの分類を取得
-	 * @return Map<String, String> 分類ID:分類
+	 * @return Map<String, String> 分類ID、分類
 	 */
 	public Map<String, String> getSQLCategory() {
 		// SQLを組み立てる。
@@ -46,8 +47,9 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 
 		// 組み立てたSQLで検索処理を行う。
 		List<Map<String, String>> dbresult = super.search(sql.toString());
+		
+		// 返却用変数に格納
 		Map<String, String> result = new LinkedHashMap<String, String>();
-
 		for (int f = 0; f < dbresult.size(); f++) {
 			result.put(dbresult.get(f).get("CATEGORY_ID"), dbresult.get(f).get("CATEGORY"));
 		}
@@ -158,7 +160,6 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 	/**
 	 * 解答解説マスタに登録する
 	 * @param AnswerDto
-	 * @return 登録用のSQL
 	 */
 	public void registAnswer(AnswerDto answerDto) {
 		// SQLを組み立てる。
@@ -191,7 +192,6 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 	/**
 	 * 問題マスタに登録する
 	 * @param QuestionDto
-	 * @return 登録用のSQL
 	 */
 	public void registQuestion(QuestionDto questionDto) {
 		// SQLを組み立てる。
@@ -242,7 +242,6 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 	/**
 	 * 解答解説マスタを更新するためのSQLを作成する
 	 * @param answerDto
-	 * @return 更新用のSQL
 	 */
 	public void updateAnswer(AnswerDto answerDto) {
 		// SQLを組み立てる。
@@ -261,7 +260,6 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 	/**
 	 * 問題マスタを更新するためのSQLを作成する
 	 * @param questionDto
-	 * @return 更新用のSQL
 	 */
 	public void updateQuestion(QuestionDto questionDto) {
 		// SQLを組み立てる。
@@ -269,7 +267,6 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 		sql.append("UPDATE ");
 		sql.append("   MST_QUESTION ");
 		sql.append("    SET CATEGORY_ID = '").append(questionDto.getCategoryId()).append("'");
-		sql.append("      , ANSWER_ID = '").append(questionDto.getAnswerId()).append("'");
 		sql.append("      , SENTAKU_A = '").append(questionDto.getSentakuA()).append("'");
 		sql.append("      , SENTAKU_B = '").append(questionDto.getSentakuB()).append("'");
 		sql.append("      , SENTAKU_C = '").append(questionDto.getSentakuC()).append("'");
@@ -279,8 +276,28 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 		sql.append("      , UPD_DATE = SYSDATE");
 		sql.append("      , UPD_USER = '").append(questionDto.getUpdUser()).append("'");
 		sql.append("   WHERE QUESTION_ID = '").append(questionDto.getQuestionId()).append("'");
-		
+
 		super.update(sql.toString());
+	}
+	
+	/**
+	 * 問題マスタをロックする
+	 */
+	public void lockMstQuestion() {
+		StringBuffer sql = new StringBuffer();
+		sql.append("SELECT * FROM MST_QUESTION");
+		sql.append("   FOR UPDATE ");
+		super.search(sql.toString());
+	}
+	
+	/**
+	 * 解答解説マスタをロックする
+	 */
+	public void lockMstAnswer() {
+		StringBuffer sql = new StringBuffer();
+		sql.append("SELECT * FROM MST_ANSWER");
+		sql.append("   FOR UPDATE ");
+		super.search(sql.toString());
 	}
 
 }

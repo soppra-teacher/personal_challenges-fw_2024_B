@@ -9,6 +9,7 @@ public interface EditService {
 
 	/**
 	 * 登録・更新画面(登録モード)の初期表示を行う。
+	 * @return EditDto 初期値が格納されたDTO
 	 */
 	public EditDto registInit();
 

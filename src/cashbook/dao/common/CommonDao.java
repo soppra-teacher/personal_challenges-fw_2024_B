@@ -28,15 +28,5 @@ public interface CommonDao {
 	 * @return システム年月日(YYYY/MM/DD)
 	 */
 	public String getYyyyMmDd();
-	
-	/**
-	 * 問題マスタをロックする
-	 */
-	public void lockMstQuestion();
-	
-	/**
-	 * 解答解説マスタをロックする
-	 */
-	public void lockMstAnswer();
 
 }

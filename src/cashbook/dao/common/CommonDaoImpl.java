@@ -67,23 +67,4 @@ public class CommonDaoImpl extends BaseDaoImpl implements CommonDao {
 		return result.get("YYYMMDD");
 	}
 	
-	/**
-	 * 問題マスタをロックする
-	 */
-	public void lockMstQuestion() {
-		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT * FROM MST_QUESTION");
-		sql.append("   FOR UPDATE ");
-		super.search(sql.toString());
-	}
-	
-	/**
-	 * 解答解説マスタをロックする
-	 */
-	public void lockMstAnswer() {
-		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT * FROM MST_ANSWER");
-		sql.append("   FOR UPDATE ");
-		super.search(sql.toString());
-	}
 }

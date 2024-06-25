@@ -58,29 +58,35 @@ public interface EditDao {
 	/**
 	 * 解答解説マスタに登録するためのSQLを作成する
 	 * @param answerDto
-	 * @return 登録用のSQL
 	 */
 	public void registAnswer(AnswerDto answerDto);
 
 	/**
 	 * 問題マスタに登録するためのSQLを作成する
 	 * @param questionDto
-	 * @return 登録用のSQL
 	 */
 	public void registQuestion(QuestionDto questionDto);
 
 	/**
 	 * 解答解説マスタを更新するためのSQLを作成する
 	 * @param answerDto
-	 * @return 更新用のSQL
 	 */
 	public void updateAnswer(AnswerDto answerDto);
 
 	/**
 	 * 問題マスタを更新するためのSQLを作成する
 	 * @param questionDto
-	 * @return 更新用のSQL
 	 */
 	public void updateQuestion(QuestionDto questionDto);
+	
+	/**
+	 * 問題マスタをロックする
+	 */
+	public void lockMstQuestion();
+	
+	/**
+	 * 解答解説マスタをロックする
+	 */
+	public void lockMstAnswer();
 
 }
