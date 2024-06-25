@@ -1,3 +1,4 @@
+
 window.addEventListener("DOMContentLoaded", () => {
 
 	//教科の分類を格納するドロップダウンリストのエレメントを取得
@@ -32,10 +33,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	document.getElementById("btn").addEventListener("click", () => {
 
+		//レイアウト①の初期表示をする登録更新画面のエレメントを取得
 		const content1 = document.getElementById("content1");
 		const content2 = document.getElementById("content2");
 		const content3 = document.getElementById("content3");
 
+		//問題登録画面の初期表示
 		if (content1.className.length == 0) {
 			content1.className = "hide";
 			content2.className = "";
@@ -45,17 +48,16 @@ window.addEventListener("DOMContentLoaded", () => {
 			content2.className = "hide";
 			content3.className = "hide";
 		}
-		//		明日やるよ！！！！！！by山本優太
-		//		document.
-
 	});
 
 	document.getElementById("btn2").addEventListener("click", () => {
 
+		//初期表示をする登録更新画面のエレメントを取得
 		const content1 = document.getElementById("content1");
 		const content2 = document.getElementById("content2");
 		const content3 = document.getElementById("content3");
 
+		//問題登録画面の初期表示
 		if (content2.className.length == 0) {
 			content1.className = "hide";
 			content2.className = "hide";
@@ -70,10 +72,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	document.getElementById("updatebtn").addEventListener("click", () => {
 
+		//レイアウト②初期表示をする登録更新画面のエレメントを取得
 		const content1 = document.getElementById("content1");
 		const content2 = document.getElementById("content2");
 		const content3 = document.getElementById("content3");
 
+		//問題登録画面の初期表示
 		if (content3.className.length == 0) {
 			content1.className = "";
 			content2.className = "hide";
@@ -88,10 +92,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	document.getElementById("updatebtn2").addEventListener("click", () => {
 
+		//レイアウト③初期表示をする登録更新画面のエレメントを取得
 		const content1 = document.getElementById("content1");
 		const content2 = document.getElementById("content2");
 		const content3 = document.getElementById("content3");
 
+		//問題登録画面の初期表示
 		if (content3.className.length == 0) {
 			content1.className = "hide";
 			content2.className = "";
@@ -108,14 +114,14 @@ window.addEventListener("DOMContentLoaded", () => {
 		elem1 = document.getElementById("output1");
 
 		elem1.innerHTML = "";
-		//①ラジオボタン要素の取得
+		//ラジオボタン要素の取得
 		radio = document.getElementsByName("subject");
 
-		//②ラジオボタン選択状態の取得
+		//ラジオボタン選択状態の取得
 		//if(radio[i].checked)のみならずfor文で要素をループさせる必要あり。
 		for (i = 0; i < radio.length; i++) {
 			if (radio[i].checked) {
-				//③ラジオボタン選択値の取得
+				//ラジオボタン選択値の取得
 				//　→結果を<div id="output1">要素に出力
 				elem1.innerHTML += radio[i].value;
 			}
@@ -124,18 +130,25 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	//分類セレクトボックスの取得Java
 	document.getElementById("btn2").addEventListener("click", () => {
-		const ta4 = document.getElementsByName("categoryKeyJava")[0].selectedIndex;
-		var a = document.getElementsByName("categoryKeyJava")[0].options[ta4].label;
-		target = document.getElementById("output2");
-		target.innerText = a;
-	});
 
-	//分類セレクトボックスの取得SQL
-	document.getElementById("btn2").addEventListener("click", () => {
-		const ta4 = document.getElementsByName("categoryKeySql")[0].selectedIndex;
-		var a = document.getElementsByName("categoryKeySql")[0].options[ta4].label;
-		target = document.getElementById("output2");
-		target.innerText = a;
+		//ラジオボタン要素の取得
+		radio = document.getElementsByName("subject");
+
+		//ラジオボタン選択状態の取得
+		if (radio[0].checked) {
+			const ta4 = document.getElementsByName("categoryKeyJava")[0].selectedIndex;
+			var a = document.getElementsByName("categoryKeyJava")[0].options[ta4].label;
+			//ラジオボタン選択値の取得
+			//　→結果を<div id="output2">要素に出力
+			target = document.getElementById("output2");
+			target.innerText = a;
+		} else {
+			//分類セレクトボックスの取得SQL
+			const ta5 = document.getElementsByName("categoryKeySql")[0].selectedIndex;
+			var a = document.getElementsByName("categoryKeySql")[0].options[ta5].label;
+			target = document.getElementById("output2");
+			target.innerText = a
+		}
 	});
 
 	//問題タイトルテキストボックスの取得
@@ -191,4 +204,5 @@ window.addEventListener("DOMContentLoaded", () => {
 		const ta4 = document.getElementsByName("kaisetsu")[0].value;
 		document.getElementById("output10").textContent = ta4;
 	});
+
 });

@@ -95,10 +95,8 @@
 			</div>
 		</div>
 
-
 		<div id="content2" class="hide">
 			<div class="contact">
-
 				<div class="index">
 					<div class="choice-list2">
 						<p class="choice2">‘I‘ðŽˆ</p>
