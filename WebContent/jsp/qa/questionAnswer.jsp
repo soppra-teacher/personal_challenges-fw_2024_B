@@ -29,7 +29,9 @@
 	</jsp:include>
 
 	<div class="content">
-		<div class="hide" id="popup"></div>
+		<div class="popupArea">
+			<div class="hide" id="popup"></div>
+		</div>
 		<div class="questionArea">
 			<div class="questionNumber">
 				<span> ‘æ<bean:write name="viewBeanSetting"
