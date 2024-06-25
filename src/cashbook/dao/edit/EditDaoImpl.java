@@ -11,43 +11,20 @@ import cashbook.dto.edit.QuestionDto;
 public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 
 	/**
-	 * Javaの分類を取得
-	 * @return Map<String, String> 分類ID、分類
+	 * 引数教科の分類を取得
+	 * @param 教科
+	 * @return 分類ID、分類
 	 */
-	public Map<String, String> getJavaCategory() {
+	public Map<String, String> getCategory(String subject) {
 		// SQLを組み立てる。
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT CATEGORY_ID, CATEGORY ");
 		sql.append("  FROM MST_CATEGORY ");
-		sql.append(" WHERE SUBJECT = 'Java'");
+		sql.append(" WHERE SUBJECT = '").append(subject).append("'");
 
 		// 組み立てたSQLで検索処理を行う。
 		List<Map<String, String>> dbresult = super.search(sql.toString());
 
-		// 返却用変数に格納
-		Map<String, String> result = new LinkedHashMap<String, String>();
-		for (int f = 0; f < dbresult.size(); f++) {
-			result.put(dbresult.get(f).get("CATEGORY_ID"), dbresult.get(f).get("CATEGORY"));
-		}
-
-		// 処理結果を返却する。
-		return result;
-	}
-
-	/**
-	 * SQLの分類を取得
-	 * @return Map<String, String> 分類ID、分類
-	 */
-	public Map<String, String> getSQLCategory() {
-		// SQLを組み立てる。
-		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT CATEGORY_ID, CATEGORY ");
-		sql.append("  FROM MST_CATEGORY ");
-		sql.append(" WHERE SUBJECT = 'SQL'");
-
-		// 組み立てたSQLで検索処理を行う。
-		List<Map<String, String>> dbresult = super.search(sql.toString());
-		
 		// 返却用変数に格納
 		Map<String, String> result = new LinkedHashMap<String, String>();
 		for (int f = 0; f < dbresult.size(); f++) {
@@ -60,7 +37,7 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 
 	/**
 	 * 引数の問題IDの問題と対応する解答を検索する
-	 * @param questionId 問題ID
+	 * @param 問題ID
 	 * @return 問題と解答
 	 */
 	public Map<String, String> findQuestionAnswer(String questionId) {
@@ -96,13 +73,13 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 	public int getQuestionCount() {
 		// SQLを組み立てる。
 		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT COUNT(QUESTION_ID) ");
+		sql.append("SELECT COUNT(QUESTION_ID) AS QUESTIONCOUNT ");
 		sql.append("  FROM MST_QUESTION ");
 
 		var result = super.find(sql.toString());
 
 		// 処理結果を返却する。
-		return Integer.parseInt(result.get("COUNT(QUESTION_ID)"));
+		return Integer.parseInt(result.get("QUESTIONCOUNT"));
 	}
 
 	/**
@@ -112,13 +89,13 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 	public int getAnswerCount() {
 		// SQLを組み立てる。
 		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT COUNT(ANSWER_ID) ");
+		sql.append("SELECT COUNT(ANSWER_ID) AS ANSWERCOUNT ");
 		sql.append("  FROM MST_ANSWER ");
 
 		var result = super.find(sql.toString());
 
 		// 処理結果を返却する。
-		return Integer.parseInt(result.get("COUNT(ANSWER_ID)"));
+		return Integer.parseInt(result.get("ANSWERCOUNT"));
 	}
 
 	/**

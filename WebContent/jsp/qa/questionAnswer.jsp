@@ -29,7 +29,9 @@
 	</jsp:include>
 
 	<div class="content">
-		<div class="hide" id="popup"></div>
+		<div class="popupArea">
+			<div class="hide" id="popup"></div>
+		</div>
 		<div class="questionArea">
 			<div class="questionNumber">
 				<span> ëÊ<bean:write name="viewBeanSetting"
@@ -42,14 +44,17 @@
 		</div>
 		<div class="sentakushi">
 			<ul>
-				<li><button class="selectBtn">a</button>
-					<html:textarea name="viewBean" property="sentakuA" readonly="true" /></li>
-				<li><button class="selectBtn">b</button>
-					<html:textarea name="viewBean" property="sentakuB" readonly="true" /></li>
-				<li><button class="selectBtn">c</button>
-					<html:textarea name="viewBean" property="sentakuC" readonly="true" /></li>
-				<li><button class="selectBtn">d</button>
-					<html:textarea name="viewBean" property="sentakuD" readonly="true" /></li>
+				<li><button class="selectBtn">a</button> <html:textarea
+						name="viewBean" property="sentakuA" readonly="true" /></li>
+				<div class="line"></div>
+				<li><button class="selectBtn">b</button> <html:textarea
+						name="viewBean" property="sentakuB" readonly="true" /></li>
+				<div class="line"></div>
+				<li><button class="selectBtn">c</button> <html:textarea
+						name="viewBean" property="sentakuC" readonly="true" /></li>
+				<div class="line"></div>
+				<li><button class="selectBtn">d</button> <html:textarea
+						name="viewBean" property="sentakuD" readonly="true" /></li>
 			</ul>
 		</div>
 		<div class="showAnswerBtnArea">
@@ -57,9 +62,8 @@
 		</div>
 		<div id="answer" class="answerArea hide">
 			<div class="answerSentakushiArea">
-				<span>ê≥â</span><span id="answerSentakushi"><bean:write
-						name="viewBean" property="answer" />
-				</span>
+				<span>ê≥âÅF</span><span id="answerSentakushi"><bean:write
+						name="viewBean" property="answer" /> </span>
 			</div>
 			<div class="kaisetuArea">
 				<bean:write name="viewBean" property="kaisetsu" />
@@ -67,7 +71,9 @@
 		</div>
 	</div>
 
-	<html:link action="/QuestionAnswerInit">éüÇÃñ‚ëË</html:link>
+	<div class="nextBtnArea">
+		<html:link action="/QuestionAnswerInit">éüÇÃñ‚ëË</html:link>
+	</div>
 
 </body>
 </html:html>

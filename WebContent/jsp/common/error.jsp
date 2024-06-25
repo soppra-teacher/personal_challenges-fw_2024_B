@@ -5,13 +5,14 @@
 <!DOCTYPE html>
 <html:html lang="ja">
 <head>
-<title>JSSシステム　エラー画面</title>
+<title>JSSシステム エラー画面</title>
 </head>
 <body bgcolor="#ffffff">
 	<div>
-		<h3>エラー画面</h3>
-		<html:errors />
-		<p>システム担当者にお問い合わせ下さい。</p>
+		<html:errors>
+			<h3>エラー画面</h3>
+			<p>システム担当者にお問い合わせ下さい。</p>
+		</html:errors>
 	</div>
 </body>
 </html:html>

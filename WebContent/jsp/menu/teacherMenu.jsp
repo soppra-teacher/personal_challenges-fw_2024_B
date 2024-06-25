@@ -79,8 +79,8 @@
 				<html:hidden property="operation" value="" />
 				<html:hidden name="inputBean" property="questionId"
 					styleClass="update" />
-				<html:submit property="operation"
-					onclick="callAction(this.form, 'delete');">‚±‚Ì–â‘è‚ðíœ</html:submit>
+				<html:button property="delete"
+					onclick="callAction(this.form, 'delete');">‚±‚Ì–â‘è‚ðíœ</html:button>
 			</html:form>
 
 		</div>

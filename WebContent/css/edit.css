@@ -13,11 +13,11 @@
 }
 
 .contact1 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
 	border: solid 1px;
-	width: 60%;
-	padding: 15px;
-	margin: 10 10px;
-	margin-left: 350px;
+    width: 90%;
 }
 
 input#button {
@@ -74,7 +74,7 @@ input#button {
 
 .button-list1 {
 	display: flex;
-
+	justify-content: center;
 	margin: 15px;
 }
 
@@ -441,4 +441,19 @@ input#button {
 	line-height: 1.5;
 	height: 6em;
 	overflow: auto;
+}
+
+.msg-err {
+	width: 60%;
+    height: 45px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    border: solid 1px red;
+    border-radius: 8px;
+    background: #ffdfdf;
 }

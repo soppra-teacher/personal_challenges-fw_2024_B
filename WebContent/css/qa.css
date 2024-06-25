@@ -24,6 +24,10 @@ textarea:focus {
 	margin-right: 10%;
 }
 
+.question textarea {
+	font-size: 15px;
+}
+
 .questionNumber {
 	padding-bottom: 2%;
 	border-bottom: solid 1px lightgray;
@@ -52,6 +56,13 @@ textarea:focus {
 .sentakushi ul li {
 	display: flex;
 	align-items: center;
+	margin-top: 10px;
+	padding: 0.5em 0 0.5em 1.4em;
+}
+
+.sentakushi ul li textarea {
+	padding-left: 10px;
+	font-size: 15px;
 }
 
 .sentakushi ul li span {
@@ -63,6 +74,10 @@ textarea:focus {
 	height: 30px;
 	padding: 0px;
 	margin-right: 5px;
+}
+
+.line {
+	border-bottom: dashed 1px silver;
 }
 
 .showAnswerBtnArea {
@@ -85,16 +100,23 @@ textarea:focus {
 
 .answerSentakushiArea {
 	padding-left: 5%;
-	font-size: 1.5rem;
+	font-size: 16px;
+}
+
+.popupArea {
+	width: 100%;
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	right: 0%;
 }
 
 .popup {
-	position: fixed;
-    width: 150px;
-    padding: 20px;
-    box-shadow: 0 0 10px darkgray;
-    border-radius: 5px;
-    background: white;
+	width: 150px;
+	padding: 20px;
+	box-shadow: 0 0 10px darkgray;
+	border-radius: 5px;
+	background: white;
 }
 
 .popup.show {
@@ -103,6 +125,32 @@ textarea:focus {
 
 .popup.hide {
 	animation: popup-hide 3s forwards;
+}
+
+.nextBtnArea {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.nextBtnArea a {
+	width: 120px;
+	margin-top: 15%;
+	margin-bottom: 5%;
+	display: flex;
+	justify-content: center;
+	padding: 15px 20px 15px 20px;
+	border-radius: 15px;
+	box-shadow: 0 0 15px darkgray;
+	background: #FF8551;
+	color: white;
+	font-weight: bold;
+}
+
+.kaisetuArea {
+	padding-top: 6%;
+	padding-left: 5%;
 }
 
 @keyframes popup-show {

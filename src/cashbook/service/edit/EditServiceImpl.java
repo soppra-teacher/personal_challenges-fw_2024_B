@@ -54,9 +54,9 @@ public class EditServiceImpl implements EditService {
 		dto.setSubject(SELECT_JAVA_ON);
 
 		// Javaの分類を取得
-		dto.setCategoryJava(editDao.getJavaCategory());
+		dto.setCategoryJava(editDao.getCategory(SUBJECT_JAVA));
 		// SQLの分類を取得
-		dto.setCategorySql(editDao.getSQLCategory());
+		dto.setCategorySql(editDao.getCategory(SUBJECT_SQL));
 
 		// どの選択肢が正解かを選択するドロップダウンに値を設定
 		Map<String, String> answerDropDown = new LinkedHashMap<String, String>();
@@ -86,10 +86,10 @@ public class EditServiceImpl implements EditService {
 		EditDto dto = new EditDto();
 
 		// Javaの分類を取得
-		dto.setCategoryJava(editDao.getJavaCategory());
+		dto.setCategoryJava(editDao.getCategory(SUBJECT_JAVA));
 		// SQLの分類を取得
-		dto.setCategorySql(editDao.getSQLCategory());
-
+		dto.setCategorySql(editDao.getCategory(SUBJECT_SQL));
+		
 		// どの選択肢が正解かを選択するドロップダウンに値を設定
 		Map<String, String> answerDropDown = new LinkedHashMap<String, String>();
 		answerDropDown.put("", "");
