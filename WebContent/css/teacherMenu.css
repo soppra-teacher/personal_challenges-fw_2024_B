@@ -213,3 +213,26 @@ input[type=submit]:hover {
 	box-shadow: 0 0 5px lightgrey;
 	font-size: 1.2rem;
 }
+
+input[type=button] {
+	padding: 5px 30px 5px 30px;
+	border-radius: 3px;
+	color: blue;
+	border: solid 1px lightgray;
+	background: white;
+	box-shadow: 0 0 5px lightgrey;
+	font-size: 1.2rem;
+	margin:10px;
+}
+
+
+input[type=button]:hover {
+	margin: 10px;
+	padding: 5px 30px 5px 30px;
+	border-radius: 3px;
+	color: blue;
+	border: solid 1px lightgray;
+	background: white;
+	box-shadow: 0 0 5px lightgrey;
+	font-size: 1.2rem;
+}
