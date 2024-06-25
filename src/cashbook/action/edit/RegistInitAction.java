@@ -31,7 +31,7 @@ public class RegistInitAction extends BaseAction {
 	/**
 	 * <p><b>
 	 * 登録・更新画面
-	 * <br>初期表示処理
+	 * <br>登録モード初期表示処理
 	 * </b></p>
 	 *
 	 * @param map      アクションマッピング
@@ -52,9 +52,11 @@ public class RegistInitAction extends BaseAction {
 		request.setAttribute(EditConst.FORM_TEACHER_EDIT, dto);
 		// 取得した情報をセッションに設定
 		request.getSession().setAttribute(SESSION_DTO_EDIT, dto);
-		request.getSession().setAttribute(SESSION_DTO_QUESTION_UPDATE, "");
+		// 更新対象のデータを格納するセッションをクリア
+		request.getSession().setAttribute(SESSION_DTO_QUESTION_UPDATE, EMPTY);
 
 		// 処理成功時の遷移先を指定する。
 		return map.findForward(ACTION_FOWARD_SUCCESS);
+
 	}
 }

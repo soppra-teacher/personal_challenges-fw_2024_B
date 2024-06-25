@@ -26,10 +26,17 @@
 	<bean:define id="inputBean" name="editForm" />
 	<bean:define id="viewBean" name="EDIT_DTO" />
 	<bean:define id="viewUpdateBean" name="UPDATE_DTO" />
-	
-	<jsp:include page="/jsp/common/header.jsp">
-		<jsp:param name="screenTitle" value="–â‘è‚Ì“o˜^‚ÆXV" />
-	</jsp:include>
+
+	<logic:empty name="viewUpdateBean">
+		<jsp:include page="/jsp/common/header.jsp">
+			<jsp:param name="screenTitle" value="“o˜^‰æ–Ê" />
+		</jsp:include>
+	</logic:empty>
+	<logic:notEmpty name="viewUpdateBean">
+		<jsp:include page="/jsp/common/header.jsp">
+			<jsp:param name="screenTitle" value="XV‰æ–Ê" />
+		</jsp:include>
+	</logic:notEmpty>
 
 	<html:messages id="msg" message="false">
 		<p class="msg-err">
@@ -37,7 +44,7 @@
 		</p>
 	</html:messages>
 
-	<html:form action="/InsUpdDisp">
+	<html:form action="/InsUpd">
 
 		<html:hidden property="operation" value="" />
 		<html:hidden name="inputBean" property="questionId" />

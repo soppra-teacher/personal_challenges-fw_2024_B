@@ -91,9 +91,6 @@
 	</bean>
 	<!-- 登録・更新画面 -->
 	<bean id="EditServiceId" class="cashbook.service.edit.EditServiceImpl">
-		<property name="commonDao">
-			<ref local="CommonDaoId" />
-		</property>
 		<property name="editDao">
 			<ref local="EditDaoId" />
 		</property>
@@ -143,7 +140,7 @@
 			<ref local="EditServiceId" />
 		</property>
 	</bean>
-	<!-- 登録・更新画面（更新モード） -->
+	<!-- 登録・更新画面 -->
 	<bean name="/InsUpd" class="cashbook.action.edit.InsUpdAction">
 		<property name="editService">
 			<ref local="EditServiceId" />

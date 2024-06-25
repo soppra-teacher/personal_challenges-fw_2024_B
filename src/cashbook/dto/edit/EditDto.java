@@ -2,6 +2,9 @@ package cashbook.dto.edit;
 
 import java.util.Map;
 
+/**
+ * 登録・更新画面DTOクラス
+ */
 public class EditDto {
 	
 	/** 問題ID */

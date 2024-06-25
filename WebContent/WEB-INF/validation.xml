@@ -72,6 +72,9 @@
 					<var-value>200</var-value>
 				</var>
 			</field>
+			<field property="answerKey" depends="required">
+				<arg0 key="editForm.param.answerKey" resource="true" />
+			</field>
 			<field property="kaisetsu" depends="maxlength">
 				<arg0 key="editForm.param.sentakuA" resource="true" />
 				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>

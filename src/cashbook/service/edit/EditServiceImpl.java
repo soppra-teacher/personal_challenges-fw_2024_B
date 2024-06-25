@@ -9,7 +9,6 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 
-import cashbook.dao.common.CommonDao;
 import cashbook.dao.edit.EditDao;
 import cashbook.dto.common.LoginDto;
 import cashbook.dto.edit.AnswerDto;
@@ -25,18 +24,7 @@ public class EditServiceImpl implements EditService {
 	private EditDao editDao;
 
 	/** 共通Dao */
-	private CommonDao commonDao;
-
-	/** 共通Dao */
 	private TransactionTemplate transactionTemplate;
-
-	/**
-	 * 共通Daoを設定します。
-	 * @param commonDao
-	 */
-	public void setCommonDao(CommonDao commonDao) {
-		this.commonDao = commonDao;
-	}
 
 	/**
 	 * 登録・更新Daoを設定します。
@@ -56,7 +44,6 @@ public class EditServiceImpl implements EditService {
 
 	/**
 	 * 登録・更新画面(登録モード)の初期表示を行う。
-	 * @param formMap
 	 * @return EditDto 初期値が格納されたDTO
 	 */
 	public EditDto registInit() {
@@ -72,7 +59,8 @@ public class EditServiceImpl implements EditService {
 		dto.setCategorySql(editDao.getSQLCategory());
 
 		// どの選択肢が正解かを選択するドロップダウンに値を設定
-		var answerDropDown = new LinkedHashMap<String, String>();
+		Map<String, String> answerDropDown = new LinkedHashMap<String, String>();
+		answerDropDown.put("", "");
 		answerDropDown.put("a", "a");
 		answerDropDown.put("b", "b");
 		answerDropDown.put("c", "c");
@@ -101,17 +89,25 @@ public class EditServiceImpl implements EditService {
 		dto.setCategoryJava(editDao.getJavaCategory());
 		// SQLの分類を取得
 		dto.setCategorySql(editDao.getSQLCategory());
+
 		// どの選択肢が正解かを選択するドロップダウンに値を設定
-		var answerDropDown = new LinkedHashMap<String, String>();
+		Map<String, String> answerDropDown = new LinkedHashMap<String, String>();
+		answerDropDown.put("", "");
 		answerDropDown.put("a", "a");
 		answerDropDown.put("b", "b");
 		answerDropDown.put("c", "c");
 		answerDropDown.put("d", "d");
 		dto.setAnswer(answerDropDown);
 
+		//
 		// 問題マスタ、分類マスタ、解答解説マスタから取得した情報をDTOの各項目に設定
+		//
+
+		// 問題ID
 		dto.setQuestionId(dbResult.get("QUESTION_ID"));
+		// 解答ID
 		dto.setAnswerId(dbResult.get("ANSWER_ID"));
+		// 分類
 		if (dbResult.get("SUBJECT").equals(SUBJECT_JAVA)) {
 			dto.setSubject(SELECT_JAVA_ON);
 			dto.setCategoryKeyJava(dbResult.get("CATEGORY_ID"));
@@ -119,13 +115,21 @@ public class EditServiceImpl implements EditService {
 			dto.setSubject(SELECT_SQL_ON);
 			dto.setCategoryKeySql(dbResult.get("CATEGORY_ID"));
 		}
+		// 問題タイトル
 		dto.setQuestionTitle(dbResult.get("QUESTION_TITLE"));
+		// 問題
 		dto.setQuestion(dbResult.get("QUESTION"));
+		// 選択肢A
 		dto.setSentakuA(dbResult.get("SENTAKU_A"));
+		// 選択肢B
 		dto.setSentakuB(dbResult.get("SENTAKU_B"));
+		// 選択肢C
 		dto.setSentakuC(dbResult.get("SENTAKU_C"));
+		// 選択肢D
 		dto.setSentakuD(dbResult.get("SENTAKU_D"));
+		// 解答
 		dto.setAnswerKey(dbResult.get("ANSWER"));
+		// 解説
 		dto.setKaisetsu(dbResult.get("KAISETSU"));
 
 		return dto;
@@ -140,15 +144,18 @@ public class EditServiceImpl implements EditService {
 
 		try {
 
+			//
+			//	トランザクションで登録処理を実行
+			//
 			transactionTemplate.execute(new TransactionCallbackWithoutResult() {
 
 				@Override
 				protected void doInTransactionWithoutResult(TransactionStatus arg0) {
 
 					// 問題マスタにロックをかける
-					commonDao.lockMstQuestion();
+					editDao.lockMstQuestion();
 					// 解答解説マスタにロックをかける
-					commonDao.lockMstAnswer();
+					editDao.lockMstAnswer();
 
 					//
 					// 登録可能な解答解説IDを検索
@@ -194,8 +201,6 @@ public class EditServiceImpl implements EditService {
 					} else if (CommonUtil.getStr(formMap.get(EditConst.KEY_SUBJECT_EDIT)).equals(SELECT_SQL_ON)) {
 						questionDto.setCategoryId(CommonUtil.getStr(formMap.get(EditConst.KEY_CATEGORY_KEY_SQL_EDIT)));
 					}
-					// 解答解説ID
-					questionDto.setAnswerId(answerDto.getAnswerId());
 					// 問題タイトル
 					String questionTitleForm = CommonUtil.getStr(formMap.get(EditConst.KEY_QUESTIONTITLE_EDIT));
 					questionDto.setQuestionTitle(CommonUtil.escapeQuotation(questionTitleForm));
@@ -233,6 +238,7 @@ public class EditServiceImpl implements EditService {
 
 		} catch (Exception e) {
 
+			// コンソールにキャッチしたエラーメッセージを表示
 			System.out.println(e.getMessage());
 
 			return false;
@@ -249,15 +255,18 @@ public class EditServiceImpl implements EditService {
 
 		try {
 
+			//
+			//	トランザクションで更新処理を実行
+			//
 			transactionTemplate.execute(new TransactionCallbackWithoutResult() {
 
 				@Override
 				protected void doInTransactionWithoutResult(TransactionStatus arg0) {
 
 					// 問題マスタにロックをかける
-					commonDao.lockMstQuestion();
+					editDao.lockMstQuestion();
 					// 解答解説マスタにロックをかける
-					commonDao.lockMstAnswer();
+					editDao.lockMstAnswer();
 
 					//
 					// 解答解説マスタ登録用の値を設定
@@ -325,6 +334,7 @@ public class EditServiceImpl implements EditService {
 
 		} catch (Exception e) {
 
+			// コンソールにキャッチしたエラーメッセージを表示
 			System.out.println(e.getMessage());
 
 			return false;

@@ -28,7 +28,7 @@
 		<h2>ログイン</h2>
 		<div class="mtop_15">
 			<div class="leftborder">
-				<p class="item_title">ユーザ名</p>
+				<p class="item_title">ユーザID</p>
 			</div>
 			<html:text property="userId" tabindex="1" />
 		</div>

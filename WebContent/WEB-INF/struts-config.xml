@@ -141,17 +141,6 @@
 			scope="request">
 			<forward name="success" path="/jsp/controller/edit.jsp" />
 		</action>
-		<!-- ディスパッチ -->
-		<action
-			path="/InsUpdDisp"
-			type="cashbook.action.edit.InsUpdDispAction"
-			name="editForm"
-			validate="false"
-			parameter="operation"
-			scope="request">
-			<forward name="insert" path="/InsUpd.do" />
-			<forward name="update" path="/InsUpd.do" />
-		</action>
 		<!-- 登録・更新 -->
 		<action
 			path="/InsUpd"
