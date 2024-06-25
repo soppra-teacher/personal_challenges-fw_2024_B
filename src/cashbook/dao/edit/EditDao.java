@@ -11,20 +11,15 @@ import cashbook.dto.edit.QuestionDto;
 public interface EditDao {
 
 	/**
-	 * Javaの分類を取得
-	 * @return Map<String, String> 分類ID:分類
+	 * 引数教科の分類を取得
+	 * @param 教科
+	 * @return 分類ID、分類
 	 */
-	public Map<String, String> getJavaCategory();
-
-	/**
-	 * SQLの分類を取得
-	 * @return Map<String, String> 分類ID:分類
-	 */
-	public Map<String, String> getSQLCategory();
+	public Map<String, String> getCategory(String subject);
 
 	/**
 	 * 引数の問題IDの問題と対応する解答を検索する
-	 * @param questionId 問題ID
+	 * @param 問題ID
 	 * @return 問題と解答
 	 */
 	public Map<String, String> findQuestionAnswer(String questionId);

@@ -52,7 +52,7 @@ public class RegistInitAction extends BaseAction {
 		request.setAttribute(EditConst.FORM_TEACHER_EDIT, dto);
 		// 取得した情報をセッションに設定
 		request.getSession().setAttribute(SESSION_DTO_EDIT, dto);
-		// 更新対象のデータを格納するセッションをクリア
+		// 更新対象のデータを格納するセッションの値をクリア
 		request.getSession().setAttribute(SESSION_DTO_QUESTION_UPDATE, EMPTY);
 
 		// 処理成功時の遷移先を指定する。
