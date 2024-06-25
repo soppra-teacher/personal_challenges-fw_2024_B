@@ -5,15 +5,10 @@ import java.util.Map;
 public interface JukenshaMenuService {
 	
 	/**
-	 * Java問題数を取得
-	 * @return Javaの問題数
+	 * 引数教科の問題数を取得
+	 * @param 教科
+	 * @return 問題数
 	 */
-	public Map<String, String> getJavaQuestionCount();
-	
-	/**
-	 * SQL問題数を取得
-	 * @return SQLの問題数
-	 */
-	public Map<String, String> getSQLQuestionCount();
+	public Map<String, String> getQuestionCountDropDown(String subject);
 
 }

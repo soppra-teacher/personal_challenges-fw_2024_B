@@ -15,8 +15,7 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/common.css" />
 <script type="text/javascript" charset="utf-8" src="js/teacherMenu.js"></script>
-<script language="JavaScript" type="text/javascript" charset="shift_jis"
-	src="js/common.js"></script>
+<script type="text/javascript" charset="shift_jis" src="js/common.js"></script>
 <title>uŽtƒƒjƒ…[</title>
 </head>
 

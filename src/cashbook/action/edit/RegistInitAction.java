@@ -53,7 +53,7 @@ public class RegistInitAction extends BaseAction {
 		// 取得した情報をセッションに設定
 		request.getSession().setAttribute(SESSION_DTO_EDIT, dto);
 		// 更新対象のデータを格納するセッションをクリア
-		request.getSession().setAttribute(SESSION_DTO_QUESTION_UPDATE, EMPTY);
+		request.getSession().removeAttribute(SESSION_DTO_QUESTION_UPDATE);
 
 		// 処理成功時の遷移先を指定する。
 		return map.findForward(ACTION_FOWARD_SUCCESS);
