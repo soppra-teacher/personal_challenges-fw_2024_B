@@ -62,7 +62,7 @@ public class QuestionAnswerInitAction extends BaseAction {
 				.isNull(CommonUtil.getStr(request.getSession().getAttribute(SESSION_DTO_QUESTION_ANSWER_SETTING)))) {
 
 			//
-			//	受験者メニュー画面で選択された出題の設定を保持
+			//	受験者メニュー画面で選択された出題の設定を初期化
 			//
 			settingDto = new QaSettingDto();
 			// 選択された教科
@@ -80,7 +80,7 @@ public class QuestionAnswerInitAction extends BaseAction {
 			// 現在の問題数に0を設定
 			settingDto.setCurrentQuestionCount(0);
 			// ひとつ前の問題IDをクリア
-			settingDto.setBeforeQuestionId("");
+			settingDto.setBeforeQuestionId(EMPTY);
 
 		} else {
 
@@ -109,12 +109,13 @@ public class QuestionAnswerInitAction extends BaseAction {
 		// 現在の出題数を+1
 		settingDto.incrementCurrentQuestionCount();
 
-		// 取得した情報をリクエストに設定
+		// 取得した情報をセッションに設定
 		request.getSession().setAttribute(QaConst.FORM_QUESTION_ANSWER, qaDto);
 		// 出題設定をセッションに保持
 		request.getSession().setAttribute(SESSION_DTO_QUESTION_ANSWER_SETTING, settingDto);
 
 		// 処理成功時の遷移先を指定する。
 		return map.findForward(ACTION_FOWARD_SUCCESS);
+
 	}
 }
