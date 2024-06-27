@@ -150,6 +150,22 @@ textarea:focus {
 	font-weight: bold;
 }
 
+.nextBtnArea a:hover {
+	width: 120px;
+	margin-top: 15%;
+	margin-bottom: 5%;
+	display: flex;
+	justify-content: center;
+	padding: 15px 20px 15px 20px;
+	border-radius: 15px;
+	box-shadow: 0 0 15px darkgray;
+	background: white;
+	color: #FF8551;
+	font-weight: bold;
+	transition: .3s cubic-bezier(0.45, 0, 0.55, 1);
+	border: solid 2px #FF8551;
+}
+
 .kaisetuArea {
 	padding-top: 6%;
 	padding-left: 5%;

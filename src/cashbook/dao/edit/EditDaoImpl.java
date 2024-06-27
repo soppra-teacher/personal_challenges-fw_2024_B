@@ -30,7 +30,7 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 		for (int f = 0; f < dbresult.size(); f++) {
 			result.put(dbresult.get(f).get("CATEGORY_ID"), dbresult.get(f).get("CATEGORY"));
 		}
-
+		
 		// 処理結果を返却する。
 		return result;
 	}
