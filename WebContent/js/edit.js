@@ -1,14 +1,13 @@
-
 window.addEventListener("DOMContentLoaded", () => {
 
-	//教科の分類を格納するドロップダウンリストのエレメントを取得
+	// 教科の分類を格納するドロップダウンリストのエレメントを取得
 	let javaSelect = document.getElementsByName("categoryKeyJava")[0];
 	let sqlSelect = document.getElementsByName("categoryKeySql")[0];
 
-	//教科を選択するラジオボタンのエレメントを取得
+	// 教科を選択するラジオボタンのエレメントを取得
 	let radioBtns = document.getElementsByName("subject");
 
-	//分類ドロップダウンリストの初期表示
+	// 分類ドロップダウンリストの初期表示
 	if (radioBtns[0].checked) {
 		javaSelect.className = "select";
 		sqlSelect.className = "hide";
@@ -17,6 +16,9 @@ window.addEventListener("DOMContentLoaded", () => {
 		sqlSelect.className = "select";
 	}
 
+	//
+	//	Javaラジオボタンのチェックイベント
+	//
 	radioBtns[0].addEventListener("change", () => {
 
 		javaSelect.className = "select";
@@ -24,6 +26,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	});
 
+	//
+	//	SQLラジオボタンのチェックイベント
+	//
 	radioBtns[1].addEventListener("change", () => {
 
 		javaSelect.className = "hide";
@@ -31,6 +36,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	});
 
+	//
+	//	
+	//
 	document.getElementById("btn").addEventListener("click", () => {
 
 		//レイアウト①の初期表示をする登録更新画面のエレメントを取得
@@ -48,6 +56,27 @@ window.addEventListener("DOMContentLoaded", () => {
 			content2.className = "hide";
 			content3.className = "hide";
 		}
+		
+		elem1 = document.getElementById("output1");
+		elem1.innerHTML = "";
+		//ラジオボタン要素の取得
+		radio = document.getElementsByName("subject");
+
+		//ラジオボタン選択状態の取得
+		//if(radio[i].checked)のみならずfor文で要素をループさせる必要あり。
+		for (i = 0; i < radio.length; i++) {
+			if (radio[i].checked) {
+				//ラジオボタン選択値の取得
+				//　→結果を<div id="output1">要素に出力
+				elem1.innerHTML += radio[i].value;
+			}
+		}
+		
+		//問題タイトルテキストボックスの取得
+		input = document.getElementsByName("questionTitle")[0].value;
+		target = document.getElementById("output3");
+		target.innerHTML = input;
+		
 	});
 
 	document.getElementById("btn2").addEventListener("click", () => {
@@ -110,23 +139,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	});
 
-	document.getElementById("btn").addEventListener("click", () => {
-		elem1 = document.getElementById("output1");
-
-		elem1.innerHTML = "";
-		//ラジオボタン要素の取得
-		radio = document.getElementsByName("subject");
-
-		//ラジオボタン選択状態の取得
-		//if(radio[i].checked)のみならずfor文で要素をループさせる必要あり。
-		for (i = 0; i < radio.length; i++) {
-			if (radio[i].checked) {
-				//ラジオボタン選択値の取得
-				//　→結果を<div id="output1">要素に出力
-				elem1.innerHTML += radio[i].value;
-			}
-		}
-	});
 
 	//分類セレクトボックスの取得Java
 	document.getElementById("btn2").addEventListener("click", () => {
@@ -147,16 +159,11 @@ window.addEventListener("DOMContentLoaded", () => {
 			const ta5 = document.getElementsByName("categoryKeySql")[0].selectedIndex;
 			var a = document.getElementsByName("categoryKeySql")[0].options[ta5].label;
 			target = document.getElementById("output2");
-			target.innerText = a
+			target.innerText = a;
 		}
 	});
 
-	//問題タイトルテキストボックスの取得
-	document.getElementById("btn").addEventListener("click", () => {
-		input = document.getElementsByName("questionTitle")[0].value;
-		target = document.getElementById("output3");
-		target.innerHTML = input;
-	});
+
 
 	//問題文テキストエリアの取得
 	document.getElementById("btn").addEventListener("click", () => {

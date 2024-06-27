@@ -19,7 +19,7 @@ import cashbook.service.edit.EditService;
 import cashbook.util.CommonUtil;
 import cashbook.util.EditConst;
 
-public class UpdateInitAction extends BaseAction {
+public class InsUpdInitAction extends BaseAction {
 
 	/** 登録・更新画面サービス */
 	private EditService editService;
@@ -35,7 +35,7 @@ public class UpdateInitAction extends BaseAction {
 	/**
 	 * <p><b>
 	 * 登録・更新画面
-	 * <br>更新モード初期表示処理
+	 * <br>登録モード初期表示処理
 	 * </b></p>
 	 *
 	 * @param map      アクションマッピング
@@ -52,15 +52,26 @@ public class UpdateInitAction extends BaseAction {
 		// フォームの値を取得する。
 		Map<String, Object> formMap = CommonUtil.getFormMap((DynaActionForm) form);
 
-		// 更新モードでの初期表示を行う。
-		EditDto dto = editService.updateInit(formMap);
+		// 初期表示を行う。
+		EditDto dto = editService.InsUpdInit(formMap);
+
+		// 初期表示用のDTOクラスがNULLの場合は講師メニュー画面へ遷移
+		if (CommonUtil.isNull(CommonUtil.getStr(dto))) {
+			return map.findForward(ACTION_FOWARD_TEACHER_MENU);
+		}
 
 		// 取得した情報をリクエストに設定
 		request.setAttribute(EditConst.FORM_TEACHER_EDIT, dto);
 		// 取得した情報をセッションに設定
 		request.getSession().setAttribute(SESSION_DTO_EDIT, dto);
-		// 更新対象のデータをセッションに格納
-		request.getSession().setAttribute(SESSION_DTO_QUESTION_UPDATE, dto);
+
+		if (CommonUtil.isNull(dto.getQuestionId())) {
+			// 更新対象のデータを格納するセッションの値をクリア
+			request.getSession().setAttribute(SESSION_DTO_QUESTION_UPDATE, EMPTY);
+		} else {
+			// 更新対象のデータをセッションに格納
+			request.getSession().setAttribute(SESSION_DTO_QUESTION_UPDATE, dto);
+		}
 
 		// 処理成功時の遷移先を指定する。
 		return map.findForward(ACTION_FOWARD_SUCCESS);

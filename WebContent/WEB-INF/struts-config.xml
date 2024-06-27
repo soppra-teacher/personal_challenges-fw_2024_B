@@ -123,23 +123,15 @@
 		* 登録・更新画面              *
 		****************************
 		-->
-		<!-- 初期表示（登録モード） -->
+		<!-- 初期表示 -->
 		<action
-			path="/RegistInit"
+			path="/InsUpdInit"
 			type="org.springframework.web.struts.DelegatingActionProxy"
 			name="editForm"
 			validate="false"
 			scope="request">
 			<forward name="success" path="/jsp/controller/edit.jsp" />
-		</action>
-		<!-- 初期表示（更新モード） -->
-		<action
-			path="/UpdateInit"
-			type="org.springframework.web.struts.DelegatingActionProxy"
-			name="editForm"
-			validate="false"
-			scope="request">
-			<forward name="success" path="/jsp/controller/edit.jsp" />
+			<forward name="teacherMenu" path="/TeacherMenuInit.do" />
 		</action>
 		<!-- 登録・更新 -->
 		<action
