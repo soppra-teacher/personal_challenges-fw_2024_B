@@ -32,7 +32,7 @@
 			<div class="site-header__middle">
 				<nav class="nav">
 					<ul class="nav__wrapper">
-						<li class="nav__item"><html:link action="/RegistInit">新しい問題を登録</html:link></li>
+						<li class="nav__item"><html:link action="/InsUpdInit">新しい問題を登録</html:link></li>
 					</ul>
 				</nav>
 			</div>
@@ -70,7 +70,7 @@
 			</table>
 		</div>
 		<div class="questionID">
-			<html:form action="/UpdateInit">
+			<html:form action="/InsUpdInit">
 				<html:hidden name="inputBean" property="questionId" />
 				<div id="updlink" class="hide">
 					<html:submit>この問題を更新</html:submit>

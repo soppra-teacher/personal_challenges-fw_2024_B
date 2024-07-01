@@ -55,12 +55,17 @@ public class InsUpdAction extends BaseAction {
 
 		if (CommonUtil.isNull(CommonUtil.getStr(request.getSession().getAttribute(SESSION_DTO_QUESTION_UPDATE)))) {
 
-			//
-			//	登録処理
-			//
-			boolean result = editService.registQuestionAnswer(formMap, loginDto);
+			try {
 
-			if (!result) {
+				//
+				//	登録処理
+				//
+				editService.registQuestionAnswer(formMap, loginDto);
+
+			} catch (Exception e) {
+
+				// キャッチしたエラーメッセージをコンソールに表示
+				System.out.println(e.getMessage());
 
 				// エラーページへ遷移
 				return map.findForward(ACTION_FOWARD_ERROR);
@@ -69,12 +74,17 @@ public class InsUpdAction extends BaseAction {
 
 		} else {
 
-			//
-			//	更新処理
-			//
-			boolean result = editService.updateQuestionAnswer(formMap, loginDto);
+			try {
 
-			if (!result) {
+				//
+				//	更新処理
+				//
+				editService.updateQuestionAnswer(formMap, loginDto);
+
+			} catch (Exception e) {
+
+				// キャッチしたエラーメッセージをコンソールに表示
+				System.out.println(e.getMessage());
 
 				// エラーページへ遷移
 				return map.findForward(ACTION_FOWARD_ERROR);

@@ -14,7 +14,7 @@
 	href="<%=request.getContextPath()%>/css/common.css" />
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/qa.css" />
-<script language="JavaScript" type="text/javascript" charset="utf-8"
+<script type="text/javascript" charset="utf-8"
 	src="<%=request.getContextPath()%>/js/qalogic.js"></script>
 <title>–â‘è‰ð“š‰æ–Ê</title>
 </head>

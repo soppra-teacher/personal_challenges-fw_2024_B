@@ -26,6 +26,7 @@ textarea:focus {
 
 .question textarea {
 	font-size: 15px;
+	line-height: 1.5rem;
 }
 
 .questionNumber {
@@ -42,6 +43,7 @@ textarea:focus {
 	justify-content: left;
 	padding-top: 5%;
 	padding-left: 5%;
+	padding-right: 5%;
 }
 
 .sentakushi {
@@ -148,6 +150,22 @@ textarea:focus {
 	font-weight: bold;
 }
 
+.nextBtnArea a:hover {
+	width: 120px;
+	margin-top: 15%;
+	margin-bottom: 5%;
+	display: flex;
+	justify-content: center;
+	padding: 15px 20px 15px 20px;
+	border-radius: 15px;
+	box-shadow: 0 0 15px darkgray;
+	background: white;
+	color: #FF8551;
+	font-weight: bold;
+	transition: .3s cubic-bezier(0.45, 0, 0.55, 1);
+	border: solid 2px #FF8551;
+}
+
 .kaisetuArea {
 	padding-top: 6%;
 	padding-left: 5%;
@@ -155,12 +173,12 @@ textarea:focus {
 
 @keyframes popup-show {
 	0% {
-		transform: translateY(-20px);
+		transform: translateY(-30px);
 		opacity: 0;
 	}
 
 	100% {
-		transform: translateY(0);
+		transform: translateY(0px);
 	}
 
 	80%,
@@ -171,12 +189,11 @@ textarea:focus {
 
 @keyframes popup-hide {
 	0% {
-		transform: translateY(0);
+		transform: translateY(0px);
 	}
 
 	100% {
-		transform: translateY(-40px);
-		opacity: 0;
+		transform: translateY(-30px);
 	}
 
 	80%,

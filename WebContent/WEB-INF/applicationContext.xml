@@ -128,19 +128,13 @@
 			<ref local="JukenshaMenuServiceId" />
 		</property>
 	</bean>
-	<!-- 登録・更新画面（登録モード） -->
-	<bean name="/RegistInit" class="cashbook.action.edit.RegistInitAction">
-		<property name="editService">
-			<ref local="EditServiceId" />
-		</property>
-	</bean>
-	<!-- 登録・更新画面（更新モード） -->
-	<bean name="/UpdateInit" class="cashbook.action.edit.UpdateInitAction">
-		<property name="editService">
-			<ref local="EditServiceId" />
-		</property>
-	</bean>
 	<!-- 登録・更新画面 -->
+	<bean name="/InsUpdInit" class="cashbook.action.edit.InsUpdInitAction">
+		<property name="editService">
+			<ref local="EditServiceId" />
+		</property>
+	</bean>
+	<!-- 登録・更新 -->
 	<bean name="/InsUpd" class="cashbook.action.edit.InsUpdAction">
 		<property name="editService">
 			<ref local="EditServiceId" />

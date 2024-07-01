@@ -7,29 +7,17 @@ import java.util.Map;
 public interface QaDao {
 	
 	/**
-	 * 出題可能なJavaの問題IDを取得
-	 * @return List<Map<String, String>>
+	 * 引数の問題IDの問題と解答解説を取得
+	 * @param 問題ID
+	 * @return 問題と解答解説
 	 */
-	public List<Map<String, String>> getJavaQuestionId();
-	
-	/**
-	 * 出題可能なSQLの問題IDを取得
-	 * @return List<Map<String, String>>
-	 */
-	public List<Map<String, String>> getSQLQuestionId();
+	public Map<String, String> findQA(String questionId);
 
 	/**
-	 * 引数の問題IDを持つJavaの問題を取得
-	 * @param questionId
-	 * @return Map<String, String>
+	 * 引数教科の出題可能な問題IDを取得
+	 * @param 教科
+	 * @return 出題可能な問題ID
 	 */
-	public Map<String, String> findJavaQA(String questionId);
-
-	/**
-	 * 引数の問題IDを持つSQLの問題を取得
-	 * @param questionId
-	 * @return Map<String, String>
-	 */
-	public Map<String, String> findSqlQA(String questionId);
+	public List<Map<String, String>> getQuestionId(String subject);
 
 }

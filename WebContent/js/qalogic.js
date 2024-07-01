@@ -31,6 +31,23 @@ window.addEventListener("DOMContentLoaded", () => {
 			popupele.innerText = sentakushi.trim() == answer.trim() ? "正解!" : "不正解!";
 			popupele.classList = "popup show";
 
+			const call_interval = () => {
+
+				// 3秒後にポップアップを非表示
+				const hide = () => {
+					setInterval(() => {
+						popupele.classList = "popup hide";
+					}, 3000)
+				};
+
+				hide();
+
+				clearInterval(hide);
+			}
+
+			call_interval(popupele);
+
+
 			// 「正解を表示」ボタンを非表示にする
 			document.getElementById("showAnswerBtn").classList = "hide";
 

@@ -23,9 +23,9 @@ li {
 }
 
 .link {
-	border: solid 2px #50b4c8;
+	border: solid 2px #FF8551;
 	color: #ECF0F1;
-	background: #50b4c8;
+	background: #FF8551;
 	cursor: pointer;
 	padding: 10px 50px 10px 50px;
 	border-radius: 10px;
@@ -34,8 +34,8 @@ li {
 }
 
 .link:hover {
-	border: solid 2px #50b4c8;
-	color: #50b4c8;
+	border: solid 2px #FF8551;
+	color: #FF8551;
 	background: transparent;
 	cursor: pointer;
 	transition: .3s cubic-bezier(0.45, 0, 0.55, 1);

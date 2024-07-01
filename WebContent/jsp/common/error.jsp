@@ -9,10 +9,9 @@
 </head>
 <body bgcolor="#ffffff">
 	<div>
-		<html:errors>
-			<h3>エラー画面</h3>
-			<p>システム担当者にお問い合わせ下さい。</p>
-		</html:errors>
+		<h3>エラー画面</h3>
+		<html:errors />
+		<p>システム担当者にお問い合わせ下さい。</p>
 	</div>
 </body>
 </html:html>
