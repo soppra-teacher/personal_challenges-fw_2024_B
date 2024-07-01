@@ -18,8 +18,7 @@ public class QaSettingDto {
 	 * 現在の出題数を+1する
 	 */
 	public void incrementCurrentQuestionCount() {
-		int currentQuestionCount = this.getCurrentQuestionCount();
-		this.setCurrentQuestionCount(++currentQuestionCount);
+		this.setCurrentQuestionCount(++this.currentQuestionCount);
 	}
 	
 	public String getBeforeQuestionId() {
