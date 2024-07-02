@@ -1,15 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
 
 	//
-	//	textareaエレメントのスタイル調整
-	//
-	document.querySelectorAll("textarea").forEach((ele) => {
-		// 入力内容に応じて高さを可変自動調節する
-		ele.style.cssText = "width : 100%;";
-		ele.style.cssText += "height : " + ele.scrollHeight + "px;";
-	});
-
-	//
 	//	正誤判定を行う
 	//
 	const sentakushiBtns = document.getElementsByClassName("selectBtn");
@@ -28,16 +19,29 @@ window.addEventListener("DOMContentLoaded", () => {
 
 			// ポップアップを表示
 			let popupele = document.getElementById("popup");
-			popupele.innerText = sentakushi.trim() == answer.trim() ? "正解!" : "不正解!";
+			let charele = document.createElement("div");
+
+			if (sentakushi.trim() == answer.trim()) {
+				popupele.innerText = "正解!";
+				charele.innerText = "〇";
+				charele.classList = "char maru";
+			} else {
+				popupele.innerText = "不正解!";
+				charele.innerText = "×";
+				charele.classList = "char batu";
+			}
+			
 			popupele.classList = "popup show";
+			popupele.appendChild(charele);
+
 
 			const call_interval = () => {
 
-				// 3秒後にポップアップを非表示
+				// 1秒後にポップアップを非表示
 				const hide = () => {
 					setInterval(() => {
 						popupele.classList = "popup hide";
-					}, 3000)
+					}, 1000)
 				};
 
 				hide();

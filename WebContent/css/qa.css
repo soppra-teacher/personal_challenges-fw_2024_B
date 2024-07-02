@@ -114,11 +114,30 @@ textarea:focus {
 }
 
 .popup {
+	display: flex;
 	width: 150px;
 	padding: 20px;
 	box-shadow: 0 0 10px darkgray;
 	border-radius: 5px;
 	background: white;
+}
+
+.char {
+	position: fixed;
+	top: -5%;
+	right: 20%;
+	width: 40px;
+	height: 40px;
+	font-size: 3rem;
+	font-weight: bold;
+}
+
+.maru {
+	color: lightgreen;
+}
+
+.batu {
+	color: blue;
 }
 
 .popup.show {
