@@ -66,6 +66,14 @@ window.addEventListener("DOMContentLoaded", () => {
 			questionId_hidden_upd.value = questionId_table;
 			questionId_hidden_del.value = questionId_table;
 
+			/**
+			 * テキストエリアの入力内容に応じて高さを可変自動調節する
+			 */
+			document.querySelectorAll("textarea").forEach((ele) => {
+				ele.style.cssText = "width : 100%;";
+				ele.style.cssText += "height : " + ele.scrollHeight + "px;";
+			});
+
 		});
 	}
 });

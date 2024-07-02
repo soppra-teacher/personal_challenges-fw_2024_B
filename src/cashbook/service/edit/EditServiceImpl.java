@@ -63,19 +63,8 @@ public class EditServiceImpl implements EditService {
 			// 教科のラジオボタンで、Javaが選択されているように設定
 			dto.setSubject(SELECT_JAVA_ON);
 
-			// Javaの分類を取得
-			dto.setCategoryJava(editDao.getCategory(SUBJECT_JAVA));
-			// SQLの分類を取得
-			dto.setCategorySql(editDao.getCategory(SUBJECT_SQL));
-
-			// どの選択肢が正解かを選択するドロップダウンに値を設定
-			Map<String, String> answerDropDown = new LinkedHashMap<String, String>();
-			answerDropDown.put("", "");
-			answerDropDown.put("a", "a");
-			answerDropDown.put("b", "b");
-			answerDropDown.put("c", "c");
-			answerDropDown.put("d", "d");
-			dto.setAnswer(answerDropDown);
+			// 分類と解答ドロップダウンの値を設定
+			setCategoryAndAnswer(dto);
 
 		} else {
 
@@ -91,19 +80,8 @@ public class EditServiceImpl implements EditService {
 				return null;
 			}
 
-			// Javaの分類を取得
-			dto.setCategoryJava(editDao.getCategory(SUBJECT_JAVA));
-			// SQLの分類を取得
-			dto.setCategorySql(editDao.getCategory(SUBJECT_SQL));
-
-			// どの選択肢が正解かを選択するドロップダウンに値を設定
-			Map<String, String> answerDropDown = new LinkedHashMap<String, String>();
-			answerDropDown.put("", "");
-			answerDropDown.put("a", "a");
-			answerDropDown.put("b", "b");
-			answerDropDown.put("c", "c");
-			answerDropDown.put("d", "d");
-			dto.setAnswer(answerDropDown);
+			// 分類と解答ドロップダウンの値を設定
+			setCategoryAndAnswer(dto);
 
 			//
 			// 問題マスタ、分類マスタ、解答解説マスタから取得した情報をDTOの各項目に設定
@@ -115,9 +93,15 @@ public class EditServiceImpl implements EditService {
 			dto.setAnswerId(dbResult.get("ANSWER_ID"));
 			// 分類
 			if (dbResult.get("SUBJECT").equals(SUBJECT_JAVA)) {
+				//
+				// 教科ラジオボタンでJavaが選択された場合
+				//
 				dto.setSubject(SELECT_JAVA_ON);
 				dto.setCategoryKeyJava(dbResult.get("CATEGORY_ID"));
 			} else {
+				//
+				// 教科ラジオボタンでSQLが選択された場合
+				//
 				dto.setSubject(SELECT_SQL_ON);
 				dto.setCategoryKeySql(dbResult.get("CATEGORY_ID"));
 			}
@@ -299,8 +283,14 @@ public class EditServiceImpl implements EditService {
 				questionDto.setAnswerId(answerDto.getAnswerId());
 				// 分類ID
 				if (CommonUtil.getStr(formMap.get(EditConst.KEY_SUBJECT_EDIT)).equals(SELECT_JAVA_ON)) {
+					//
+					// 教科ラジオボタンでJavaが選択された場合
+					//
 					questionDto.setCategoryId(CommonUtil.getStr(formMap.get(EditConst.KEY_CATEGORY_KEY_JAVA_EDIT)));
 				} else {
+					//
+					// 教科ラジオボタンでSQLが選択された場合
+					//
 					questionDto.setCategoryId(CommonUtil.getStr(formMap.get(EditConst.KEY_CATEGORY_KEY_SQL_EDIT)));
 				}
 				// 問題タイトル
@@ -336,5 +326,28 @@ public class EditServiceImpl implements EditService {
 			}
 		});
 
+	}
+
+	/**
+	 * 引数EditDtoの分類と解答ドロップダウン用の項目に値を設定する
+	 * @param EditDto
+	 * @return EditDto
+	 */
+	private EditDto setCategoryAndAnswer(EditDto dto) {
+		// Javaの分類を取得
+		dto.setCategoryJava(editDao.getCategory(SUBJECT_JAVA));
+		// SQLの分類を取得
+		dto.setCategorySql(editDao.getCategory(SUBJECT_SQL));
+
+		// どの選択肢が正解かを選択するドロップダウンに値を設定
+		Map<String, String> answerDropDown = new LinkedHashMap<String, String>();
+		answerDropDown.put("", "");
+		answerDropDown.put("a", "a");
+		answerDropDown.put("b", "b");
+		answerDropDown.put("c", "c");
+		answerDropDown.put("d", "d");
+		dto.setAnswer(answerDropDown);
+
+		return dto;
 	}
 }
