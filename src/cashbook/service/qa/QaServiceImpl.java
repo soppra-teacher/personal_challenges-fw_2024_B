@@ -8,6 +8,7 @@ import java.util.Random;
 
 import cashbook.dao.qa.QaDao;
 import cashbook.dto.qa.QaDto;
+import cashbook.dto.qa.QaHistoryDto;
 import cashbook.dto.qa.QaSettingDto;
 import cashbook.util.CommonUtil;
 
@@ -69,6 +70,17 @@ public class QaServiceImpl implements QaService {
 		qaSetting.setBeforeQuestionId(CommonUtil.getStr(question.get("QUESTION_ID")));
 
 		return result;
+	}
+
+	/**
+	 * 引数の登録データを解答履歴テーブルに登録
+	 * @param QaHistoryDto
+	 */
+	public void insHistory(QaHistoryDto dto) {
+
+		// 引数データを解答履歴テーブルに登録
+		qaDao.insertHistory(dto);
+
 	}
 
 	/**

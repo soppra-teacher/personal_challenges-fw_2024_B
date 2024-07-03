@@ -21,6 +21,17 @@ public class JukenshaMenuDto {
 	
 	/** SQL問題数 */
 	private Map<String, String> sqlQuestionNumber;
+	
+	/** ユーザが選択した解答 */
+	private String userSelect;
+
+	public String getUserSelect() {
+		return userSelect;
+	}
+
+	public void setUserSelect(String userSelect) {
+		this.userSelect = userSelect;
+	}
 
 	public String getSubjectRadio() {
 		return subjectRadio;

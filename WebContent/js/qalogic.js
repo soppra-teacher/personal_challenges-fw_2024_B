@@ -30,7 +30,7 @@ window.addEventListener("DOMContentLoaded", () => {
 				charele.innerText = "×";
 				charele.classList = "char batu";
 			}
-			
+
 			popupele.classList = "popup show";
 			popupele.appendChild(charele);
 
@@ -57,6 +57,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
 			// 解答と解説を表示
 			document.getElementById("answer").classList = "answerArea show";
+
+			// ユーザの解答を非表示フィールドに設定
+			document.getElementsByName("userSelect")[0].value = sentakushi;
 
 			// 解答と解説が表示されるエリアまでスムーズスクロール
 			window.location.href = "#answer";

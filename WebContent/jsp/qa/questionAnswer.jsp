@@ -72,10 +72,11 @@
 			</div>
 		</div>
 	</div>
-
 	<div class="nextBtnArea">
-		<html:link action="/QuestionAnswerInit">ŽŸ‚Ì–â‘è</html:link>
+		<html:form action="/QuestionAnswerInit">
+			<html:hidden property="userSelect"/>
+			<html:submit>ŽŸ‚Ì–â‘è</html:submit>
+		</html:form>
 	</div>
-
 </body>
 </html:html>
