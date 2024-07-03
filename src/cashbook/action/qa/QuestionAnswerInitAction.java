@@ -116,6 +116,9 @@ public class QuestionAnswerInitAction extends BaseAction {
 		// 現在の出題数を+1
 		settingDto.incrementCurrentQuestionCount();
 
+		//
+		//	解答履歴を付ける
+		//
 		String userSelectAnswer = CommonUtil.getStr(formMap.get(JukenshaMenuConst.KEY_USER_SELECT_ANSWER));
 		if (!userSelectAnswer.equals(EMPTY)) {
 			//
