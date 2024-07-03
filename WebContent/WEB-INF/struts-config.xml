@@ -24,6 +24,7 @@
 			<form-property name="javaQuestionNumber" type="java.lang.String" />
 			<form-property name="sqlQuestionNumberKey" type="java.lang.String" />
 			<form-property name="sqlQuestionNumber" type="java.lang.String" />
+			<form-property name="userSelect" type="java.lang.String" />
 		</form-bean>
 		<!-- 登録・更新画面 -->
 		<form-bean name="editForm" type="org.apache.struts.validator.DynaValidatorForm">

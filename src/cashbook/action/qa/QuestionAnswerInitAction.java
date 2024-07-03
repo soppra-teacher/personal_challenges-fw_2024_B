@@ -15,10 +15,10 @@ import org.apache.struts.action.DynaActionForm;
 import cashbook.action.common.BaseAction;
 import cashbook.dto.common.LoginDto;
 import cashbook.dto.qa.QaDto;
+import cashbook.dto.qa.QaHistoryDto;
 import cashbook.dto.qa.QaSettingDto;
 import cashbook.service.qa.QaService;
 import cashbook.util.CommonUtil;
-import cashbook.util.Const;
 import cashbook.util.JukenshaMenuConst;
 import cashbook.util.QaConst;
 
@@ -68,15 +68,22 @@ public class QuestionAnswerInitAction extends BaseAction {
 			// 選択された教科
 			settingDto.setSubject(CommonUtil.getStr(formMap.get(JukenshaMenuConst.KEY_SUBJECT_RADIO)));
 			// 選択された問題数
-			if (settingDto.getSubject().equals(Const.SELECT_JAVA_ON)) {
-				String str_questionCount = CommonUtil
+			String str_questionCount = EMPTY;
+			if (settingDto.getSubject().equals(SELECT_JAVA_ON)) {
+				//
+				// 出題設定用のセッションの教科がJavaの場合
+				//
+				str_questionCount = CommonUtil
 						.getStr(formMap.get(JukenshaMenuConst.KEY_JAVA_QUESTION_NUMBER_KEY));
-				settingDto.setQuestionCount(Integer.parseInt(str_questionCount));
-			} else if (settingDto.getSubject().equals(Const.SELECT_SQL_ON)) {
-				String str_questionCount = CommonUtil
+
+			} else if (settingDto.getSubject().equals(SELECT_SQL_ON)) {
+				//
+				// 出題設定用のセッションの教科がSQLの場合
+				//
+				str_questionCount = CommonUtil
 						.getStr(formMap.get(JukenshaMenuConst.KEY_SQL_QUESTION_NUMBER_KEY));
-				settingDto.setQuestionCount(Integer.parseInt(str_questionCount));
 			}
+			settingDto.setQuestionCount(Integer.parseInt(str_questionCount));
 			// 現在の問題数に0を設定
 			settingDto.setCurrentQuestionCount(0);
 			// ひとつ前の問題IDをクリア
@@ -108,6 +115,28 @@ public class QuestionAnswerInitAction extends BaseAction {
 
 		// 現在の出題数を+1
 		settingDto.incrementCurrentQuestionCount();
+
+		//
+		//	解答履歴を付ける
+		//
+		String userSelectAnswer = CommonUtil.getStr(formMap.get(JukenshaMenuConst.KEY_USER_SELECT_ANSWER));
+		if (!userSelectAnswer.equals(EMPTY)) {
+			//
+			//	解答履歴テーブルの更新データの設定
+			//
+			QaHistoryDto historyDto = new QaHistoryDto();
+			// 登録ユーザを設定
+			historyDto.setInsUser(loginDto.getUserId());
+			// 問題IDを設定
+			historyDto.setQuestionId(settingDto.getBeforeQuestionId());
+			// ユーザの解答を設定
+			historyDto.setUserSelectAnswer(userSelectAnswer);
+
+			//
+			// 解答履歴テーブルを更新
+			//
+			qaService.insHistory(historyDto);
+		}
 
 		// 取得した情報をセッションに設定
 		request.getSession().setAttribute(QaConst.FORM_QUESTION_ANSWER, qaDto);

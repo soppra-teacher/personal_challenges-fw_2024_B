@@ -16,10 +16,10 @@ public class QaDto {
 
 	/** 選択肢D */
 	private String sentakuD;
-	
+
 	/** 解答 */
 	private String answer;
-	
+
 	/** 解説 */
 	private String kaisetsu;
 

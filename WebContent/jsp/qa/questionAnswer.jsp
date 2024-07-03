@@ -15,6 +15,8 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/qa.css" />
 <script type="text/javascript" charset="utf-8"
+	src="<%=request.getContextPath()%>/js/common.js"></script>
+<script type="text/javascript" charset="utf-8"
 	src="<%=request.getContextPath()%>/js/qalogic.js"></script>
 <title>–â‘è‰ð“š‰æ–Ê</title>
 </head>
@@ -70,10 +72,11 @@
 			</div>
 		</div>
 	</div>
-
 	<div class="nextBtnArea">
-		<html:link action="/QuestionAnswerInit">ŽŸ‚Ì–â‘è</html:link>
+		<html:form action="/QuestionAnswerInit">
+			<html:hidden property="userSelect"/>
+			<html:submit>ŽŸ‚Ì–â‘è</html:submit>
+		</html:form>
 	</div>
-
 </body>
 </html:html>

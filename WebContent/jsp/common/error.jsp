@@ -10,7 +10,6 @@
 <body bgcolor="#ffffff">
 	<div>
 		<h3>エラー画面</h3>
-		<html:errors />
 		<p>システム担当者にお問い合わせ下さい。</p>
 	</div>
 </body>

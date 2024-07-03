@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import cashbook.dao.common.BaseDaoImpl;
+import cashbook.dto.qa.QaHistoryDto;
 
 public class QaDaoImpl extends BaseDaoImpl implements QaDao {
 
@@ -15,7 +16,8 @@ public class QaDaoImpl extends BaseDaoImpl implements QaDao {
 	public Map<String, String> findQA(String questionId) {
 		// SQLを組み立てる
 		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT A.QUESTION");
+		sql.append("SELECT A.QUESTION_ID");
+		sql.append("     , A.QUESTION");
 		sql.append("     , A.SENTAKU_A");
 		sql.append("     , A.SENTAKU_B");
 		sql.append("     , A.SENTAKU_C");
@@ -48,5 +50,25 @@ public class QaDaoImpl extends BaseDaoImpl implements QaDao {
 		sql.append("  AND A.DEL_FLG = '0' ");
 
 		return super.search(sql.toString());
+	}
+
+	/**
+	 * 引数の登録データを解答履歴テーブルに登録
+	 * @param QaHistoryDto
+	 */
+	public void insertHistory(QaHistoryDto dto) {
+		// SQLを組み立てる
+		StringBuffer sql = new StringBuffer();
+		sql.append(" INSERT INTO TRN_ANSWER_HISTORY( ");
+		sql.append("             USER_ID ");
+		sql.append("           , QUESTION_ID ");
+		sql.append("           , USER_ANSWER ");
+		sql.append("           , ANSWER_DATE ) ");
+		sql.append(" VALUES ( '").append(dto.getInsUser()).append("'");
+		sql.append("           , '").append(dto.getQuestionId()).append("'");
+		sql.append("           , '").append(dto.getUserSelectAnswer()).append("'");
+		sql.append("           , SYSDATE )");
+		
+		super.update(sql.toString());
 	}
 }

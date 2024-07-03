@@ -18,5 +18,7 @@ public class JukenshaMenuConst {
 	public static final String KEY_JAVA_QUESTION_NUMBER = "javaQuestionNumber";
 	/** キー値：SQL問題数 */
 	public static final String KEY_SQL_QUESTION_NUMBER = "sqlQuestionNumber";
+	/** キー値：ユーザの解答 */
+	public static final String KEY_USER_SELECT_ANSWER = "userSelect";
 	
 }

@@ -50,9 +50,7 @@
 					<td>教科</td>
 					<td>分類</td>
 					<td>問題タイトル</td>
-					<td>問題</td>
 					<td>解答</td>
-					<td>解説</td>
 				</tr>
 				<logic:notEmpty name="viewBean" property="list">
 					<logic:iterate id="list" name="viewBean" property="list">
@@ -61,9 +59,11 @@
 							<td><bean:write name="list" property="subject" /></td>
 							<td><bean:write name="list" property="category" /></td>
 							<td><bean:write name="list" property="questionTitle" /></td>
-							<td><bean:write name="list" property="question" /></td>
 							<td><bean:write name="list" property="answer" /></td>
-							<td><bean:write name="list" property="kaisetsu" /></td>
+							<input type="hidden"
+								value='<bean:write name="list" property="question" />' />
+							<input type="hidden"
+								value='<bean:write name="list" property="kaisetsu" />' />
 						</tr>
 					</logic:iterate>
 				</logic:notEmpty>
@@ -85,13 +85,27 @@
 
 		</div>
 		<ul id="liwapper" class="hide">
-			<li class="item"><spna id=questionId></spna></li>
-			<li class="item"><spna id=subject></spna></li>
-			<li class="item"><spna id=category></spna></li>
-			<li class="item"><spna id=questionTitle_S></spna></li>
-			<li class="item"><spna id=questionText></spna></li>
-			<li class="item"><spna id=answer></spna></li>
-			<li class="item"><spna id=kaisetsuText></spna> </spna></li>
+			<li class="item">
+				<p>問題ID :</p>
+				<p id=questionId></p>
+			</li>
+			<li class="item">
+				<p>教科 :</p>
+				<p id=subject></p>
+			</li>
+			<li class="item">
+				<p>分類 :</p>
+				<p id=category></p>
+			</li>
+			<li class="item-t">
+				<p>問題タイトル</p>
+				<p id=questionTitle_S></p>
+			</li>
+			<li class="item-t"><p>問題文</p> <textarea id=questionText></textarea></li>
+			<li class="item">
+				<p>解答 :</p> <spna id=answer></spna>
+			</li>
+			<li class="item-t"><p>解説</p> <textarea id=kaisetsuText></textarea></li>
 		</ul>
 	</div>
 </body>
