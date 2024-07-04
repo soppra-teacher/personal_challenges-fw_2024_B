@@ -91,7 +91,8 @@
 
 
 .select {
-	width: 100px;
+	width: 180px;
 	height: 40px;
 	font-size: 1.2rem;
+	text-align: center;
 }

@@ -29,6 +29,14 @@ window.addEventListener("DOMContentLoaded", () => {
 			content2.className = "hide";
 			content3.className = "";
 		}
+
+		/**
+	 * テキストエリアの入力内容に応じて高さを可変自動調節する
+	 */
+		document.querySelectorAll("textarea").forEach((ele) => {
+			ele.style.cssText = "width : 100%;";
+			ele.style.cssText += "height : " + ele.scrollHeight + "px;";
+		});
 	}
 
 	// 教科の分類を格納するドロップダウンリストのエレメントを取得
@@ -119,7 +127,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	//	画面レイアウト2　次へボタン押下イベント
 	//
 	document.getElementById("btn2").addEventListener("click", () => {
-		
+
 		// 画面レイアウト3を表示
 		showlayout(3);
 
