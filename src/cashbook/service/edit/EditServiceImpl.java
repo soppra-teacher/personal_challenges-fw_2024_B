@@ -63,9 +63,6 @@ public class EditServiceImpl implements EditService {
 			// 教科のラジオボタンで、Javaが選択されているように設定
 			dto.setSubject(SELECT_JAVA_ON);
 
-			// 分類と解答ドロップダウンの値を設定
-			setCategoryAndAnswer(dto);
-
 		} else {
 
 			//
@@ -79,9 +76,6 @@ public class EditServiceImpl implements EditService {
 			if (dbResult.size() < 1) {
 				return null;
 			}
-
-			// 分類と解答ドロップダウンの値を設定
-			setCategoryAndAnswer(dto);
 
 			//
 			// 問題マスタ、分類マスタ、解答解説マスタから取得した情報をDTOの各項目に設定
@@ -123,6 +117,9 @@ public class EditServiceImpl implements EditService {
 			dto.setKaisetsu(dbResult.get("KAISETSU"));
 
 		}
+
+		// 分類と解答ドロップダウンの値を設定
+		setCategoryAndAnswer(dto);
 
 		return dto;
 

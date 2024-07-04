@@ -1,7 +1,9 @@
 package cashbook.service.qa;
 
+import java.util.Map;
+
+import cashbook.dto.common.LoginDto;
 import cashbook.dto.qa.QaDto;
-import cashbook.dto.qa.QaHistoryDto;
 import cashbook.dto.qa.QaSettingDto;
 
 public interface QaService {
@@ -15,8 +17,10 @@ public interface QaService {
 
 	/**
 	 * 引数の登録データを解答履歴テーブルに登録
-	 * @param QaHistoryDto
+	 * @param formMap
+	 * @param loginDto
+	 * @param berforeQuestionId
 	 */
-	public void insHistory(QaHistoryDto dto);
+	public void insHistory(Map<String, Object> formMap, LoginDto loginDto, String berforeQuestionId);
 
 }

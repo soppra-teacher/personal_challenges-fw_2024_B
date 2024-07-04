@@ -74,7 +74,7 @@
 	</div>
 	<div class="nextBtnArea">
 		<html:form action="/QuestionAnswerInit">
-			<html:hidden property="userSelect"/>
+			<html:hidden property="userSelect" />
 			<html:submit>ŽŸ‚Ì–â‘è</html:submit>
 		</html:form>
 	</div>

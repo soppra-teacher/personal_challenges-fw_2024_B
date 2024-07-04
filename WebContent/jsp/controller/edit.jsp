@@ -15,9 +15,9 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/common.css" />
 <script language="JavaScript" type="text/javascript" charset="shift_jis"
-	src="js/common.js"></script>
-<script language="JavaScript" type="text/javascript" charset="shift_jis"
 	src="js/edit.js"></script>
+<script language="JavaScript" type="text/javascript" charset="shift_jis"
+	src="js/common.js"></script>
 <title>–â‘èE‰ð“š‚ð•ÒW</title>
 </head>
 
@@ -102,7 +102,7 @@
 						<p class="choice2">‘I‘ðŽˆ</p>
 						<div class="form-title2">
 							<p class="title">a.</p>
-							<html:text name="inputBean" property="sentakuA"
+							<html:textarea name="inputBean" property="sentakuA"
 								styleClass="t-box2" />
 							<p class="title">b.</p>
 							<html:text name="inputBean" property="sentakuB"
@@ -238,7 +238,5 @@
 			</div>
 		</div>
 	</html:form>
-
-
 </body>
 </html:html>

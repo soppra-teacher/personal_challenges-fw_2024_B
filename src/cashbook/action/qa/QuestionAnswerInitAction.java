@@ -15,7 +15,6 @@ import org.apache.struts.action.DynaActionForm;
 import cashbook.action.common.BaseAction;
 import cashbook.dto.common.LoginDto;
 import cashbook.dto.qa.QaDto;
-import cashbook.dto.qa.QaHistoryDto;
 import cashbook.dto.qa.QaSettingDto;
 import cashbook.service.qa.QaService;
 import cashbook.util.CommonUtil;
@@ -119,23 +118,10 @@ public class QuestionAnswerInitAction extends BaseAction {
 		//
 		//	解答履歴を付ける
 		//
-		String userSelectAnswer = CommonUtil.getStr(formMap.get(JukenshaMenuConst.KEY_USER_SELECT_ANSWER));
-		if (!userSelectAnswer.equals(EMPTY)) {
-			//
-			//	解答履歴テーブルの更新データの設定
-			//
-			QaHistoryDto historyDto = new QaHistoryDto();
-			// 登録ユーザを設定
-			historyDto.setInsUser(loginDto.getUserId());
-			// 問題IDを設定
-			historyDto.setQuestionId(settingDto.getBeforeQuestionId());
-			// ユーザの解答を設定
-			historyDto.setUserSelectAnswer(userSelectAnswer);
+		if (!CommonUtil.getStr(formMap.get(JukenshaMenuConst.KEY_USER_SELECT_ANSWER)).equals(EMPTY)) {
 
-			//
 			// 解答履歴テーブルを更新
-			//
-			qaService.insHistory(historyDto);
+			qaService.insHistory(formMap, loginDto, settingDto.getBeforeQuestionId());
 		}
 
 		// 取得した情報をセッションに設定
