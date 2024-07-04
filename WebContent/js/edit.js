@@ -30,9 +30,9 @@ window.addEventListener("DOMContentLoaded", () => {
 			content3.className = "";
 		}
 
-		//
-		//	テキストエリアの入力内容に応じて高さを可変自動調節する
-		//
+		/**
+	 * テキストエリアの入力内容に応じて高さを可変自動調節する
+	 */
 		document.querySelectorAll("textarea").forEach((ele) => {
 			ele.style.cssText = "width : 100%;";
 			ele.style.cssText += "height : " + ele.scrollHeight + "px;";
