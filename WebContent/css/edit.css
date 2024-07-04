@@ -13,11 +13,11 @@
 }
 
 .contact1 {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2.5%;
 	border: solid 1px;
-    width: 90%;
+	width: 90%;
 }
 
 input#button {
@@ -30,23 +30,44 @@ input#button {
 	font-size: 1.2rem
 }
 
-.tarea1 {
-	display: inline-block;
+
+
+.text-area1 {
+	width: 50%;
+}
+
+textarea.tarea1 {
 	font-size: 20px;
-	width: 70%;
 	padding: 10px;
 	border: 1px solid #999;
 	box-sizing: border-box;
-	margin: 0.5em 0;
-	line-height: 1.5;
-	height: 10em;
+	margin: 10px;
+	width: 30%;
+	resize: none;
+
+}
+
+
+.menuback {
+	text-decoration: none;
+	color: blue;
+}
+
+textarea.tarea2 {
+	font-size: 20px;
+	padding: 15px;
+	border: 1px solid #999;
+	box-sizing: border-box;
+	margin: 10px;
+	height: 15rem;
+	resize: none;
 }
 
 .radio-list1 {
 	display: flex;
 	padding: 5px;
 	margin: 10px;
-	font-size: 20px;
+	font-size: 25px;
 }
 
 
@@ -54,22 +75,26 @@ input#button {
 	display: flex;
 	padding: 5px;
 	margin: 10px;
-	font-size: 20px;
+	font-size: 25px;
 }
 
 .form-title1 {
 	margin: 10px;
 	display: flex;
 	padding: 5px;
-	font-size: 20px;
+	font-size: 25px;
+	align-items: center;
+	width: 45%;
 
 }
+
 
 .form-area1 {
 	padding: 5px;
 	margin: 10px;
 	display: flex;
-	font-size: 20px;
+	font-size: 25px;
+	width: 70%;
 }
 
 .button-list1 {
@@ -86,7 +111,7 @@ input#button {
 	border: solid 1px lightgray;
 	background: white;
 	box-shadow: 0 0 5px lightgrey;
-	font-size: 1.2rem;
+	font-size: 1.3rem;
 }
 
 .t-box1 {
@@ -97,6 +122,7 @@ input#button {
 .select1 {
 	width: 100px;
 	font-size: 15px;
+	font-weight: bold;
 }
 
 .choice2 {
@@ -105,11 +131,33 @@ input#button {
 }
 
 .choice-list2 {
-	margin: 15px;
-	margin-left: 250px;
-	padding: 10px;
-	width: 50%;
+	width: 40%;
+	line-height: 1.75em;
+	margin: 10px;
+}
 
+.sub {
+	font-weight: bold;
+}
+
+.category1 {
+	font-weight: bold;
+}
+
+.q-title {
+	font-weight: bold;
+	width: 60%;
+	align-items: center;
+}
+
+.t-question {
+	font-weight: bold;
+	width: 15%;
+}
+
+label {
+	font-weight: bold;
+	margin: 5px;
 }
 
 .title2 {
@@ -124,7 +172,7 @@ input#button {
 }
 
 .select2 {
-	width: 100px;
+	width: 135px;
 	font-size: 30px;
 }
 
@@ -134,19 +182,19 @@ input#button {
 }
 
 .form-area2 {
-	width: 50%;
+	width: 45%;
+	margin: 10px;
 }
 
-.tarea2 {
-	display: inline-block;
+.tarea3 {
+
 	font-size: 20px;
-	width: 70%;
+
 	padding: 10px;
 	border: 1px solid #999;
 	box-sizing: border-box;
 	margin: 5px;
-	line-height: 1.5;
-	height: 20em;
+
 }
 
 .regist-button2 {
@@ -157,82 +205,95 @@ input#button {
 	border: solid 1px lightgray;
 	background: white;
 	box-shadow: 0 0 5px lightgrey;
-	font-size: 1.2rem
+	font-size: 1.3rem
 }
 
 .t-box2 {
 	font-size: 25px;
+	resize: none;
 }
 
 .button-list2 {
 	display: flex;
-	float: right;
+
 	margin: 15px;
-	margin-right: 350px;
+	justify-content: center;
 }
 
 .index {
 	display: flex;
+	width: 100%;
+	justify-content: center;
 }
 
 .list-box {
-	height: 600px;
+	margin-top: 2%;
 	display: flex;
 
 }
 
+.comentary {
+	width: 50%;
+	height: 25em;
+}
 
+
+.leftborder {
+	border-left: solid 5px #FF8551;
+}
 
 .question-list3 {
 	border: solid 1px;
-	width: 45%;
-	margin: 20px;
+	margin-top: 2%;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .answer-list3 {
 	border: solid 1px;
-	width: 45%;
-	margin: 20px;
-
+	width: 90%;
+	margin-top: 2%;
+	margin-left: auto;
+	margin-right: auto;
 }
+
 
 .title {
-	font-size: 15px;
+	font-size: 25px;
 	font-weight: bold;
 	margin: 10px;
-}
 
-.tarea3 {
-	display: inline-block;
-	font-size: 20px;
-	width: 90%;
-	padding: 10px;
-	border: 1px solid #999;
-	box-sizing: border-box;
-	margin-left: 30px;
-	margin-bottom: 20px;
-	line-height: 1.5;
-	height: 10em;
 }
 
 .tarea4 {
-	display: inline-block;
-	font-size: 20px;
-	width: 90%;
+
+	font-size: 35px;
+
 	padding: 10px;
 	border: 1px solid #999;
 	box-sizing: border-box;
 	margin-left: 30px;
 	margin-bottom: 20px;
-	line-height: 1.5;
-	height: 6em;
+
+}
+
+.tarea5 {
+
+	font-size: 20px;
+
+	padding: 10px;
+	border: 1px solid #999;
+	box-sizing: border-box;
+	margin-left: 30px;
+	margin-bottom: 20px;
+
 }
 
 
 .update3 {
 	margin: 10px;
 	padding: 10px;
-	width: 100%;
 
 }
 
@@ -243,10 +304,11 @@ input#button {
 	border: solid 1px lightgray;
 	background: white;
 	box-shadow: 0 0 5px lightgrey;
-	font-size: 1.2rem;
+	font-size: 1.3rem;
 	text-align: center;
 	width: 80px;
-	margin-left: 250px;
+	margin-left: auto;
+	margin-right: auto;
 
 }
 
@@ -257,29 +319,22 @@ input#button {
 	border: solid 1px lightgray;
 	background: white;
 	box-shadow: 0 0 5px lightgrey;
-	font-size: 1.2rem;
+	font-size: 1.3rem;
 	text-align: center;
 
-	margin-left: 650px;
-}
-
-
-
-.sentaku-list3 {
-	display: flex;
-}
-
-.choice-list3 {
-	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .ans-list3 {
-	width: 50%;
+	display: flex;
+
 }
 
 .button-list3 {
-	width: 100%;
 	margin: 10px;
+	display: flex;
+	justify-content: center;
 
 }
 
@@ -325,6 +380,8 @@ input#button {
 	margin: 10px;
 }
 
+
+
 .sub-list {
 	display: flex;
 }
@@ -357,7 +414,6 @@ input#button {
 
 .output4 {
 	border: solid 1px;
-	font-size: 25px;
 	font-weight: bold;
 	margin: 20px;
 	display: inline-block;
@@ -372,39 +428,38 @@ input#button {
 }
 
 .output5 {
-	font-size: 15px;
+	font-size: 20px;
 	font-weight: bold;
 	margin: 10px;
 	height: 2em;
 	overflow: auto;
-	border: solid 1px;
+
 }
 
 .output6 {
-	font-size: 15px;
+	font-size: 20px;
 	font-weight: bold;
 	margin: 10px;
 	height: 2em;
 	overflow: auto;
-	border: solid 1px;
+
 }
 
 .output7 {
-	font-size: 15px;
+	font-size: 20px;
 	font-weight: bold;
 	margin: 10px;
 	height: 2em;
 	overflow: auto;
-	border: solid 1px;
 }
 
 .output8 {
-	font-size: 15px;
+	font-size: 20px;
 	font-weight: bold;
 	margin: 10px;
 	height: 2em;
 	overflow: auto;
-	border: solid 1px;
+
 }
 
 .A {
@@ -445,15 +500,15 @@ input#button {
 
 .msg-err {
 	width: 60%;
-    height: 45px;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: red;
-    border: solid 1px red;
-    border-radius: 8px;
-    background: #ffdfdf;
+	height: 45px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: red;
+	border: solid 1px red;
+	border-radius: 8px;
+	background: #ffdfdf;
 }
