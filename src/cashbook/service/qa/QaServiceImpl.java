@@ -7,10 +7,12 @@ import java.util.Map;
 import java.util.Random;
 
 import cashbook.dao.qa.QaDao;
+import cashbook.dto.common.LoginDto;
 import cashbook.dto.qa.QaDto;
 import cashbook.dto.qa.QaHistoryDto;
 import cashbook.dto.qa.QaSettingDto;
 import cashbook.util.CommonUtil;
+import cashbook.util.JukenshaMenuConst;
 
 public class QaServiceImpl implements QaService {
 
@@ -34,28 +36,8 @@ public class QaServiceImpl implements QaService {
 
 		QaDto result = new QaDto();
 
-		// 教科を取得
-		String subject = qaSetting.getSubject();
-
-		List<Map<String, String>> dbresult = null;
-
-		if (subject.equals(SELECT_JAVA_ON)) {
-
-			// 出題可能な問題IDを取得
-			dbresult = qaDao.getQuestionId(SUBJECT_JAVA);
-
-		} else if (subject.equals(SELECT_SQL_ON)) {
-
-			// 出題可能な問題IDを取得
-			dbresult = qaDao.getQuestionId(SUBJECT_SQL);
-
-		}
-
-		// 前回の問題IDを取得する
-		String beforQuestionId = CommonUtil.getStr(qaSetting.getBeforeQuestionId());
-
 		// 問題を選出
-		Map<String, String> question = setQuestionInfo(dbresult, beforQuestionId);
+		Map<String, String> question = getQuestionInfo(qaSetting);
 
 		// 問題マスタ、解答マスタより取得したデータを返却用変数に格納
 		result.setQuestion(CommonUtil.getStr(question.get("QUESTION")));
@@ -70,28 +52,61 @@ public class QaServiceImpl implements QaService {
 		qaSetting.setBeforeQuestionId(CommonUtil.getStr(question.get("QUESTION_ID")));
 
 		return result;
+
 	}
 
 	/**
 	 * 引数の登録データを解答履歴テーブルに登録
-	 * @param QaHistoryDto
+	 * @param formMap
+	 * @param loginDto
+	 * @param berforeQuestionId
 	 */
-	public void insHistory(QaHistoryDto dto) {
+	public void insHistory(Map<String, Object> formMap, LoginDto loginDto, String berforeQuestionId) {
+
+		//
+		//	解答履歴テーブルの更新データの設定
+		//
+		QaHistoryDto historyDto = new QaHistoryDto();
+		// 登録ユーザを設定
+		historyDto.setInsUser(loginDto.getUserId());
+		// 問題IDを設定
+		historyDto.setQuestionId(berforeQuestionId);
+		// ユーザの解答を設定
+		String userSelectAnswer = CommonUtil.getStr(formMap.get(JukenshaMenuConst.KEY_USER_SELECT_ANSWER));
+		historyDto.setUserSelectAnswer(userSelectAnswer);
 
 		// 引数データを解答履歴テーブルに登録
-		qaDao.insertHistory(dto);
+		qaDao.insertHistory(historyDto);
 
 	}
 
 	/**
 	 * 引数データをもとに、出題する問題を選出する
-	 * @param List<Map<String, String>> データベースから取得したデータ
-	 * @param String 前回出題した問題の問題ID
+	 * @param QaSetting 出題設定保持用DTO
 	 * @return Map<String, String>
 	 */
-	private Map<String, String> setQuestionInfo(List<Map<String, String>> dbresult, String beforQuestionId) {
+	private Map<String, String> getQuestionInfo(QaSettingDto qaSetting) {
 
 		Random random = new Random();
+
+		// 教科を取得
+		String subject = qaSetting.getSubject();
+
+		// 前回の問題IDを取得する
+		String beforQuestionId = CommonUtil.getStr(qaSetting.getBeforeQuestionId());
+
+		List<Map<String, String>> dbresult = null;
+		if (subject.equals(SELECT_JAVA_ON)) {
+
+			// 出題可能な問題IDを取得
+			dbresult = qaDao.getQuestionId(SUBJECT_JAVA);
+
+		} else if (subject.equals(SELECT_SQL_ON)) {
+
+			// 出題可能な問題IDを取得
+			dbresult = qaDao.getQuestionId(SUBJECT_SQL);
+
+		}
 
 		// 出題問題を格納する変数
 		Map<String, String> question = null;
@@ -104,11 +119,10 @@ public class QaServiceImpl implements QaService {
 			index++;
 		}
 
-		String questionId;
 		while (true) {
 
 			// ランダムな問題IDを取得
-			questionId = questionIdAry[random.nextInt(questionIdAry.length)];
+			String questionId = questionIdAry[random.nextInt(questionIdAry.length)];
 
 			// 取得した問題IDが前回出題した問題IDと同じ場合は再度取得
 			if (questionId.equals(beforQuestionId)) {
