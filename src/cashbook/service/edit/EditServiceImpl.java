@@ -328,9 +328,8 @@ public class EditServiceImpl implements EditService {
 	/**
 	 * 引数EditDtoの分類と解答ドロップダウン用の項目に値を設定する
 	 * @param EditDto
-	 * @return EditDto
 	 */
-	private EditDto setCategoryAndAnswer(EditDto dto) {
+	private void setCategoryAndAnswer(EditDto dto) {
 		// Javaの分類を取得
 		dto.setCategoryJava(editDao.getCategory(SUBJECT_JAVA));
 		// SQLの分類を取得
@@ -344,7 +343,5 @@ public class EditServiceImpl implements EditService {
 		answerDropDown.put("c", "c");
 		answerDropDown.put("d", "d");
 		dto.setAnswer(answerDropDown);
-
-		return dto;
 	}
 }
