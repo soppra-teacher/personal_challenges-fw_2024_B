@@ -23,7 +23,7 @@
 	<bean:define id="inputBean" name="jukenshaForm" />
 
 	<jsp:include page="/jsp/common/header.jsp">
-		<jsp:param name="screenTitle" value="受験者メニュー" />
+		<jsp:param name="screenTitle" value="受験者メニュー画面" />
 	</jsp:include>
 
 	<html:form action="/QuestionAnswerInit">
