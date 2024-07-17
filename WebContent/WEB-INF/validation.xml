@@ -6,7 +6,7 @@
 	<formset>
 		<!-- ログイン画面 -->
 		<form name="loginForm">
-			<field property="userId" depends="required,maxlength,mask">
+			<field property="userId" depends="required">
 				<arg0 key="loginForm.param.userId" resource="true" />
 				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
 				<var>
