@@ -27,6 +27,7 @@ public class EditDaoImpl extends BaseDaoImpl implements EditDao {
 
 		// 返却用変数に格納
 		Map<String, String> result = new LinkedHashMap<String, String>();
+		result.put("", "");
 		for (int f = 0; f < dbresult.size(); f++) {
 			result.put(dbresult.get(f).get("CATEGORY_ID"), dbresult.get(f).get("CATEGORY"));
 		}
