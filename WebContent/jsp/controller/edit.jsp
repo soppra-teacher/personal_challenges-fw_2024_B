@@ -240,7 +240,7 @@
 				<logic:empty name="viewUpdateBean">
 					<div class="button-list3">
 						<html:button property="insert"
-							onclick="callAction(this.form, 'insert');" styleClass="r-button3">
+							onclick="" styleClass="r-button3">
               						ìoò^
             				</html:button>
 					</div>
@@ -248,7 +248,7 @@
 				<logic:notEmpty name="viewUpdateBean">
 					<div class="button-list3">
 						<html:button property="update"
-							onclick="callAction(this.form, 'update');" styleClass="r-button3">
+							onclick="" styleClass="r-button3">
               						çXêV
             			</html:button>
 					</div>

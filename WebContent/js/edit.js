@@ -165,4 +165,22 @@ window.addEventListener("DOMContentLoaded", () => {
 	//
 	document.getElementById("updatebtn2").addEventListener("click", () => showlayout(2));
 
+
+	//
+	//	データを送信
+	//
+	let btn = document.getElementsByClassName("r-button3")[0];
+	btn.addEventListener("click", () =>{
+
+		if (java_radio.checked) {
+			sqlSelect.selectedIndex = 1;
+		}
+
+		if (sql_radio.checked) {
+			javaSelect.selectedIndex = 1;
+		}
+		
+		callAction(document.querySelector("form"), btn.name);
+	});
+
 });

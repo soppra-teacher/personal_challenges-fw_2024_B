@@ -41,6 +41,12 @@
 					<var-value>900</var-value>
 				</var>
 			</field>
+			<field property="categoryKeyJava" depends="required">
+				<arg0 key="editForm.param.categoryKeyJava" resource="true" />
+			</field>
+			<field property="categoryKeySql" depends="required">
+				<arg0 key="editForm.param.categoryKeySql" resource="true" />
+			</field>
 			<field property="sentakuA" depends="required,maxlength">
 				<arg0 key="editForm.param.sentakuA" resource="true" />
 				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
