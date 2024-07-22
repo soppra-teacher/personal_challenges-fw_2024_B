@@ -83,7 +83,7 @@
 				<arg0 key="editForm.param.answerKey" resource="true" />
 			</field>
 			<field property="kaisetsu" depends="maxlength">
-				<arg0 key="editForm.param.sentakuA" resource="true" />
+				<arg0 key="editForm.param.kaisetsu" resource="true" />
 				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
 				<var>
 					<var-name>maxlength</var-name>
