@@ -239,16 +239,14 @@
 				</div>
 				<logic:empty name="viewUpdateBean">
 					<div class="button-list3">
-						<html:button property="insert"
-							onclick="" styleClass="r-button3">
+						<html:button property="insert" styleClass="r-button3">
               						ìoò^
             				</html:button>
 					</div>
 				</logic:empty>
 				<logic:notEmpty name="viewUpdateBean">
 					<div class="button-list3">
-						<html:button property="update"
-							onclick="" styleClass="r-button3">
+						<html:button property="update" styleClass="r-button3">
               						çXêV
             			</html:button>
 					</div>

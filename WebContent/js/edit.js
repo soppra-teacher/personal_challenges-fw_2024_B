@@ -67,6 +67,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
 		javaSelect.className = "select";
 		sqlSelect.className = "hide";
+		
+		javaSelect.selectedIndex = 0;
 
 	});
 
@@ -77,6 +79,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
 		javaSelect.className = "hide";
 		sqlSelect.className = "select";
+		
+		sqlSelect.selectedIndex = 0;
 
 	});
 
