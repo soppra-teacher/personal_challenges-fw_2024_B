@@ -71,25 +71,18 @@ public abstract class BaseAction extends Action {
 	}
 
 	/**
-	 * 共通機能
-	 * <br>削除対象チェックボックス処理対象判定
+	 * ログインしているユーザが教師か否かを判定する
 	 *
-	 * @param checkDel 削除対象チェックボックス
-	 * @param request リクエスト
-	 * @return True:エラーあり、False:エラーなし
+	 * @param request  リクエスト
+	 * @return boolean 教師の場合はTrue、それ以外はFalse
 	 */
-	protected boolean checkDeleteTarget(String[] checkDel, HttpServletRequest request) {
+	public boolean isTeacher(HttpServletRequest request) {
 
-		// 選択レコードが無ければエラー
-		if (checkDel == null || checkDel.length == 0) {
+		// ログイン情報取得
+		LoginDto loginDto = (LoginDto) request.getSession().getAttribute("LOGIN_DTO");
 
-			ActionErrors errors = new ActionErrors();
-			errors.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(Const.MSG_ERRORS_NO_DELETE));
-			saveErrors(request, errors);
-			return true;
+		return Const.TEACHER_FLG_ON.equals(loginDto.getUserId());
 
-		}
-		return false;
 	}
 
 }

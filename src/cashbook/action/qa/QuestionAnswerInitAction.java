@@ -51,6 +51,11 @@ public class QuestionAnswerInitAction extends BaseAction {
 	protected ActionForward doProcess(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response, LoginDto loginDto) throws Exception {
 
+		// 受験者でない場合はエラーページへ移動
+		if (isTeacher(request)) {
+			return map.findForward(ACTION_FOWARD_ERROR);
+		}
+
 		// フォームの値を取得する。
 		Map<String, Object> formMap = CommonUtil.getFormMap((DynaActionForm) form);
 

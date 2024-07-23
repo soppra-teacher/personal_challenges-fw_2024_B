@@ -94,6 +94,7 @@
 			validate="false"
 			scope="request">
 			<forward name="success" path="/jsp/menu/teacherMenu.jsp" />
+			<forward name="error" path="/jsp/common/error.jsp" />
 		</action>
 		<!-- 削除 -->
 		<action
@@ -118,6 +119,7 @@
 			validate="false"
 			scope="request">
 			<forward name="success" path="/jsp/menu/jukenshaMenu.jsp" />
+			<forward name="error" path="/jsp/common/error.jsp" />
 		</action>
 		<!--
 		****************************
@@ -159,6 +161,7 @@
 			scope="request">
 			<forward name="success" path="/jsp/qa/questionAnswer.jsp" />
 			<forward name="jukenshaMenu" path="/JukenshaMenuInit.do" />
+			<forward name="error" path="/jsp/common/error.jsp" />
 		</action>
 	</action-mappings>
 	<message-resources parameter="application" />

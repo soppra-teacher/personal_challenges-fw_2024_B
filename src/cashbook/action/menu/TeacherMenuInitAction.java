@@ -45,6 +45,11 @@ public class TeacherMenuInitAction extends BaseAction {
 	protected ActionForward doProcess(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response, LoginDto loginDto) throws Exception {
 
+		// 教師でない場合はエラーページへ移動
+		if (!isTeacher(request)) {
+			return map.findForward(ACTION_FOWARD_ERROR);
+		}
+
 		TeacherMenuDto dto = new TeacherMenuDto();
 
 		// 初期表示情報を取得
@@ -55,12 +60,12 @@ public class TeacherMenuInitAction extends BaseAction {
 
 		// 取得した情報をセッションに設定
 		request.getSession().setAttribute(SESSION_LIST_DTO_TEACHER, dto);
-		
+
 		// 更新対象のデータを保持するセッションを削除
 		request.getSession().removeAttribute(SESSION_DTO_QUESTION_UPDATE);
 
 		// 処理成功時の遷移先を指定する。
 		return map.findForward(ACTION_FOWARD_SUCCESS);
-		
+
 	}
 }
