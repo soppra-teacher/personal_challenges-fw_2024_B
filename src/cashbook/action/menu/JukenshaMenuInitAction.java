@@ -45,6 +45,11 @@ public class JukenshaMenuInitAction extends BaseAction {
 	protected ActionForward doProcess(ActionMapping map, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response, LoginDto loginDto) throws Exception {
 
+		// 受験者でない場合はエラーページへ移動
+		if (isTeacher(request)) {
+			return map.findForward(ACTION_FOWARD_ERROR);
+		}
+
 		JukenshaMenuDto dto = new JukenshaMenuDto();
 		// 教科のラジオボタンで、Javaが選択されているように設定
 		dto.setSubjectRadio(SELECT_JAVA_ON);
