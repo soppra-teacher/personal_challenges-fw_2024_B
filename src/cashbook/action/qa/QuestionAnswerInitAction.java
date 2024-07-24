@@ -73,6 +73,7 @@ public class QuestionAnswerInitAction extends BaseAction {
 			settingDto.setSubject(CommonUtil.getStr(formMap.get(JukenshaMenuConst.KEY_SUBJECT_RADIO)));
 			// 選択された問題数
 			String str_questionCount = EMPTY;
+
 			if (settingDto.getSubject().equals(SELECT_JAVA_ON)) {
 				//
 				// 出題設定用のセッションの教科がJavaの場合
@@ -116,6 +117,11 @@ public class QuestionAnswerInitAction extends BaseAction {
 
 		// 出題する問題と解答を取得
 		qaDto = qaService.getQA(settingDto);
+
+		// 問題が取得できなかった場合は、受験者メニューへ遷移
+		if (qaDto == null) {
+			return map.findForward(ACTION_FOWARD_JUKENSHA_MENU);
+		}
 
 		// 現在の出題数を+1
 		settingDto.incrementCurrentQuestionCount();
