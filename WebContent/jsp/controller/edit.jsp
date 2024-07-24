@@ -94,7 +94,7 @@
 					<div class="button-list1">
 						<div id="btn" class="regist-button1">次へ</div>
 						<div id="b-btn" class="regist-button1">
-							<a href="/Cashbook/TeacherMenuInit.do" class="menuback">メニューへ戻る</a>
+							<a href="./TeacherMenuInit.do" class="menuback">メニューへ戻る</a>
 						</div>
 					</div>
 				</div>
@@ -157,7 +157,7 @@
 				<div class="button-list2">
 					<div id="btn2" class="regist-button2">次へ</div>
 					<div id="b-btn" class="regist-button2">
-						<a href="/Cashbook/TeacherMenuInit.do" class="menuback">メニューへ戻る</a>
+						<a href="./TeacherMenuInit.do" class="menuback">メニューへ戻る</a>
 					</div>
 				</div>
 			</div>
