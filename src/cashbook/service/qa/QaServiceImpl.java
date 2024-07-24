@@ -39,19 +39,27 @@ public class QaServiceImpl implements QaService {
 		// 問題を選出
 		Map<String, String> question = getQuestionInfo(qaSetting);
 
-		// 問題マスタ、解答マスタより取得したデータを返却用変数に格納
-		result.setQuestion(CommonUtil.getStr(question.get("QUESTION")));
-		result.setSentakuA(CommonUtil.getStr(question.get("SENTAKU_A")));
-		result.setSentakuB(CommonUtil.getStr(question.get("SENTAKU_B")));
-		result.setSentakuC(CommonUtil.getStr(question.get("SENTAKU_C")));
-		result.setSentakuD(CommonUtil.getStr(question.get("SENTAKU_D")));
-		result.setAnswer(CommonUtil.getStr(question.get("ANSWER")));
-		result.setKaisetsu(CommonUtil.getStr(question.get("KAISETSU")));
+		if (question != null) {
 
-		// 前回の問題IDに値を設定
-		qaSetting.setBeforeQuestionId(CommonUtil.getStr(question.get("QUESTION_ID")));
+			// 問題マスタ、解答マスタより取得したデータを返却用変数に格納
+			result.setQuestion(CommonUtil.getStr(question.get("QUESTION")));
+			result.setSentakuA(CommonUtil.getStr(question.get("SENTAKU_A")));
+			result.setSentakuB(CommonUtil.getStr(question.get("SENTAKU_B")));
+			result.setSentakuC(CommonUtil.getStr(question.get("SENTAKU_C")));
+			result.setSentakuD(CommonUtil.getStr(question.get("SENTAKU_D")));
+			result.setAnswer(CommonUtil.getStr(question.get("ANSWER")));
+			result.setKaisetsu(CommonUtil.getStr(question.get("KAISETSU")));
 
-		return result;
+			// 前回の問題IDに値を設定
+			qaSetting.setBeforeQuestionId(CommonUtil.getStr(question.get("QUESTION_ID")));
+
+			return result;
+
+		} else {
+
+			return null;
+
+		}
 
 	}
 
@@ -106,6 +114,11 @@ public class QaServiceImpl implements QaService {
 			// 出題可能な問題IDを取得
 			dbresult = qaDao.getQuestionId(SUBJECT_SQL);
 
+		}
+
+		// 検索結果が0件の場合はNULLを返却
+		if (dbresult.size() == 0) {
+			return null;
 		}
 
 		// 出題問題を格納する変数
