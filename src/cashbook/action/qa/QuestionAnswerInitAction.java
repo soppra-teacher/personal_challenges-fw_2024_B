@@ -104,6 +104,15 @@ public class QuestionAnswerInitAction extends BaseAction {
 			settingDto = (QaSettingDto) request.getSession().getAttribute(SESSION_DTO_QUESTION_ANSWER_SETTING);
 
 			if (settingDto.getCurrentQuestionCount() >= settingDto.getQuestionCount()) {
+				
+				//
+				//	解答履歴を付ける
+				//
+				if (!CommonUtil.getStr(formMap.get(JukenshaMenuConst.KEY_USER_SELECT_ANSWER)).equals(EMPTY)) {
+
+					// 解答履歴テーブルを更新
+					qaService.insHistory(formMap, loginDto, settingDto.getBeforeQuestionId());
+				}
 
 				// 選択した出題数に達した場合は、受験者メニューへ遷移
 				return map.findForward(ACTION_FOWARD_JUKENSHA_MENU);
