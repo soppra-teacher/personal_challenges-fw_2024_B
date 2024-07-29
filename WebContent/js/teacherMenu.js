@@ -25,24 +25,26 @@ window.addEventListener("DOMContentLoaded", () => {
 	let tr_ele = document.getElementsByTagName("tr");
 
 	for (let f = 1; f < tr_ele.length; f++) {
+		
+		let row = tr_ele[f];
 
 		//
 		// テーブル行のクリックイベント
 		//	
-		tr_ele[f].addEventListener("click", () => {
+		row.addEventListener("click", () => {
 
 			updlink.className = "update";
 			liwapper.className = "li__wrapper";
 
 			//問題一覧表示テーブルで、選択された行の各値を取得
-			let td_ele = tr_ele[f].children;
+			let td_ele = row.children;
 			let questionId_table = td_ele[0].innerText;
 			let subject_table = td_ele[1].innerText;
 			let category_table = td_ele[2].innerText;
 			let question_table_title = td_ele[3].innerText;
 			let answer_table = td_ele[4].innerText;
-			let question_table = tr_ele[f].children[5].value;;
-			let kaisetsu_table = tr_ele[f].children[6].value;
+			let question_table = row.children[5].value;
+			let kaisetsu_table = row.children[6].value;
 
 			//innerTextをクリア
 			questionId.innerText = "";
@@ -74,6 +76,16 @@ window.addEventListener("DOMContentLoaded", () => {
 				ele.style.cssText += "height : " + ele.scrollHeight + "px;";
 			});
 
+		});
+		
+		//
+		// テーブル行のホバーイベント
+		//	
+		row.addEventListener("mouseenter", () => {
+			row.style = "background: #F7F7F7";
+		});
+		row.addEventListener("mouseleave", ()=>{
+			row.style = "background: white";
 		});
 	}
 });

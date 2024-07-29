@@ -11,31 +11,34 @@ window.addEventListener("DOMContentLoaded", () => {
 		}
 
 		// 画面レイアウトエレメントを取得
-		const content1 = document.getElementById("content1");
-		const content2 = document.getElementById("content2");
-		const content3 = document.getElementById("content3");
+		const layout1 = document.getElementById("layout1");
+		const layout2 = document.getElementById("layout2");
+		const layout3 = document.getElementById("layout3");
 
 		// 引数に応じて画面を切り替え
 		if (layoutNumber == 1) {
-			content1.className = "";
-			content2.className = "hide";
-			content3.className = "hide";
+			layout1.className = "";
+			layout2.className = "hide";
+			layout3.className = "hide";
+			window.location.href = "#layout1";
 		} else if (layoutNumber == 2) {
-			content1.className = "hide";
-			content2.className = "";
-			content3.className = "hide";
+			layout1.className = "hide";
+			layout2.className = "";
+			layout3.className = "hide";
+			window.location.href = "#layout2";
 		} else if (layoutNumber == 3) {
-			content1.className = "hide";
-			content2.className = "hide";
-			content3.className = "";
+			layout1.className = "hide";
+			layout2.className = "hide";
+			layout3.className = "";
+			window.location.href = "#layout3";
 		}
 
-		/**
-	 * テキストエリアの入力内容に応じて高さを可変自動調節する
-	 */
+		//
+		//	テキストエリアの入力内容に応じて高さを可変自動調節する
+		//
 		document.querySelectorAll("textarea").forEach((ele) => {
-			ele.style.cssText = "width : 100%;";
-			ele.style.cssText += "height : " + ele.scrollHeight + "px;";
+			ele.style.cssText += "width : 100%;";
+			ele.style.cssText += "height : " + (ele.scrollHeight + 1) + "px;";
 		});
 	}
 
@@ -67,7 +70,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 		javaSelect.className = "select";
 		sqlSelect.className = "hide";
-		
+
 		javaSelect.selectedIndex = 0;
 
 	});
@@ -79,7 +82,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 		javaSelect.className = "hide";
 		sqlSelect.className = "select";
-		
+
 		sqlSelect.selectedIndex = 0;
 
 	});
@@ -87,23 +90,20 @@ window.addEventListener("DOMContentLoaded", () => {
 	//
 	//	画面レイアウト1　次へボタン押下イベント
 	//
-	document.getElementById("btn").addEventListener("click", () => {
+	document.getElementById("layout1Btn").addEventListener("click", () => {
 
-		// 画面レイアウト2を表示
-		showlayout(2);
-
-		let check_subject = document.getElementById("output1");
+		let check_subject = document.getElementById("check_subject");
 
 		//ラジオボタン選択状態の取得
 		if (java_radio.checked) {
 
 			// 確認用エレメントに選択された教科名を設定
-			check_subject.innerText = "Java";
+			check_subject.innerText = "JAVA";
 
 			// 選択された分類を確認用エレメントに設定
 			let selectIndex = document.getElementsByName("categoryKeyJava")[0].selectedIndex;
 			let category = document.getElementsByName("categoryKeyJava")[0].options[selectIndex].label;
-			document.getElementById("output2").innerText = category;
+			document.getElementById("check_category").innerText = category;
 
 		} else {
 
@@ -113,27 +113,27 @@ window.addEventListener("DOMContentLoaded", () => {
 			// 選択された分類を確認用エレメントに設定
 			let selectIndex = document.getElementsByName("categoryKeySql")[0].selectedIndex;
 			let category = document.getElementsByName("categoryKeySql")[0].options[selectIndex].label;
-			document.getElementById("output2").innerText = category;
+			document.getElementById("check_category").innerText = category;
 
 		}
 
 		// 問題タイトルに入力された内容を取得し、確認用のエレメントに設定
 		let questionTitle_text = document.getElementsByName("questionTitle")[0].value;
-		document.getElementById("output3").innerText = questionTitle_text;
+		document.getElementById("check_question_title").innerText = questionTitle_text;
 
 		// 問題文に入力された内容を取得し、確認用のエレメントに設定
 		let question_text = document.getElementsByName("question")[0].value;
-		document.getElementById("output4").textContent = question_text;
+		document.getElementById("check_question").textContent = question_text;
+
+		// 画面レイアウト2を表示
+		showlayout(2);
 
 	});
 
 	//
 	//	画面レイアウト2　次へボタン押下イベント
 	//
-	document.getElementById("btn2").addEventListener("click", () => {
-
-		// 画面レイアウト3を表示
-		showlayout(3);
+	document.getElementById("layout2Btn").addEventListener("click", () => {
 
 		// 選択肢Aのエレメントの値を取得
 		let sentakushi_A_txt = document.getElementsByName("sentakuA")[0].value;
@@ -150,31 +150,33 @@ window.addEventListener("DOMContentLoaded", () => {
 		let kaisetsu = document.getElementsByName("kaisetsu")[0].value;
 
 		// 確認用エレメントに値を設定
-		document.getElementById("output5").innerText = sentakushi_A_txt;
-		document.getElementById("output6").innerText = sentakushi_B_txt;
-		document.getElementById("output7").innerText = sentakushi_C_txt;
-		document.getElementById("output8").innerText = sentakushi_D_txt;
-		document.getElementById("output9").innerText = answer;
-		document.getElementById("output10").innerText = kaisetsu;
+		document.getElementById("check_selection_A").innerText = sentakushi_A_txt;
+		document.getElementById("check_selection_B").innerText = sentakushi_B_txt;
+		document.getElementById("check_selection_C").innerText = sentakushi_C_txt;
+		document.getElementById("check_selection_D").innerText = sentakushi_D_txt;
+		document.getElementById("check_answer").innerText = answer;
+		document.getElementById("check_kaisetsu").innerText = kaisetsu;
+
+		// 画面レイアウト3を表示
+		showlayout(3);
 
 	});
 
 	//
 	//	画面レイアウト1の編集ボタンクリックイベント
 	//
-	document.getElementById("updatebtn").addEventListener("click", () => showlayout(1));
+	document.getElementById("edit_layout1").addEventListener("click", () => showlayout(1));
 
 	//
 	//	画面レイアウト2の編集ボタンクリックイベント
 	//
-	document.getElementById("updatebtn2").addEventListener("click", () => showlayout(2));
-
+	document.getElementById("edit_layout2").addEventListener("click", () => showlayout(2));
 
 	//
 	//	データを送信
 	//
 	let btn = document.getElementsByClassName("r-button3")[0];
-	btn.addEventListener("click", () =>{
+	btn.addEventListener("click", () => {
 
 		if (java_radio.checked) {
 			sqlSelect.selectedIndex = 1;
@@ -183,7 +185,7 @@ window.addEventListener("DOMContentLoaded", () => {
 		if (sql_radio.checked) {
 			javaSelect.selectedIndex = 1;
 		}
-		
+
 		callAction(document.querySelector("form"), btn.name);
 	});
 

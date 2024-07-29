@@ -11,9 +11,9 @@
 <meta content="ja" http-equiv="Content-Language" />
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/edit.css" />
-<link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/common.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/edit.css" />
 <script language="JavaScript" type="text/javascript" charset="shift_jis"
 	src="js/common.js"></script>
 <script language="JavaScript" type="text/javascript" charset="shift_jis"
@@ -50,21 +50,29 @@
 		<html:hidden name="inputBean" property="questionId" />
 		<html:hidden name="inputBean" property="answerId" />
 
-		<div id="content1">
-			<div class="contact1">
-				<div class="">
-					<div class="radio-list1">
-						<p class="sub">教科：</p>
-						<html:radio name="inputBean" property="subject" value="java" />
-						<label for="radio1">Java</label>
-						<html:radio name="inputBean" property="subject" value="sql" />
-						<label for="radio1">SQL</label>
+		<div class="content">
+			<div id="layout1">
+				<div class="content_box mtop_5per">
+					<h2>教科の選択</h2>
+					<div class="item_box">
+						<p class="item_box_title">出題する問題の教科を選択します。</p>
+						<div class="radio_btns">
+							<div class="radio_btn">
+								<html:radio name="inputBean" property="subject" value="java" />
+								<label for="radio1">JAVA</label>
+							</div>
+							<div class="radio_btn">
+								<html:radio name="inputBean" property="subject" value="sql" />
+								<label for="radio1">SQL</label>
+							</div>
+						</div>
 					</div>
-
-					<div class="form-select1">
-						<p class="category1">分類：</p>
-						<html:select name="inputBean" property="categoryKeyJava"
-							styleClass="select select1">
+				</div>
+				<div class="content_box mtop_5per">
+					<h2>問題の分類</h2>
+					<div class="item_box">
+						<p class="item_box_title">問題の分類を選択します。</p>
+						<html:select name="inputBean" property="categoryKeyJava">
 							<html:optionsCollection name="viewBean" property="categoryJava"
 								value="key" label="value" />
 						</html:select>
@@ -74,179 +82,170 @@
 								value="key" label="value" />
 						</html:select>
 					</div>
-
-					<div class="form-title1">
-						<p class="q-title">問題タイトル：</p>
-
-						<html:textarea name="inputBean" styleClass="tarea1"
+				</div>
+				<div class="content_box mtop_10per">
+					<h2>問題タイトルの入力</h2>
+					<div class="item_box">
+						<p class="item_box_title">問題にタイトルを付けます。</p>
+						<p class="sample">例）オブジェクト指向のカプセル化についての問題に挑戦しよう!</p>
+						<html:textarea name="inputBean" styleClass="textarea_title"
 							property="questionTitle" />
-
 					</div>
-
-					<div class="form-area1">
-						<p class="t-question">問題文：</p>
-
-						<html:textarea name="inputBean" styleClass="tarea2"
+				</div>
+				<div class="content_box mtop_5per">
+					<h2>問題文の入力</h2>
+					<div class="item_box">
+						<p class="item_box_title">出題する問題の問題文を入力します。</p>
+						<p class="sample">例）次のうち、カプセル化を行うメリットとして正しいものはどれでしょうか？</p>
+						<html:textarea name="inputBean" styleClass="textarea_question"
 							property="question" />
-
-					</div>
-
-					<div class="button-list1">
-						<div id="btn" class="regist-button1">次へ</div>
-						<div id="b-btn" class="regist-button1">
-							<a href="./TeacherMenuInit.do" class="menuback">メニューへ戻る</a>
-						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-
-		<div id="content2" class="hide">
-			<div class="contact">
-				<div class="index">
-					<div class="choice-list2">
-						<p class="choice2">選択肢</p>
-						<div class="form-title2">
-							<div class="leftborder">
-								<p class="title">a.</p>
-							</div>
-
-							<html:textarea name="inputBean" property="sentakuA"
-								styleClass="t-box2" />
-
-							<div class="leftborder">
-								<p class="title">b.</p>
-							</div>
-
-							<html:textarea name="inputBean" property="sentakuB"
-								styleClass="t-box2" />
-
-							<div class="leftborder">
-								<p class="title">c.</p>
-							</div>
-
-							<html:textarea name="inputBean" property="sentakuC"
-								styleClass="t-box2" />
-
-							<div class="leftborder">
-								<p class="title">d.</p>
-							</div>
-
-							<html:textarea name="inputBean" property="sentakuD"
-								styleClass="t-box2" />
-						</div>
-
-						<div class="answer-list2">
-							<p class="answer2">解答</p>
-							<html:select name="inputBean" styleClass="select2"
-								property="answerKey">
-								<html:optionsCollection name="viewBean" property="answer"
-									value="key" label="value" />
-							</html:select>
-						</div>
-					</div>
-
-					<div class="form-area2">
-						<p class="kaisetsu2">解説</p>
-
-						<html:textarea name="inputBean" styleClass="tarea2"
-							property="kaisetsu" />
-
-					</div>
-				</div>
-				<div class="button-list2">
-					<div id="btn2" class="regist-button2">次へ</div>
-					<div id="b-btn" class="regist-button2">
+				<div class="btns">
+					<div id="layout1Btn" class="btn">次へ</div>
+					<div id="menuBtn" class="btn">
 						<a href="./TeacherMenuInit.do" class="menuback">メニューへ戻る</a>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div id="content3" class="hide">
-			<div class="index3">
 
-				<div class="question-list3">
-
-					<div class="sub-list">
-						<p class="subject3">教科：</p>
-						<div id="output1" class="output1"></div>
+			<div id="layout2">
+				<div class="content_box mtop_5per">
+					<h2>問題の選択肢</h2>
+					<div class="item_box_se">
+						<p>選択肢Aの文章を入力します。</p>
+						<html:textarea name="inputBean" property="sentakuA"
+							styleClass="textarea_selection" />
 					</div>
-
-					<div class="cat-list">
-						<p class="category3">分類：</p>
-						<div id="output2" class="output2"></div>
+					<div class="item_box_se">
+						<p>選択肢Bの文章を入力します。</p>
+						<html:textarea name="inputBean" property="sentakuB"
+							styleClass="textarea_selection" />
 					</div>
-
-					<div class="title-list">
-						<p class="Q-title3">問題タイトル：</p>
-						<div id="output3" class="output3"></div>
+					<div class="item_box_se">
+						<p>選択肢Cの文章を入力します。</p>
+						<html:textarea name="inputBean" property="sentakuC"
+							styleClass="textarea_selection" />
 					</div>
-
-					<div class="form-area3">
-						<p class="quiestion3">問題文</p>
-						<div id="output4" class="output4"></div>
-					</div>
-
-					<div class="update3">
-						<div id="updatebtn" class="regist-button3">編集</div>
+					<div class="item_box_se">
+						<p>選択肢Dの文章を入力します。</p>
+						<html:textarea name="inputBean" property="sentakuD"
+							styleClass="textarea_selection" />
 					</div>
 				</div>
-				<div class="answer-list3">
+				<div class="content_box mtop_5per">
+					<h2>解答を設定</h2>
+					<div class="item_box">
+						<p class="item_box_title">正しい選択肢を設定します。</p>
+						<html:select name="inputBean" styleClass="select2"
+							property="answerKey">
+							<html:optionsCollection name="viewBean" property="answer"
+								value="key" label="value" />
+						</html:select>
+					</div>
+				</div>
+				<div class="content_box mtop_5per">
+					<h2>解説の入力</h2>
+					<div class="item_box">
+						<p class="item_box_title">出題した問題の解説を入力します。</p>
+						<html:textarea name="inputBean" styleClass="textarea_question"
+							property="kaisetsu" />
+					</div>
+				</div>
+				<div class="btns">
+					<div id="layout2Btn" class="btn">次へ</div>
+					<div id="menuBtn" class="btn">
+						<a href="./TeacherMenuInit.do" class="menuback">メニューへ戻る</a>
+					</div>
+				</div>
+			</div>
 
-					<div class="choice-list3">
-						<p class="choice3">選択肢</p>
-
-						<div class="form-title3">
-
-							<div class="A">
-								<p class="title">a.</p>
-								<div id="output5" class="output5"></div>
+			<div id="layout3">
+				<div class="content_box mtop_5per item_box">
+					<div class="content_box mtop_5per">
+						<h2>教科と分類</h2>
+						<div class="item_box">
+							<p class="item_box_title">以下の教科と分類で反映されます。</p>
+							<div class="check_box">
+								<p>教科：</p>
+								<p id="check_subject"></p>
 							</div>
-
-							<div class="B">
-								<p class="title">b.</p>
-								<div id="output6" class="output6"></div>
-							</div>
-
-							<div class="C">
-								<p class="title">c.</p>
-								<div id="output7" class="output7"></div>
-							</div>
-
-							<div class="D">
-								<p class="title">d.</p>
-								<div id="output8" class="output8"></div>
+							<div class="check_box">
+								<p>分類：</p>
+								<p id="check_category"></p>
 							</div>
 						</div>
 					</div>
-
-					<div class="ans-list3">
-						<p class="answer3">解答 :</p>
-						<div class="form-title">
-							<div id="output9" class="output9"></div>
+					<div class="content_box mtop_5per">
+						<h2>問題タイトルの入力</h2>
+						<div class="item_box">
+							<p class="item_box_title">以下の内容で問題タイトルが反映されます。</p>
+							<textarea id="check_question_title" readonly="true"></textarea>
 						</div>
-
 					</div>
-					<div class="form-area3">
-						<p class="quiestion3">解説</p>
-						<div id="output10" class="output10"></div>
+					<div class="content_box mtop_5per">
+						<h2>問題文の入力</h2>
+						<div class="item_box">
+							<p class="item_box_title">以下の内容で問題文が反映されます。</p>
+							<textarea id="check_question" readonly="true"></textarea>
+						</div>
 					</div>
-
-
-					<div class="update3">
-						<div id="updatebtn2" class="regist-button3">編集</div>
+					<div class="btns">
+						<div id="edit_layout1" class="btn">編集</div>
+					</div>
+				</div>
+				<br> <br>
+				<div class="content_box mtop_10per item_box">
+					<div class="content_box mtop_5per">
+						<h2>問題の選択肢</h2>
+						<div class="item_box_se">
+							<p>以下の内容で選択肢Aが反映されます。</p>
+							<textarea id="check_selection_A" readonly="true"></textarea>
+						</div>
+						<div class="item_box_se">
+							<p>以下の内容で選択肢Bが反映されます。</p>
+							<textarea id="check_selection_B" readonly="true"></textarea>
+						</div>
+						<div class="item_box_se">
+							<p>以下の内容で選択肢Cが反映されます。</p>
+							<textarea id="check_selection_C" readonly="true"></textarea>
+						</div>
+						<div class="item_box_se">
+							<p>以下の内容で選択肢Dが反映されます。</p>
+							<textarea id="check_selection_D" readonly="true"></textarea>
+						</div>
+					</div>
+					<div class="content_box mtop_5per">
+						<h2>解答を設定</h2>
+						<div class="item_box">
+							<p class="item_box_title">以下の解答で反映されます。</p>
+							<div class="check_box">
+								<p>解答：</p>
+								<p id="check_answer"></p>
+							</div>
+						</div>
+					</div>
+					<div class="content_box mtop_5per">
+						<h2>解説の入力</h2>
+						<div class="item_box">
+							<p class="item_box_title">以下の解説で反映されます。</p>
+							<textarea id="check_kaisetsu" readonly="true"></textarea>
+						</div>
+					</div>
+					<div class="btns">
+						<div id="edit_layout2" class="btn">編集</div>
 					</div>
 				</div>
 				<logic:empty name="viewUpdateBean">
-					<div class="button-list3">
-						<html:button property="insert" styleClass="r-button3">
+					<div class="btns">
+						<html:button property="insert" styleClass="btn r-button3">
               						登録
             				</html:button>
 					</div>
 				</logic:empty>
 				<logic:notEmpty name="viewUpdateBean">
-					<div class="button-list3">
-						<html:button property="update" styleClass="r-button3">
+					<div class="btns">
+						<html:button property="update" styleClass="btn r-button3">
               						更新
             			</html:button>
 					</div>
