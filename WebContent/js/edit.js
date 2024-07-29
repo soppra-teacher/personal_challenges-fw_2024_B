@@ -37,7 +37,7 @@ window.addEventListener("DOMContentLoaded", () => {
 		//	テキストエリアの入力内容に応じて高さを可変自動調節する
 		//
 		document.querySelectorAll("textarea").forEach((ele) => {
-			ele.style.cssText = "width : 100%;";
+			ele.style.cssText += "width : 100%;";
 			ele.style.cssText += "height : " + (ele.scrollHeight + 1) + "px;";
 		});
 	}
