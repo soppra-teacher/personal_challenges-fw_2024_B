@@ -5,510 +5,157 @@
 	padding: 0;
 }
 
-.top-header {
-	width: 35%;
-	background-color: black;
-	margin: 20px auto;
-	text-align: center;
-}
-
-.contact1 {
+.content {
+	margin-top: 3%;
+	margin-bottom: 3%;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 2.5%;
-	border: solid 1px;
 	width: 90%;
+	height: 90%;
+	background-color: rgb(247 247 247 / 1);
+	border-radius: 10px;
 }
 
-input#button {
-	padding: 5px 30px 5px 30px;
-	border-radius: 3px;
-	color: blue;
-	border: solid 1px lightgray;
-	background: white;
-	box-shadow: 0 0 5px lightgrey;
-	font-size: 1.2rem
-}
-
-
-
-.text-area1 {
-	width: 50%;
-}
-
-textarea.tarea1 {
-	font-size: 20px;
+#layout1 {
 	padding: 10px;
-	border: 1px solid #999;
-	box-sizing: border-box;
-	margin: 10px;
-	width: 30%;
-	resize: none;
-
 }
 
-
-.menuback {
-	text-decoration: none;
-	color: blue;
+#layout2 {
+	padding: 10px;
 }
 
-textarea.tarea2 {
-	font-size: 20px;
-	padding: 15px;
-	border: 1px solid #999;
-	box-sizing: border-box;
-	margin: 10px;
-	height: 15rem;
-	resize: none;
+#layout3 {
+	padding: 10px;
 }
 
-.radio-list1 {
-	display: flex;
-	padding: 5px;
-	margin: 10px;
-	font-size: 25px;
+.mtop_3per {
+	margin-top: 3%;
 }
 
-
-.form-select1 {
-	display: flex;
-	padding: 5px;
-	margin: 10px;
-	font-size: 25px;
+.mtop_5per {
+	margin-top: 5%;
 }
 
-.form-title1 {
-	margin: 10px;
-	display: flex;
-	padding: 5px;
-	font-size: 25px;
-	align-items: center;
-	width: 45%;
-
+.mtop_10per {
+	margin-top: 10%;
 }
 
-
-.form-area1 {
-	padding: 5px;
-	margin: 10px;
-	display: flex;
-	font-size: 25px;
-	width: 70%;
-}
-
-.button-list1 {
-	display: flex;
-	justify-content: center;
-	margin: 15px;
-}
-
-.regist-button1 {
-	padding: 5px 30px 5px 30px;
-	margin: 15px;
-	border-radius: 3px;
-	color: blue;
-	border: solid 1px lightgray;
-	background: white;
-	box-shadow: 0 0 5px lightgrey;
-	font-size: 1.3rem;
-}
-
-.t-box1 {
-	width: 70%;
-	font-size: 20px;
-}
-
-.select1 {
-	width: 100px;
-	font-size: 15px;
+.sample {
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 15px;
+	color: #3f3f3f;
 	font-weight: bold;
 }
 
-.choice2 {
-	font-size: 25px;
-	font-weight: bold;
+.content_box {
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
-.choice-list2 {
-	width: 40%;
-	line-height: 1.75em;
-	margin: 10px;
+.item_box {
+	margin-top: 2%;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 5px darkgray;
+	background-color: white;
 }
 
-.sub {
-	font-weight: bold;
+.item_box_se {
+	margin-top: 2%;
+	padding: 20px;
+	box-shadow: 0 0 5px darkgray;
+	background-color: white;
 }
 
-.category1 {
-	font-weight: bold;
+.item_box_title {
+	padding-bottom: 1%;
+	color: #3f3f3f;
 }
 
-.q-title {
-	font-weight: bold;
-	width: 60%;
+.radio_btns {
+	display: flex;
 	align-items: center;
 }
 
-.t-question {
-	font-weight: bold;
-	width: 15%;
-}
-
-label {
-	font-weight: bold;
+.radio_btn {
 	margin: 5px;
-}
-
-.title2 {
-
-	font-size: 25px;
-}
-
-.answer2 {
-	font-size: 25px;
-	font-weight: bold;
-	margin: 15px;
-}
-
-.select2 {
-	width: 135px;
-	font-size: 30px;
-}
-
-.kaisetsu2 {
-	font-size: 25px;
-	font-weight: bold;
-}
-
-.form-area2 {
-	width: 45%;
-	margin: 10px;
-}
-
-.tarea3 {
-
-	font-size: 20px;
-
-	padding: 10px;
-	border: 1px solid #999;
-	box-sizing: border-box;
-	margin: 5px;
-
-}
-
-.regist-button2 {
-	padding: 5px 30px 5px 30px;
-	margin: 20px;
-	border-radius: 3px;
-	color: blue;
-	border: solid 1px lightgray;
-	background: white;
-	box-shadow: 0 0 5px lightgrey;
-	font-size: 1.3rem
-}
-
-.t-box2 {
-	font-size: 25px;
-	resize: none;
-}
-
-.button-list2 {
 	display: flex;
-
-	margin: 15px;
-	justify-content: center;
+	align-items: center;
 }
 
-.index {
+.radio_btn label {
 	display: flex;
-	width: 100%;
-	justify-content: center;
+	padding: 5px;
 }
 
-.list-box {
-	margin-top: 2%;
-	display: flex;
-
-}
-
-.comentary {
-	width: 50%;
-	height: 25em;
-}
-
-
-.leftborder {
-	border-left: solid 5px #FF8551;
-}
-
-.question-list3 {
-	border: solid 1px;
-	margin-top: 2%;
-	width: 90%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.answer-list3 {
-	border: solid 1px;
-	width: 90%;
-	margin-top: 2%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-
-.title {
-	font-size: 25px;
-	font-weight: bold;
-	margin: 10px;
-
-}
-
-.tarea4 {
-
-	font-size: 35px;
-
-	padding: 10px;
-	border: 1px solid #999;
-	box-sizing: border-box;
-	margin-left: 30px;
-	margin-bottom: 20px;
-
-}
-
-.tarea5 {
-
-	font-size: 20px;
-
-	padding: 10px;
-	border: 1px solid #999;
-	box-sizing: border-box;
-	margin-left: 30px;
-	margin-bottom: 20px;
-
-}
-
-
-.update3 {
-	margin: 10px;
-	padding: 10px;
-
-}
-
-.regist-button3 {
-	padding: 5px 30px 5px 30px;
-	border-radius: 3px;
-	color: blue;
-	border: solid 1px lightgray;
-	background: white;
-	box-shadow: 0 0 5px lightgrey;
-	font-size: 1.3rem;
-	text-align: center;
-	width: 80px;
-	margin-left: auto;
-	margin-right: auto;
-
-}
-
-.r-button3 {
-	padding: 5px 30px 5px 30px;
-	border-radius: 3px;
-	color: blue;
-	border: solid 1px lightgray;
-	background: white;
-	box-shadow: 0 0 5px lightgrey;
-	font-size: 1.3rem;
-	text-align: center;
-
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.ans-list3 {
-	display: flex;
-
-}
-
-.button-list3 {
-	margin: 10px;
-	display: flex;
-	justify-content: center;
-
-}
-
-.subject3 {
-	font-size: 25px;
-	font-weight: bold;
-	margin: 10px;
-}
-
-.category3 {
-	font-size: 25px;
-	font-weight: bold;
-	margin: 10px;
-}
-
-.Q-title3 {
-	font-size: 25px;
-	font-weight: bold;
-	margin: 10px;
-}
-
-.quiestion3 {
-	font-size: 25px;
-	font-weight: bold;
-	margin: 10px;
-}
-
-.choice3 {
-	font-size: 25px;
-	font-weight: bold;
-	margin: 10px;
-}
-
-.answer3 {
-	font-size: 25px;
-	font-weight: bold;
-	margin: 10px;
-}
-
-.quiestion3 {
-	font-size: 25px;
-	font-weight: bold;
-	margin: 10px;
-}
-
-
-
-.sub-list {
-	display: flex;
-}
-
-.output1 {
-	font-size: 25px;
-	font-weight: bold;
-	margin: 10px;
-}
-
-.cat-list {
-	display: flex;
-}
-
-.output2 {
-	font-size: 25px;
-	font-weight: bold;
-	margin: 10px;
-}
-
-.title-list {
-	display: flex;
-}
-
-.output3 {
-	font-size: 25px;
-	font-weight: bold;
-	margin: 10px;
-}
-
-.output4 {
-	border: solid 1px;
-	font-weight: bold;
-	margin: 20px;
-	display: inline-block;
-	font-size: 20px;
-	width: 80%;
-	padding: 10px;
-	box-sizing: border-box;
-	line-height: 1.5;
-	height: 10em;
-	overflow: auto;
-
-}
-
-.output5 {
-	font-size: 20px;
-	font-weight: bold;
-	margin: 10px;
-	height: 2em;
-	overflow: auto;
-
-}
-
-.output6 {
-	font-size: 20px;
-	font-weight: bold;
-	margin: 10px;
-	height: 2em;
-	overflow: auto;
-
-}
-
-.output7 {
-	font-size: 20px;
-	font-weight: bold;
-	margin: 10px;
-	height: 2em;
-	overflow: auto;
-}
-
-.output8 {
-	font-size: 20px;
-	font-weight: bold;
-	margin: 10px;
-	height: 2em;
-	overflow: auto;
-
-}
-
-.A {
-	display: flex;
-}
-
-.B {
-	display: flex;
-}
-
-.C {
-	display: flex;
-}
-
-.D {
-	display: flex;
-}
-
-.output9 {
-	font-size: 25px;
-	font-weight: bold;
-	margin: 10px;
-}
-
-.output10 {
-	display: inline-block;
-	font-size: 20px;
-	width: 90%;
-	padding: 10px;
-	border: 1px solid #999;
-	box-sizing: border-box;
-	margin-left: 30px;
-	margin-bottom: 20px;
-	line-height: 1.5;
-	height: 6em;
-	overflow: auto;
-}
-
-.msg-err {
-	width: 60%;
+.textarea_title {
 	height: 45px;
-	margin-top: 10px;
-	margin-left: auto;
-	margin-right: auto;
+	color: #3f3f3f;
+}
+
+.textarea_question {
+	height: 500px;
+	color: #3f3f3f;
+}
+
+.textarea_selection {
+	height: 45px;
+	color: #3f3f3f;
+}
+
+.btn {
+	width: 150px;
+	margin-bottom: 3%;
+	padding: 5px 30px 5px 30px;
+	border-radius: 3px;
+	color: blue;
+	border: solid 1px lightgray;
+	background: white;
+	box-shadow: 0 0 5px lightgrey;
+	font-size: 1.3rem;
+	text-align: center;
+}
+
+.btn:hover {
+	cursor: pointer;
+	box-shadow: 0 0 15px lightgrey;
+	transition: .2s cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+.btns {
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
 	align-items: center;
-	color: red;
-	border: solid 1px red;
-	border-radius: 8px;
-	background: #ffdfdf;
+	margin-top: 5%;
+}
+
+.check_box {
+	display: flex;
+	padding-top: 10px;
+	padding-left: 30px;
+	font-weight: bold;
+}
+
+textarea {
+	padding: 10px;
+	box-sizing: border-box;
+	resize: none;
+	border-radius: 3px;
+	font-size: 1.5rem;
+}
+
+select {
+	width: 90%;
+	height: 40px;
+	font-size: 1.2rem;
+	background-color: rgb(247 247 247 / 1);
+	border-radius: 3px;
+}
+
+input[type="radio"] {
+	width: 20px;
+	height: 20px;
+	accent-color: blue;
 }
